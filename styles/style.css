@@ -95,7 +95,7 @@ header {
 
 .homeTitle h1 {
     user-select: none;
-    font-size: 12vw;
+    font-size: 10vw;
     margin:0;
     padding:0;
 }
@@ -141,10 +141,19 @@ header {
         width: 100%;
         top: 0px;
         background-color: #0D0D0D;
+        border-bottom: 8px solid black;
         transition: top 0.3s ease-in-out;   
     }
     
     .headerDropdown a {
         display: inline-block;
+        text-decoration:none;
+        color:white;
+        font-size: 4vw;
+        transition: text-shadow 0.3s ease-in-out;
+    }
+
+    .headerDropdown a:hover {
+        text-shadow: 0.5px 0.5px 5px grey, -0.5px -0.5px 5px grey;
     }
 }
