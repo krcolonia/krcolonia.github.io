@@ -1,3 +1,12 @@
+@font-face {
+    font-family: 'bender';
+    src: url('../fonts/bender.woff2') format('woff2'),
+         url('../fonts/bender.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
 html {
     scroll-behavior: smooth;
 }
@@ -5,13 +14,14 @@ html {
 body {
     margin: 0;
     padding: 0;
-    font-family: 'Consolas', monospace;
+    font-family: 'bender', monospace;
     display: flex;
     flex-direction: column;
     min-height: 100vh;
 
     background-image: url('https://i.imgur.com/z3rsDTU.png');
     background-size: cover;
+    background-position: center;
     background-repeat: no-repeat;
     background-attachment: fixed;
 
@@ -47,7 +57,7 @@ header {
     user-select: none;
     margin: 0;
     padding: 0;
-    font-family: 'Consolas', monospace;
+    font-family: 'bender', monospace;
 }
 
 .headerBtns {
