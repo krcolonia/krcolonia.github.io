@@ -119,7 +119,7 @@ header {
 
 .newSection {
     height:100vh;
-    background-color: #0D0D0D;
+    background-color: black;
 }
 
 @media (max-width: 768px) {
@@ -151,7 +151,6 @@ header {
         width: 100%;
         top: 0px;
         background-color: #0D0D0D;
-        border-bottom: 8px solid black;
         transition: top 0.3s ease-in-out;   
     }
     
