@@ -117,6 +117,10 @@ header {
     padding:0;
 }
 
+#section1 {
+    padding-bottom:45px;
+}
+
 .aboutSection {
     display:flex;
     flex-direction: column;
@@ -125,6 +129,7 @@ header {
 }
 
 .aboutHeader {
+    font-size:3rem;
     margin-bottom:0;
 }
 
