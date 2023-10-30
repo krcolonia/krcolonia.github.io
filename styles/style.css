@@ -194,7 +194,6 @@ header {
   justify-content: left;
   align-items: flex-end;
   width: 100%;
-  height:25vh;
   user-select: none;
   background-color: black;
 }
@@ -288,7 +287,6 @@ header {
   .footerDiv {
     justify-content: center;
     align-items: center;
-    height: auto;
   }
 
   .footerContent * {
