@@ -8,7 +8,7 @@
   <link rel="stylesheet" href="styles/style.css" type="text/css" charset="utf-8"/>
   <title>Kurt Colonia | Developer</title>
 </head>
-<body>
+<body onload="printHomeHeader()">
 
   <script src="js/script.js"></script>
   <header>
@@ -17,8 +17,8 @@
       <nav>
         <button class="hamb-ico" onClick="dropDownFunc()"><img src="https://i.imgur.com/zz1orbo.png"></button>
         <span class="headerBtns">
-          <a href="#" class="homeBtn"><img src="https://i.imgur.com/gurbBj8.png"></a>
-          <a href="#section1" class="aboutBtn"><img src="https://i.imgur.com/1UI1pkW.png"></a>
+          <a href="#" class="homeBtn"><img src="https://i.imgur.com/gurbBj8.png" id="buttons"></a>
+          <a href="#section1" class="aboutBtn"><img src="https://i.imgur.com/1UI1pkW.png" id="buttons"></a>
         </span>
       </nav>
     </div>
@@ -32,7 +32,7 @@
   </header>
 
   <div class="homeTitle">
-    <h1>&lt;krColonia&gt;<span class="blinkCursor">&nbsp</span></h1>
+    <h1><p id="headerContent"></p><span class="blinkCursor">|</span></h1>
     <h2>Developer</h2>
   </div>
 
@@ -76,5 +76,6 @@
       </div>     
     </div>
   </footer>
+  
 </body>
 </html>
