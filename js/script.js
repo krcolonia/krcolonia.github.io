@@ -18,6 +18,9 @@ function printHomeHeader() {
   if(headIndx < headStr.length){
     document.getElementById("headerContent").innerHTML += headStr[headIndx];
     headIndx++;
-    setTimeout(printHomeHeader, 150);
   }
+  else {
+    document.querySelector(".blinkCursor").style.animationPlayState = "running";
+  }
+  setTimeout(printHomeHeader, 150);
 }
