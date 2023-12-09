@@ -21,6 +21,7 @@ function printHomeHeader() {
   }
   else {
     document.querySelector(".blinkCursor").style.animationPlayState = "running";
+    return null;
   }
   setTimeout(printHomeHeader, 150);
 }
