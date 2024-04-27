@@ -289,11 +289,11 @@ section div {
     text-shadow: 0.5px 0.5px 5px grey, -0.5px -0.5px 5px grey;
   }
 
-  .aboutHeader {
+  section h1 {
     font-size: 3rem;
   }
 
-  .aboutContent {
+  section div {
     flex-direction: column;
   }
 
