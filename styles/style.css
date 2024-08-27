@@ -95,15 +95,7 @@ body {
 }
 
 #headerDropdown {
-  z-index: -5;
-  position: absolute;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-evenly;
-  align-items: center;
-  width: 100%;
-  background-color: #0D0D0D;
-  transition: top 0.3s ease-in-out;
+  display: none;
 }
 
 #headerDropdown a {
@@ -214,12 +206,45 @@ section div {
   text-align: justify;
 }
 
+#project-container {
+	display: flex;
+	flex-direction: row;
+}
+
 .project-tile {
 	display: flex;
 	flex-direction: column;
-	background-color: var(--DarkGunmetal);
-	width: 100%;
-	margin: 5px;
+	background-color: #0D0D0D;
+	width: 45%;
+	margin: 10px;
+	padding: 15px;
+	border-radius: 10px;
+	text-align: center;
+	box-shadow: inset 0px 0px 4px 4px #1B1B1B;
+}
+
+.project-tile h3 {
+	padding: 5px;
+	margin: 0px;
+}
+
+.project-tile p {
+	text-align: center;
+}
+
+.project-tile a {
+	background-color: #1B1B1B;
+	padding: 10px;
+	border-radius: 3px;
+
+	text-decoration: none;
+	color: white;
+
+	transition: background-color 0.3s ease-in-out;
+}
+
+.project-tile a:hover {
+	background-color: #272727;
 }
 
 #resume-embed {
@@ -330,6 +355,14 @@ section div {
   .aboutContent p {
     font-size: 1rem;
   }
+
+	#project-container {
+		flex-direction: column;
+	}
+
+	.project-tile {
+		width: 85%;
+	}
 
 	#resume-embed {
 		width:90vw;
