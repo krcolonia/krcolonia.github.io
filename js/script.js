@@ -1,12 +1,15 @@
+var dropdown_open = false;
 function dropDownFunc() {
-  var menu = document.querySelector(".headerDropdown");
+	var menu = document.getElementById("headerDropdown");
 
   if(window.innerWidth <= 768) {
-    if(menu.style.top === "0px" || menu.style.top === "") {
+    if(!dropdown_open) {
       menu.style.top = "55px";
+			dropdown_open = true
     }
     else {
-      menu.style.top = "0px";
+      menu.style.top = "-" + menu.offsetHeight + "px";
+			dropdown_open = false
     }
   }
 }

@@ -1,3 +1,4 @@
+@import url("main.css");
 
 @font-face {
   font-family: 'bender';
@@ -5,7 +6,6 @@
     url('../fonts/bender.woff') format('woff');
   font-weight: normal;
   font-style: normal;
-
 }
 
 html {
@@ -35,7 +35,7 @@ body {
   color: white;
 }
 
-header {
+#navbar {
   position: sticky;
   width: 100%;
   top: 0;
@@ -94,11 +94,19 @@ header {
   filter: invert(100%);
 }
 
-.headerDropdown {
-  display: none;
+#headerDropdown {
+  z-index: -5;
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 100%;
+  background-color: #0D0D0D;
+  transition: top 0.3s ease-in-out;
 }
 
-.headerDropdown a {
+#headerDropdown a {
   display: inline-block;
 }
 
@@ -206,6 +214,19 @@ section div {
   text-align: justify;
 }
 
+.project-tile {
+	display: flex;
+	flex-direction: column;
+	background-color: var(--DarkGunmetal);
+	width: 100%;
+	margin: 5px;
+}
+
+#resume-embed {
+	width: 750px;
+	height: 1100px;
+}
+
 .footerDiv {
   display: flex;
   flex-direction: row;
@@ -263,21 +284,20 @@ section div {
     filter: invert(100%);
   }
 
-  .headerDropdown {
+  #headerDropdown {
     z-index: -5;
     position: absolute;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: space-evenly;
     align-items: center;
-    height: 55px;
     width: 100%;
-    top: 0px;
     background-color: #0D0D0D;
     transition: top 0.3s ease-in-out;
   }
 
-  .headerDropdown a {
+  #headerDropdown a {
+		padding: 10px;
     display: inline-block;
     text-decoration: none;
     color: white;
@@ -285,7 +305,7 @@ section div {
     transition: text-shadow 0.3s ease-in-out;
   }
 
-  .headerDropdown a:hover {
+  #headerDropdown a:hover {
     text-shadow: 0.5px 0.5px 5px grey, -0.5px -0.5px 5px grey;
   }
 
@@ -310,6 +330,11 @@ section div {
   .aboutContent p {
     font-size: 1rem;
   }
+
+	#resume-embed {
+		width:90vw;
+		height:110vh;
+	}
 
   .footerDiv {
     justify-content: center;

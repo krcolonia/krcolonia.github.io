@@ -2,98 +2,122 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="icon" href="images/favicon.png">
-  <link rel="stylesheet" href="styles/style.css" type="text/css" charset="utf-8" />
-  <title>Kurt Colonia | Developer</title>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="icon" href="images/favicon.png">
+	<link rel="stylesheet" href="styles/style.css" type="text/css" charset="utf-8" />
+	<title>Kurt Colonia | Software Developer</title>
 </head>
 
 <body onload="setTimeout(printHomeHeader(), 500)">
 
-  <script src="js/script.js"></script>
-  <header>
-    <div class="headerDiv">
-      <h1>&lt;krC&gt;</h1>
-      <nav>
-        <button class="hamb-ico" onClick="dropDownFunc()"><img src="https://i.imgur.com/zz1orbo.png"
-            alt="Dropdown Button"></button>
-        <span class="headerBtns">
-          <a href="#" class="homeBtn"><img src="https://i.imgur.com/gurbBj8.png" alt="Home Button" id="buttons"></a>
-          <a href="#section1" class="aboutBtn"><img src="https://i.imgur.com/1UI1pkW.png" alt="About Button"
-              id="buttons"></a>
-        </span>
-      </nav>
-    </div>
+	<script src="js/script.js"></script>
 
-    <nav>
-      <div class="headerDropdown">
-        <a href="#">Home</a>
-        <a href="#section1">About Me</a>
-      </div>
-    </nav>
-  </header>
+	<nav id="navbar">
+		<div class="headerDiv">
+			<h1>&lt;krC&gt;</h1>
+			<button class="hamb-ico" onClick="dropDownFunc()"><img src="https://i.imgur.com/zz1orbo.png"
+					alt="Dropdown Button"></button>
+			<span class="headerBtns">
+				<a href="#" class="homeBtn"><img src="https://i.imgur.com/gurbBj8.png" alt="Home Button" id="buttons"></a>
+				<a href="#section1" class="aboutBtn"><img src="https://i.imgur.com/1UI1pkW.png" alt="About Button"
+						id="buttons"></a>
+			</span>
+		</div>
+		<div id="headerDropdown">
+			<a href="#">Home</a>
+			<a href="#about-link">About Me</a>
+			<a href="#project-link">Projects</a>
+			<a href="#resume-link">Résumé</a>
+		</div>
+		<script>
+			var menu = document.getElementById("headerDropdown");
+			menu.style.top = "-" + menu.offsetHeight + "px";
+			console.log("dropdown default positioning set!")
+			dropdown_open = false
+		</script>
+	</nav>
 
-  <div class="homeTitle">
-    <h1>
-      <p id="headerContent"></p><span class="blinkCursor">|</span>
-    </h1>
-    <!-- <h2>Developer</h2> -->
-    <h2>Dependable Software Developer</h2>
-  </div>
+	<div class="homeTitle">
+		<h1>
+			<p id="headerContent"></p><span class="blinkCursor">|</span>
+		</h1>
+		<!-- <h2>Developer</h2> -->
+		<h2>Software Developer</h2>
+		<!-- <h2>Kurt Robin Colonia</h2> -->
+	</div>
 
-  <a id="section1"></a>
-
-  <section class="aboutSection">
-    <h1 class="aboutHeader">About Me</h1>
-    <div class="aboutContent">
-      <img src="images/LinkedIn_PFP.png" alt="Kurt Colonia's ID Picture"></img>
-      <main>
-        <h2>Hello World! I'm Kurt Robin Colonia.</h2><br>
-        <p> I am 21 years old and currently residing in Quezon City, Metro Manila, Philippines. I am a 3rd
-          Year college student enrolled under the Bachelor of Science in Information Technology program at
-          New Era University - Main Campus.</p><br>
-        <p> I am a dependable software developer, with proficiency in Java, Kotlin, C#, and Python. I am also skilled in
+	<a id="about-link"></a>
+	<section class="aboutSection">
+		<h1 class="aboutHeader">About Me</h1>
+		<div class="aboutContent">
+			<img src="images/LinkedIn_PFP.png" alt="Kurt Colonia's ID Picture"></img>
+			<main>
+				<h2>Hello World! I'm Kurt Robin Colonia.</h2><br>
+				<p> I am 21 years old and currently residing in Quezon City, Metro Manila, Philippines. I am a 4th
+					Year college student enrolled under the Bachelor of Science in Information Technology program at
+					New Era University - Main Campus.</p><br>
+				<!-- <p> I am a dependable software developer, with proficiency in Java, Kotlin, C#, and Python. I am also skilled in
           Full Stack
           Web Development with HTML, CSS, JavaScript, and PHP. I have a keen attention to detail, a fast
-          learner, with analytical and problem solving skills.</p>
-        <!-- <p> I am a software developer, with proficiency in Java, Kotlin, C#, Python, Relational Database
-          Management with SQL, Non-Relational Database Management with NoSQL in MongoDB, and Full Stack
-          Web Development with HTML, CSS, JavaScript, and PHP. I have a keen attention to detail, a fast
           learner, with analytical and problem solving skills.</p> -->
-      </main>
-    </div>
-  </section>
+				<p> I am a software developer, with proficiency in Java, Kotlin, C#, Relational Database
+					Management with IBM's Cloud SQL Database and MySQL with PHP, Non-Relational Database Management with NoSQL in
+					Firebase API's Realtime Database, Full Stack
+					Web Development with HTML, CSS, JavaScript, PHP and MySQL, and Firebase API, and Game Development using Godot,
+					GDScript, C#, and Firebase.
+					I also have experience working with and integrating APIs to projects I've worked on. I have a keen attention
+					to detail, a fast
+					learner, with analytical and problem solving skills.</p>
+			</main>
+		</div>
+	</section>
 
-  <section class="resumeSection">
-    <h1 class="resumeHeader">Résumé</h1>
-    <div class="resumeContent">
-      <!-- <img src="images/LinkedIn_PFP.png" alt="Kurt Colonia's ID Picture"></img> -->
-      <main>
-        <iframe src="https://drive.google.com/file/d/1nc6_Sts3eRmDZ3pIucQICVjCvU0dwjOP/preview" width="768" height="1100"></iframe>
-      </main>
-    </div>
-  </section>
+	<a id="project-link"></a>
+	<section id="projects">
+		<h1 class="section-header">Projects I've worked on</h1>
+		<div class="project-tile">
+			<h3>Code Quest: The PyTome of Knowledge</h3>
+			<p>An Android Game-Based Learning Application designed to provide students with Python Software Development lessons in a video game-based way!</p>
+			<a href="https://github.com/krcolonia/CodeQuest-ThePyTomeOfKnowledge" target="_blank">View Project</a>
+		</div>
+		<div class="project-tile">
+			<h3>Yummly 2.0</h3>
+			<p>An Android-based recipe app, designed to provide a platform to all cooks looking for the most authentic Filipino cuisine recipes!</p>
+			<a href="https://github.com/krcolonia/Yummly-2.0" target="_blank">View Project</a>
+		</div>
+	</section>
 
-  <footer>
-    <div class="footerDiv">
-      <div class="footerContent">
-        <div class="profileLinks">
-          <a href="https://github.com/krcolonia" target="_blank">
-            <img src="https://i.imgur.com/YPeacUb.png" alt="Github Icon">
-          </a>
-          <a href="https://www.linkedin.com/in/krcolonia/" target="_blank">
-            <img src="https://i.imgur.com/AUaixxY.png" alt="LinkedIn Icon">
-          </a>
-          <a href="mailto:kurtrobinperezcolonia@gmail.com">
-            <img src="https://i.imgur.com/XZkfDdk.png" alt="Contact via Email">
-          </a>
-        </div>
-        <p>&copy; COLONIA, Kurt Robin 2024</p>
-      </div>
-    </div>
-  </footer>
+	<a id="resume-link"></a>
+	<section class="resumeSection">
+		<h1 class="resumeHeader">Résumé</h1>
+		<div class="resumeContent">
+			<!-- <img src="images/LinkedIn_PFP.png" alt="Kurt Colonia's ID Picture"></img> -->
+			<main>
+				<iframe id="resume-embed" title="Embedded Résumé" src="https://drive.google.com/file/d/1nc6_Sts3eRmDZ3pIucQICVjCvU0dwjOP/preview"></iframe>
+			</main>
+		</div>
+	</section>
+
+	<footer>
+		<div class="footerDiv">
+			<div class="footerContent">
+				<div class="profileLinks">
+					<a href="https://github.com/krcolonia" target="_blank">
+						<img src="https://i.imgur.com/YPeacUb.png" alt="Github Icon">
+					</a>
+					<a href="https://www.linkedin.com/in/krcolonia/" target="_blank">
+						<img src="https://i.imgur.com/AUaixxY.png" alt="LinkedIn Icon">
+					</a>
+					<a href="mailto:kurtrobinperezcolonia@gmail.com">
+						<img src="https://i.imgur.com/XZkfDdk.png" alt="Contact via Email">
+					</a>
+				</div>
+				<p>&copy; COLONIA, Kurt Robin 2024</p>
+			</div>
+		</div>
+	</footer>
 
 </body>
 

@@ -1,0 +1,13 @@
+/* 
+  #161A30 -> Dark Gunmetal
+  #31304D -> Jacarta
+  #B6BBC4 -> gray (X11)
+  #F0ECE5 -> Alabaster
+ */
+
+:root {
+  --DarkGunmetal: #161A30;
+  --Jacarta: #31304D;
+  --GrayX11: #B6BBC4;
+  --Alabaster: #F0ECE5;
+}
