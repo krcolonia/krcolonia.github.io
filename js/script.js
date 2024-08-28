@@ -1,4 +1,4 @@
-var dropdown_open = false;
+let dropdown_open = false;
 function dropDownFunc() {
 	var menu = document.getElementById("headerDropdown");
 
@@ -14,7 +14,7 @@ function dropDownFunc() {
   }
 }
 
-var headStr = "<krColonia>";
+const headStr = "<krColonia>";
 let headIndx = 0;
 
 function printHomeHeader() {
@@ -28,3 +28,15 @@ function printHomeHeader() {
   }
   setTimeout(printHomeHeader, 150);
 }
+
+const dev_type = [ "Full Stack Web", "Mobile", "Software" ]
+const el = document.querySelector("#devType");
+const fx = new TextScramble(el);
+let counter = 0;
+
+const next = () => {
+	fx.setText(dev_type[counter]).then(() => {
+		setTimeout(next, 2500);
+	});
+	counter = (counter +1) % dev_type.length;
+};

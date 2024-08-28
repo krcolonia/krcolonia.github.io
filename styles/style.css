@@ -73,6 +73,17 @@ body {
   margin: 0;
 }
 
+.headerBtns a {
+	text-decoration: none;
+	color: white;
+	padding-left: 15px;
+	transition: text-shadow 0.3s ease-in-out;
+}
+
+.headerBtns a:hover {
+	text-shadow: 0.5px 0.5px 5px grey, -0.5px -0.5px 5px grey;
+}
+
 .homeBtn img {
   max-height: 35px;
   margin: 5px;
@@ -131,7 +142,7 @@ body {
 
 @keyframes blinkCursor {
   0% {
-    opacity: 01;
+    opacity: 1;
   }
 
   49% {
@@ -250,6 +261,8 @@ section div {
 #resume-embed {
 	width: 750px;
 	height: 1100px;
+	border: none;
+	border-radius: 15px;
 }
 
 .footerDiv {
@@ -366,7 +379,7 @@ section div {
 
 	#resume-embed {
 		width:90vw;
-		height:110vh;
+		height:100vh;
 	}
 
   .footerDiv {
