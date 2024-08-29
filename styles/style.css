@@ -218,18 +218,22 @@ section div {
 #project-container {
 	display: flex;
 	flex-direction: row;
+	flex-wrap: wrap;
 }
 
 .project-tile {
 	display: flex;
 	flex-direction: column;
 	background-color: #0D0D0D;
-	width: 45%;
 	margin: 10px;
 	padding: 15px;
 	border-radius: 10px;
 	text-align: center;
 	box-shadow: inset 0px 0px 4px 4px #1B1B1B;
+
+	flex-basis: 45%;
+
+	height: 45vh;
 }
 
 .project-tile h3 {
@@ -384,6 +388,8 @@ section div {
 
 	.project-tile {
 		width: 85%;
+		height: auto;
+		flex-basis: 100%;
 	}
 
 	#resume-embed {
