@@ -17,6 +17,21 @@ function dropDownFunc() {
 const headStr = "<krColonia>";
 let headIndx = 0;
 
+// ? Credits to luthifbg for the JavaScript Scramble text script
+// ? link to origin of Scramble text script: https://github.com/luthfibg/sebelaslvl/blob/main/js_scramble_text/scramble.js
+
+const dev_type = [ "Web", "Mobile", "Software", "Game" ]
+const el = document.querySelector("#devType");
+const fx = new TextScramble(el);
+let counter = 0;
+
+const next = () => {
+	fx.setText(dev_type[counter]).then(() => {
+		setTimeout(next, 2500);
+	});
+	counter = (counter + 1) % dev_type.length;
+};
+
 function printHomeHeader() {
   if(headIndx < headStr.length){
     document.getElementById("headerContent").innerHTML += headStr[headIndx];
@@ -28,15 +43,3 @@ function printHomeHeader() {
   }
   setTimeout(printHomeHeader, 150);
 }
-
-const dev_type = [ "Full Stack Web", "Mobile", "Software" ]
-const el = document.querySelector("#devType");
-const fx = new TextScramble(el);
-let counter = 0;
-
-const next = () => {
-	fx.setText(dev_type[counter]).then(() => {
-		setTimeout(next, 2500);
-	});
-	counter = (counter +1) % dev_type.length;
-};

@@ -1,5 +1,3 @@
-@import url("main.css");
-
 @font-face {
   font-family: 'bender';
   src: url('../fonts/bender.woff2') format('woff2'),
@@ -251,11 +249,12 @@ section div {
 	text-decoration: none;
 	color: white;
 
-	transition: background-color 0.3s ease-in-out;
+	transition: background-color 0.3s ease-in-out, text-shadow 0.3s ease-in-out;
 }
 
 .project-tile a:hover {
 	background-color: #272727;
+	text-shadow: 0.5px 0.5px 5px grey, -0.5px -0.5px 5px grey;
 }
 
 #resume-embed {
@@ -322,6 +321,14 @@ section div {
     filter: invert(100%);
   }
 
+	.homeTitle h1 {
+		font-size: 15vw;
+	}
+
+	.homeTitle h2 {
+		font-size: 7.5vw;
+	}
+
   #headerDropdown {
     z-index: -5;
     position: absolute;
@@ -357,6 +364,8 @@ section div {
 
   .aboutContent img {
     margin: 0;
+		max-width: none;
+		width: 40vw;
   }
 
   .aboutContent h2 {
