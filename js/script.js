@@ -43,3 +43,18 @@ function printHomeHeader() {
   }
   setTimeout(printHomeHeader, 150);
 }
+
+// ? Retrieves the current year for the footer. Helps me not replace the copyright year manually
+document.getElementById('footerYear').textContent = `2020 - ${new Date().getFullYear()}`;
+
+const currentDate = new Date();
+const pastDate = new Date("2002-12-20");
+
+let yearsDifference = currentDate.getFullYear() - pastDate.getFullYear();
+
+// ? If current month is less than birth month OR if current month is same as birthMonth, but current day is less than birthday
+if (currentDate.getMonth() < pastDate.getMonth() || (currentDate.getMonth() === pastDate.getMonth() && currentDate.getDate() < pastDate.getDate())) {
+  yearsDifference--;
+}
+
+document.getElementById('currentAge').textContent = yearsDifference;

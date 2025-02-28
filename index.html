@@ -13,7 +13,16 @@
 
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="icon" href="images/favicon.png">
+	
+	<!-- ? Bootstrap 5.0.2 -->
+	<!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous"> -->
+	<!-- ? Bootstrap 5 JS -->
+	<!-- <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script> -->
+	<!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script> -->
+	
+	<!-- ? My own CSS file -->
 	<link rel="stylesheet" href="styles/style.css" type="text/css" charset="utf-8" />
+
 	<!-- <title>Kurt Colonia | Software Developer</title> -->
 	<title>Kurt Colonia | Developer</title>
 </head>
@@ -63,8 +72,8 @@
 			<img src="images/LinkedIn_PFP.png" alt="Kurt Colonia's ID Picture"></img>
 			<main>
 				<h2>Hello World! I'm Kurt Robin Colonia.</h2><br>
-				<p> I am 21 years old and currently residing in Quezon City, Metro Manila, Philippines. I am a 4th
-					Year college student enrolled under the Bachelor of Science in Information Technology program at
+				<p> I am <span id="currentAge"></span> years old and currently residing in Quezon City, Metro Manila, Philippines. I am a 4th
+					Year Bachelor of Science in Information Technology student at
 					New Era University - Main Campus.</p><br>
 				<!-- <p> I am a dependable software developer, with proficiency in Java, Kotlin, C#, and Python. I am also skilled in
           Full Stack
@@ -163,7 +172,7 @@
 						<img src="https://i.imgur.com/XZkfDdk.png" alt="Contact via Email">
 					</a>
 				</div>
-				<p>&copy; COLONIA, Kurt Robin 2024</p>
+				<p>&copy; COLONIA, Kurt Robin <span id="footerYear"></span></p>
 			</div>
 		</div>
 	</footer>
