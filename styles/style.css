@@ -63,7 +63,8 @@ body {
   display: inline-block;
   user-select: none;
   margin: 0;
-  padding: 0;
+  padding-top: 60px;
+  padding-bottom: 60px;
   font-family: 'bender', monospace;
 }
 
