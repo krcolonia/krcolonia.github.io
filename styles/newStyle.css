@@ -8,7 +8,7 @@
 Credits:
 
 Azland Studio -> Sidebar button icon
-Darius Dan -> close button for the tabs
+ariefstudio -> close button for the tabs
 
 */
 
@@ -66,7 +66,7 @@ Darius Dan -> close button for the tabs
 .tabClose {
 	width: 20px;
 	height: 20px;
-	margin-right:5px;
+	padding:2px;
 	background: none;
 	border: none;
 	color: white;
@@ -74,4 +74,5 @@ Darius Dan -> close button for the tabs
 
 .tabClose img {
 	filter: invert(100%);
+	margin:3px;
 }
