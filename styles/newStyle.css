@@ -8,6 +8,7 @@
 Credits:
 
 Azland Studio -> Sidebar button icon
+Darius Dan -> close button for the tabs
 
 */
 
@@ -55,4 +56,22 @@ Azland Studio -> Sidebar button icon
 	width: 150px;
 	border-top-left-radius: 10px;
 	border-top-right-radius: 10px;
+}
+
+.menuTab span {
+	margin-left: 5px;
+	margin-top: 1px;
+}
+
+.tabClose {
+	width: 20px;
+	height: 20px;
+	margin-right:5px;
+	background: none;
+	border: none;
+	color: white;
+}
+
+.tabClose img {
+	filter: invert(100%);
 }
