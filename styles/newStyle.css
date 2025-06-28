@@ -21,7 +21,7 @@ Azland Studio -> Sidebar button icon
 	flex-flow: row;
 	position: relative;
 	transition: 0.5s ease-in-out;
-	width:50px;
+	width:40px;
 }
 
 #sidebarNav {
@@ -29,7 +29,7 @@ Azland Studio -> Sidebar button icon
 	display: flex;
 	flex-flow: column;
 	align-items: stretch;
-	left: -200px;
+	left: -210px;
 	flex-shrink: 0;
 	padding: 5px;
 	width: 250px;
@@ -37,8 +37,8 @@ Azland Studio -> Sidebar button icon
 }
 
 #sidebarBtn {
-	width: 38px;
-	height: 38px;
+	width: 28px;
+	height: 28px;
 	background: none;
 	border: none;
 }

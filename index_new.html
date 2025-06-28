@@ -32,25 +32,23 @@
 			<nav class="bg-black" id="sidebarNav">
 				<div class="d-flex flex-row justify-content-between">
 					<h1 href="" class="d-flex align-items-center flex-shrink-0 p-2 bg-black">&lt;krC&gt;</h1>
-					<button id="sidebarBtn" class="btn-outline-primary mt-2 d-flex p-0" onClick="toggleSidebar()"><img src="images/sidebar-open.png" id="sidebarBtnIcon" alt="sidebarButton"></button>
+					<button id="sidebarBtn" class="btn-outline-primary m-1 d-flex" onClick="toggleSidebar()"><img src="images/sidebar-open.png" id="sidebarBtnIcon" alt="sidebarButton"></button>
 				</div>
 				<ul class="nav nav-pills flex-column mb-auto">
 					<li class="nav-item">
-						<button class="sidebatItem nav-link active bg-transparent">About</button>
-						<button class="sidebatItem nav-link active bg-transparent">Tech Stack</button>
-						<button class="sidebatItem nav-link active bg-transparent">FAQ</button>
-						<button class="sidebatItem nav-link active bg-transparent">Projects</button>
-						<button class="sidebatItem nav-link active bg-transparent">Links</button>
-						<button class="sidebatItem nav-link active bg-transparent">Contact</button>
+						<button class="sidebatItem nav-link active bg-transparent" onClick="addTab('About')">About</button>
+						<button class="sidebatItem nav-link active bg-transparent" onClick="addTab('Tech Stack')">Tech Stack</button>
+						<button class="sidebatItem nav-link active bg-transparent" onClick="addTab('FAQ')">FAQ</button>
+						<button class="sidebatItem nav-link active bg-transparent" onClick="addTab('Projects')">Projects</button>
+						<button class="sidebatItem nav-link active bg-transparent" onClick="addTab('Links')">Links</button>
+						<button class="sidebatItem nav-link active bg-transparent" onClick="addTab('Contact')">Contact</button>
 					</li>
 				</ul>
 			</nav>
 		</div>
 		<main class="d-flex flex-column w-100" id="mainArea">
-			<div class="d-flex flex-row align-items-stretch w-100 bg-transparent border-1 text-white">
-				<div class="menuTab d-flex flex-row justify-content-between align-content-center bg-white text-black p-1"><span>tab</span><button>x</button></div>
-				<div class="menuTab d-flex flex-row justify-content-between align-content-center bg-black text-white p-1"><span>tab</span><button>x</button></div>
-				<div class="menuTab d-flex flex-row justify-content-between align-content-center bg-black text-white p-1"><span>tab</span><button>x</button></div>
+			<div class="d-flex flex-row align-items-stretch w-100 bg-transparent border-1 text-white" id="tabContainer">
+				<div class="menuTab d-flex flex-row justify-content-between align-content-center bg-white text-black p-1"><span>Home</span></div>
 			</div>
 			<div class="h-100" id="mainBody">
 				<h1>Hello World</h1>
