@@ -41,6 +41,8 @@ function addTab(tabName) {
 		</button>
 	</div>`;
 	currentTabs.push(tabName);
+
+	setCurrentTab(tabName); // ? set the newly added tab as the currently active tab.
 }
 
 function removeTab(tabName) {
@@ -54,6 +56,7 @@ function removeTab(tabName) {
 	if(tabName == activeTab) {
 		activeTab = prevTab;
 		document.getElementById(`${activeTab}Tab`).classList.add("activeTab");
+		setCurrentTab(prevTab); // ? sets current content to be prevTab's content
 	};
 	
 	currentTabs = currentTabs.filter(e => e !== tabName); // ? removes tab based on tab name via array filtering
@@ -67,5 +70,62 @@ function setCurrentTab(tabName) {
 
 	document.getElementById(`${prevTab}Tab`).classList.remove("activeTab");
 	document.getElementById(`${activeTab}Tab`).classList.add("activeTab");
+
+	setBodyContent(activeTab);
 }
 //#endregion
+
+//#region // ? functions for changing the content of body
+function setBodyContent(tabName) {
+	const body = document.getElementById("mainBody");
+
+	[...body.children]
+  .forEach(child => child.id !== `${tabName}Content` ? child.style.display = 'none' : null);
+	document.getElementById(`${tabName}Content`).style.display = 'block';
+
+	if(tabName === "Home") {
+		headIndx = 0;
+		document.getElementById("headerContent").innerHTML = '';
+		printHomeHeader();
+	}
+}
+
+//#region // ? Home Tab Content
+const headStr = "<krColonia>";
+let headIndx = 0;
+
+// ? Credits to luthifbg for the JavaScript Scramble text script
+// ? link to origin of Scramble text script: https://github.com/luthfibg/sebelaslvl/blob/main/js_scramble_text/scramble.js
+
+const dev_type = [ "Web", "Mobile", "Software" ]
+const el = document.querySelector("#devType");
+const fx = new TextScramble(el);
+let counter = 0;
+
+const next = () => {
+	fx.setText(dev_type[counter]).then(() => {
+		setTimeout(next, 2500);
+	});
+	counter = (counter + 1) % dev_type.length;
+};
+
+function printHomeHeader() {
+  if(headIndx < headStr.length){
+    document.getElementById("headerContent").innerHTML += headStr[headIndx];
+    headIndx++;
+  }
+  else {
+    document.querySelector(".blinkCursor").style.animationPlayState = "running";
+    return null;
+  }
+  setTimeout(printHomeHeader, 150);
+}
+
+next();
+//#endregion
+
+setBodyContent("Home"); // ? sets the body content to the home content by default;
+//#endregion
+
+// ? Retrieves the current year for the footer. Helps me not replace the copyright year manually
+document.getElementById('footerYear').textContent = new Date().getFullYear();

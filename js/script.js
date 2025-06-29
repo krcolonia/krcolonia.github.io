@@ -45,7 +45,7 @@ function printHomeHeader() {
 }
 
 // ? Retrieves the current year for the footer. Helps me not replace the copyright year manually
-document.getElementById('footerYear').textContent = `2020 - ${new Date().getFullYear()}`;
+document.getElementById('footerYear').textContent = `${new Date().getFullYear()}`;
 
 const currentDate = new Date();
 const pastDate = new Date("2002-12-20");

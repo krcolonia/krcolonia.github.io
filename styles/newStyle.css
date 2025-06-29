@@ -12,10 +12,69 @@ ariefstudio -> close button for the tabs
 
 */
 
-#mainBody {
+@font-face {
+  font-family: 'bender';
+  src: url('../fonts/bender.woff2') format('woff2'),
+    url('../fonts/bender.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'bender', monospace;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+
+  background-image: url('https://i.imgur.com/z3rsDTU.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+
+  scrollbar-width: thin;
+  scrollbar-color: transparent transparent;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  overflow: -moz-scrollbars-none;
+
+  color: white;
+}
+
+@keyframes blinkCursor {
+  0% {
+    opacity: 1;
+  }
+
+  49% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0;
+  }
+
+  99% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+#mainBody { 
 	background-color: rgb(0,0,0,0.5);
 	padding: 5px;
 	border-top: 5px solid black;
+	
+	display:flex;
 }
 
 #sidebarContainer {
@@ -47,6 +106,12 @@ ariefstudio -> close button for the tabs
 
 #sidebarBtn img {
 	filter: invert(100%);
+	margin:2px;
+	transition: 0.1s ease-in-out;
+}
+
+#sidebarBtn img:hover {
+	margin:0px;
 }
 
 #mainArea {
@@ -61,7 +126,7 @@ ariefstudio -> close button for the tabs
 	background-color: black;
 	color: white;
 	font-size:1.15rem;
-	transition: 0.2s ease-in-out;
+	transition: 0.1s ease-in-out;
 }
 
 .menuTab span {
@@ -85,9 +150,57 @@ ariefstudio -> close button for the tabs
 .tabClose {
 	width: 20px;
 	height: 20px;
+	/* padding: 5px; */
 	padding: 5px;
 	margin-right: 5px;
 	background: none;
 	border: none;
 	color: white;
+}
+
+.tabClose:hover {
+	padding: 4px;
+}
+
+.tabContent {
+	width:100%;
+	height:100%;
+}
+
+.footerDiv {
+  user-select: none;
+  background-color: black;
+}
+
+.profileLinks img {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  filter: invert(100%);
+}
+
+.profileLinks a {
+  width: 25px;
+	height: 25px;
+  margin: 3%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+	transition: 0.1s ease-in-out;
+}
+
+#githubLink:hover {
+	width: 35px;
+	height: 35px;
+}
+
+#linkedinLink:hover {
+	width: 35px;
+	height: 35px;
+}
+
+#emailLink:hover {
+	width: 35px;
+	height: 35px;
 }
