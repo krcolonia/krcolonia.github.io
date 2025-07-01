@@ -112,6 +112,23 @@ body {
   display: inline-block;
 }
 
+#kurut0Alert {
+	background-color: #d3554e;
+	height: 25px;
+	display: flex;
+	align-items: center;
+	padding-left: 5px;
+	padding-right:5px;
+}
+
+#kurut0Alert * {
+	color: white;
+	font-weight: bold;
+	font-size: 18px;
+	margin: 0px;
+	padding: 0px;
+}
+
 .homeTitle {
   display: flex;
   flex-direction: column;

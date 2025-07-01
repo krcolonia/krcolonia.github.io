@@ -30,6 +30,8 @@ function addTab(tabName) {
 	const tabContainer = document.getElementById('tabContainer');
 
 	if (currentTabs.includes(tabName)) {
+		setCurrentTab(tabName);
+		toggleSidebar();
 		return; // ? guard clause to check if the tab was already added
 	}
 
@@ -129,3 +131,8 @@ setBodyContent("Home"); // ? sets the body content to the home content by defaul
 
 // ? Retrieves the current year for the footer. Helps me not replace the copyright year manually
 document.getElementById('footerYear').textContent = new Date().getFullYear();
+
+//#region // ? code to enable bootstrap tooltips
+const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
+const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
+//#endregion

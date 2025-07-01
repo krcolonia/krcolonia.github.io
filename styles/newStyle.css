@@ -47,6 +47,11 @@ body {
   color: white;
 }
 
+.blinkCursor {
+  animation: blinkCursor 0.8s linear infinite;
+  animation-play-state: paused;
+}
+
 @keyframes blinkCursor {
   0% {
     opacity: 1;
