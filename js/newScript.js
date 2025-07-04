@@ -43,33 +43,33 @@ next();
 
 //#region // ? Text effect for each section of my portfolio that mimics typing
 function textTypeEffect(id, text, blinkCursor, typeSpeed) {
-	let textIndex = 0;
-	let cancelled = false;
+	return new Promise((resolve) => {
+    let textIndex = 0;
+    let cancelled = false;
 
-	if(!window.typingSessions) {
-		window.typingSessions = {};
-	}
-	window.typingSessions[id] = () => cancelled = true;
+    if (!window.typingSessions) {
+      window.typingSessions = {};
+    }
+    window.typingSessions[id] = () => (cancelled = true);
 
-	function typeChar() {
-		const blinkEl = document.getElementById(blinkCursor);
-		const textEl = document.getElementById(id);
+    function typeChar() {
+      const blinkEl = document.getElementById(blinkCursor);
+      const textEl = document.getElementById(id);
 
-		if(cancelled || !textEl || !blinkEl) return;
+      if (cancelled || !textEl || !blinkEl) return resolve();
 
-		if(textIndex >= text.length) {
-			blinkEl.style.animationPlayState = "running";
-			return;
-		}
+      if (textIndex >= text.length) {
+        blinkEl.style.animationPlayState = "running";
+        return resolve();
+      }
 
-		// blinkEl.classList.remove('blinkCursor');
-		blinkEl.style.animationPlayState = "paused";
-		textEl.innerHTML += text[textIndex++];
-		setTimeout(typeChar, typeSpeed);
-	}
-
-	document.getElementById(blinkCursor).classList.add('blinkCursor');
-	typeChar();
+      blinkEl.style.animationPlayState = "paused";
+      textEl.innerHTML += text[textIndex++];
+      setTimeout(typeChar, typeSpeed);
+    }
+    document.getElementById(blinkCursor).classList.add("blinkCursor");
+    typeChar();
+  });
 }
 //#endregion
 
@@ -87,9 +87,26 @@ function addTab(tabName) {
 		return; // ? guard clause to check if the tab was already added
 	}
 
+	var tabExt = "";
+
+	switch(tabName) {
+		case "AboutMe":
+			tabExt = ".java";
+			break;
+		case "TechStack":
+			tabExt = ".py";
+			break;
+		case "FAQ":
+			tabExt = ".json";
+			break;
+		case "Projects":
+			tabExt = ".gd";
+			break;
+	}
+
 	tabContainer.innerHTML += `
 	<div class="menuTab d-flex flex-row justify-content-between align-content-center p-1" id="${tabName}Tab">
-		<span class="flex-grow-1 mt-1 user-select-none" onClick="setCurrentTab('${tabName}')" onAuxClick="removeTab('${tabName}')">${tabName}</span>
+		<span class="flex-grow-1 mt-1 user-select-none" onClick="setCurrentTab('${tabName}')" onAuxClick="removeTab('${tabName}')">${tabName}${tabExt}</span>
 		<button class="tabClose my-auto d-flex" onClick="removeTab('${tabName}')">
 			<img src="images/close.png">
 		</button>
@@ -118,11 +135,6 @@ function removeTab(tabName) {
 }
 
 function setCurrentTab(tabName) {
-	// if (tabName === activeTab)  {
-	// 	console.log('first guard clause error')
-	// 	return;
-	// }
-
 	if (tabName != activeTab) {
 		prevTab = activeTab;
 	}
@@ -136,8 +148,34 @@ function setCurrentTab(tabName) {
 //#endregion
 
 //#region // ? functions for changing the content of body
-function clearHeaders() {
-	const headers = ['homeHeader', 'aboutText', 'tsHeader', 'faqHeader', 'projectsHeader', 'contactHeader'];
+function clearTabContent() {
+
+	var headers = [];
+
+	switch (activeTab) {
+    case "Home":
+			headers = ['homeHeader'];
+      break;
+    case "AboutMe":
+			headers = ['aboutText', 
+				'nameKeyword', 'nameVar', 'nameEqual', 'nameString', 'nameDelimit',
+				'ageKeyword', 'ageVar', 'ageEqual', 'ageInt', 'ageDelimit',
+			];
+      break;
+    case "TechStack":
+			headers = [];
+      break;
+    case "FAQ":
+			headers = [];
+      break;
+    case "Projects":
+			headers = [];
+      break;
+    case "Contact":
+			headers = [];
+      break;
+  }
+
 	headers.forEach(id => {
 		document.getElementById(id).innerHTML = '';
 		if(window.typingSessions?.[id]) {
@@ -147,6 +185,25 @@ function clearHeaders() {
 	})
 }
 
+function cancelAllTyping() {
+	if (window.typingSessions) {
+		Object.values(window.typingSessions).forEach(cancel => cancel());
+		window.typingSessions = {};
+	}
+}
+
+const currentDate = new Date();
+const pastDate = new Date("2002-12-20");
+
+let yearsDifference = currentDate.getFullYear() - pastDate.getFullYear();
+
+// ? If current month is less than birth month OR if current month is same as birthMonth, but current day is less than birthday
+if (currentDate.getMonth() < pastDate.getMonth() || (currentDate.getMonth() === pastDate.getMonth() && currentDate.getDate() < pastDate.getDate())) {
+  yearsDifference--;
+}
+
+let aboutIntro = false;
+
 function setBodyContent(tabName) {
 	const body = document.getElementById("mainBody");
 
@@ -154,16 +211,39 @@ function setBodyContent(tabName) {
   .forEach(child => child.id !== `${tabName}Content` ? child.style.display = 'none' : null);
 	document.getElementById(`${tabName}Content`).style.display = 'block';
 
-	clearHeaders();
+	clearTabContent();
 	switch(tabName) {
 		case "Home":
 			setTimeout(textTypeEffect, 80, 'homeHeader','<krColonia>', 'homeCursor', 150)
 			break;
 		case "AboutMe":
-			setTimeout(textTypeEffect, 80, 'aboutText',
-`		// ? I am an Information Technology graduate from New Era University's Main Campus, batch 2025.
-		// ? I have a passion for programming, seeing every bug not as a hurdle, but an exciting challenge to take on`,
+			async function aboutMeContent() {
+				await textTypeEffect('nameKeyword', 'String ', 'aboutCursor', 45); 
+				await textTypeEffect('nameVar', 'name ', 'aboutCursor', 45); 
+				await textTypeEffect('nameEqual', '= ', 'aboutCursor', 45); 
+				await textTypeEffect('nameString', '"Kurt Robin Colonia"', 'aboutCursor', 45); 
+				await textTypeEffect('nameDelimit', 
+`;
+		`,
+				'aboutCursor', 45); 
+
+				await textTypeEffect('ageKeyword', 'int ', 'aboutCursor', 45); 
+				await textTypeEffect('ageVar', 'age ', 'aboutCursor', 45); 
+				await textTypeEffect('ageEqual', '= ', 'aboutCursor', 45); 
+				await textTypeEffect('ageInt', yearsDifference.toString(), 'aboutCursor', 45); 
+				await textTypeEffect('ageDelimit', 
+`;
+
+`, 
+				'aboutCursor', 45); 
+
+				await textTypeEffect('aboutText',
+`		// ? I'm an Information Technology graduate from New Era University's Main Campus.
+		// ? I have a passion for programming, seeing every bug not as a hurdle, but an exciting challenge to take on.
+		// ? I like playing video games and making mods/addons, which is one of the reason why I started being interested in programming`,
 				'aboutCursor', 45);
+			}
+			aboutMeContent();
 			break;
 		case "TechStack":
 			break;

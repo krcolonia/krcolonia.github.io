@@ -192,6 +192,9 @@
 
 .footerDiv {
   user-select: none;
+	-ms-user-select: none;
+	-moz-user-select: none;
+	-webkit-user-select: none;
   background-color: black;
 }
 
@@ -217,6 +220,13 @@
 	width: 35px;
 	height: 35px;
 	filter: drop-shadow(0 0 2px white);
+}
+
+#footerCopyright {
+	user-select: none;
+	-ms-user-select: none;
+	-moz-user-select: none;
+	-webkit-user-select: none;
 }
 
 .customTabCard {
