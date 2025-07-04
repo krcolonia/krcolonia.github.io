@@ -1,43 +1,18 @@
 
 @import url('main.css');
-/* ? Border for debugging replace with element to debug, comment if needed */
-/* .mainBody {
-	border: lightgreen dashed 1px;
-} */
 
 /* 
 
-Credits:
+? Credits:
 
-Azland Studio -> Sidebar button icon
-ariefstudio -> close button for the tabs
-Freepik -> pin icon used for tab
+? Icons taken from flaticon.com:
+
+* Azland Studio -> sidebar button icon
+* ariefstudio -> close button for the tabs
+* Freepik -> pin icon used for tab
+* Pixel perfect -> settings gear icon
 
 */
-
-body {
-  margin: 0;
-  padding: 0;
-  font-family: 'bender', monospace;
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-
-  /* background-image: url('https://i.imgur.com/z3rsDTU.png'); */
-	background-color: #252526;
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-
-  scrollbar-width: thin;
-  scrollbar-color: transparent transparent;
-  -ms-overflow-style: none;
-  scrollbar-width: none;
-  overflow: -moz-scrollbars-none;
-
-  color: white;
-}
 
 /* #region /* ? Blink Cursor Animation */
 @keyframes blinkCursor {
@@ -64,11 +39,18 @@ body {
 /* #endregion */
 
 .blinkCursor {
-  animation: blinkCursor 0.8s linear infinite;
+  animation: blinkCursor 0.8s linear infinite; 
+	background-color: white; 
+	margin-left: 2.5px;
 }
 
 #homeCursor {
-	animation-play-state: paused;
+	width: 2px;
+}
+
+#aboutCursor {
+	display:inline-block;
+	width: 1px;
 }
 
 #sidebarContainer {
@@ -81,13 +63,11 @@ body {
 
 #sidebarNav {
 	position: relative;
-	background-color: black;
 	display: flex;
-	flex-flow: column;
-	align-items: stretch;
+	flex-flow: row;
 	left: -208px;
 	flex-shrink: 0;
-	padding: 5px;
+	padding: 0px;
 	width: 250px;
 	transition: 0.5s;
 	z-index: 1;
@@ -101,6 +81,10 @@ body {
 #sidebarOptions *:hover {
 	font-size: 1.2rem;
 	filter: drop-shadow(0 0 2px white);
+}
+
+.sidebarBtns {
+	margin-top: 8px;
 }
 
 #sidebarBtn {
@@ -140,7 +124,7 @@ body {
 }
 
 .menuTab {
-	width: 165px;
+	width: 200px;
 	height: 42px;
 	border-top-left-radius: 10px;
 	border-top-right-radius: 10px;
@@ -229,19 +213,7 @@ body {
 	transition: 0.1s ease-in-out;
 }
 
-#githubLink:hover {
-	width: 35px;
-	height: 35px;
-	filter: drop-shadow(0 0 2px white);
-}
-
-#linkedinLink:hover {
-	width: 35px;
-	height: 35px;
-	filter: drop-shadow(0 0 2px white);
-}
-
-#emailLink:hover {
+#githubLink:hover, #linkedinLink:hover, #emailLink:hover  {
 	width: 35px;
 	height: 35px;
 	filter: drop-shadow(0 0 2px white);

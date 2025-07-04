@@ -31,89 +31,129 @@
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.min.js" integrity="sha384-7qAoOXltbVP82dhxHAUje59V5r2YsVfBafyUDxEdApLPmcdhBPg1DKg1ERo0BZlK" crossorigin="anonymous"></script>
 	
 	<!-- ? My own CSS file -->
-	<!-- <link rel="stylesheet" href="styles/style.css" type="text/css" charset="utf-8" /> -->
 	<link rel="stylesheet" href="styles/newStyle.css" type="text/css" charset="utf-8" />
+
 </head>
-<!-- <body onload="setTimeout(printHomeHeader(), 500)"> -->
+
 <body>
 	<div class="d-flex flex-row" style="height: 100vh;">
 		<div id="sidebarContainer">
 			<nav id="sidebarNav">
-				<div class="d-flex flex-row justify-content-between">
-					<h1 href="" class="d-flex align-items-center flex-shrink-0 p-2 user-select-none">&lt;krC&gt;</h1>
+				<div class="d-flex flex-column align-items-stretch bg-black" style="padding: 5px; width: 208px;">
+					<div class="d-flex flex-row justify-content-between">
+						<h1 class="d-flex align-items-center flex-shrink-0 p-2 user-select-none">&lt;krC&gt;</h1>
+						<!-- <button 
+							id="sidebarBtn"
+							class="btn-outline-primary m-1 d-flex"
+							onClick="toggleSidebar()"
+						>
+							<img src="images/sidebar-open.png" id="sidebarBtnIcon" alt="sidebarButton">
+						</button> -->
+					</div>
+					<ul class="nav nav-pills flex-column mb-auto flex-grow-1">
+						<li class="nav-item" id="sidebarOptions">
+							<button class="sidebatItem nav-link active bg-transparent" onClick="addTab('AboutMe')">About Me</button>
+							<button class="sidebatItem nav-link active bg-transparent" onClick="addTab('TechStack')">Tech Stack</button>
+							<button class="sidebatItem nav-link active bg-transparent" onClick="addTab('FAQ')">FAQ</button>
+							<button class="sidebatItem nav-link active bg-transparent" onClick="addTab('Projects')">Projects</button>
+							<!-- <button class="sidebatItem nav-link active bg-transparent" onClick="addTab('UncommentMe')">Uncomment Me!</button> -->
+							<button class="sidebatItem nav-link active bg-transparent" onClick="addTab('Contact')">Contact</button>
+						</li>
+					</ul>
+					<div class="d-flex flex-row justify-content-center align-content-end w-100">
+						<div style="margin: 1%;">
+							<div class="profileLinks d-flex flex-row justify-content-center align-items-center" style="height: 38px;	margin-bottom: 5px;">
+								<a href="https://github.com/krcolonia" id="githubLink" target="_blank">
+									<img src="https://i.imgur.com/YPeacUb.png" alt="Github Icon">
+								</a>
+								<a href="https://www.linkedin.com/in/krcolonia/" id="linkedinLink" target="_blank">
+									<img src="https://i.imgur.com/AUaixxY.png" alt="LinkedIn Icon">
+								</a>
+								<a href="mailto:krcolonia@gmail.com" id="emailLink">
+									<img src="https://i.imgur.com/XZkfDdk.png" alt="Contact via Email">
+								</a>
+							</div>
+							<p>&copy; <span id="footerYear"></span> Kurt Colonia</p>
+						</div>
+					</div>
+				</div>
+				<div class="d-flex flex-column" style="width: 42px; padding: 3px; padding-top:0; background-color: #0b0b0b">
 					<button 
 						id="sidebarBtn"
-						class="btn-outline-primary m-1 d-flex"
+						class="btn-outline-primary d-flex sidebarBtns"
 						onClick="toggleSidebar()"
 					>
 						<img src="images/sidebar-open.png" id="sidebarBtnIcon" alt="sidebarButton">
 					</button>
-				</div>
-				<ul class="nav nav-pills flex-column mb-auto flex-grow-1">
-					<li class="nav-item" id="sidebarOptions">
-						<button class="sidebatItem nav-link active bg-transparent" onClick="addTab('AboutMe')">About Me</button>
-						<button class="sidebatItem nav-link active bg-transparent" onClick="addTab('TechStack')">Tech Stack</button>
-						<button class="sidebatItem nav-link active bg-transparent" onClick="addTab('FAQ')">FAQ</button>
-						<button class="sidebatItem nav-link active bg-transparent" onClick="addTab('Projects')">Projects</button>
-						<!-- <button class="sidebatItem nav-link active bg-transparent" onClick="addTab('UncommentMe')">Uncomment Me!</button> -->
-						<button class="sidebatItem nav-link active bg-transparent" onClick="addTab('Contact')">Contact</button>
-					</li>
-				</ul>
-				<div class="d-flex flex-row justify-content-center align-content-end w-100">
-					<div style="margin: 1%;">
-						<div class="profileLinks d-flex flex-row justify-content-center align-items-center" style="height: 38px;	margin-bottom: 5px;">
-							<a href="https://github.com/krcolonia" id="githubLink" target="_blank">
-								<img src="https://i.imgur.com/YPeacUb.png" alt="Github Icon">
-							</a>
-							<a href="https://www.linkedin.com/in/krcolonia/" id="linkedinLink" target="_blank">
-								<img src="https://i.imgur.com/AUaixxY.png" alt="LinkedIn Icon">
-							</a>
-							<a href="mailto:krcolonia@gmail.com" id="emailLink">
-								<img src="https://i.imgur.com/XZkfDdk.png" alt="Contact via Email">
-							</a>
-						</div>
-						<p>&copy; <span id="footerYear"></span> Kurt Colonia</p>
-					</div>
+					<button 
+						id="sidebarBtn"
+						class="btn-outline-primary d-flex sidebarBtns"
+						onClick="toggleSidebar()"
+					>
+						<img src="images/settings.png" id="sidebarBtnIcon" alt="sidebarButton">
+					</button>
 				</div>
 			</nav>
 		</div>
+
 		<main class="d-flex flex-column w-100" id="mainArea">
 			<div class="d-flex flex-row align-items-stretch w-100 bg-transparent border-1 text-white" id="tabContainer">
 				<div class="menuTab activeTab d-flex flex-row justify-content-between align-content-center p-1" id="HomeTab"><span class="flex-grow-1 mt-1 user-select-none" onClick="setCurrentTab('Home')">Home</span></div>
 			</div>
 			<div class="h-100" id="mainBody">
+				<!-- #region --> <!-- ? Content for Home Section -->
 				<div class="m-auto text-center" id="HomeContent" style="display: block;">
-					<h1 style="font-size: 4vw; margin:-5px;">
-						<span class="" id="homeHeader"></span><span class="blinkCursor" id="homeCursor">|</span>
+					<h1 class="d-flex flex-row justify-content-center align-items-center" style="font-size: 4vw; margin:-2px;">
+						<span id="homeHeader"></span><span class="blinkCursor" id="homeCursor">&nbsp;</span>
 					</h1>
-					<h2 id="dev-header"><span id="devType"></span></h2>
-					<!-- <p class="fst-italic">Open the sidebar to view portfolio contents!</p> -->
+					<h2 id="dev-header"><span class="code-keyword">var</span> <span class="code-attribute">role</span> = <span class="code-string">"<span id="devType"></span>"</span>;</h2>
 				</div>
-				<div clas="m-auto text-center" id="AboutMeContent" style="display: none; width:100%;">
-					<h2>
-						<span class="codeText" id="aboutHeader"></span><span class="blinkCursor" id="aboutCursor">|</span>
-					</h2>
-					<p>I am an Information Technology graduate from New Era University. I am a passionate programmer that always seeks a challenge</p>
+				<!-- #endregion -->
+
+				<!-- #region --> <!-- ? Content for About Me Section -->
+				<div id="AboutMeContent" style="display: none; width:100%;">
+					<pre class="codeText">
+<span class="code-keyword">package</span> krcoloniaPortfolio;
+
+<span class="code-keyword">public class</span> AboutMe {
+	<span class="code-keyword">public static void</span> <span class="code-integer">main</span>(String[] args) {
+		System.<span class="code-attribute fst-italic">out</span>.println(<span class="code-string">"Hello, World! I am Kurt Robin Colonia!"</span>);
+<span class="comment-question" id="aboutText"></span><span class="blinkCursor" id="aboutCursor">&nbsp;</span>
+	}
+}
+					</pre>
 				</div>
-				<div clas="m-auto text-center d-flex" id="TechStackContent" style="display: none; width:100%;">
+				<!-- #endregion -->
+
+				<!-- #region --> <!-- ? Content for Tech Stack Section -->
+				<div class="m-auto text-center" id="TechStackContent" style="display: none; width:100%;">
 					<h2>
-						<span class="codeText" id="tsHeader"></span><span class="blinkCursor" id="tsCursor">|</span>
+						<span id="tsHeader"></span><span class="blinkCursor" id="tsCursor">|</span>
 					</h2>
 					<p></p>
 				</div>
-				<div clas="m-auto text-center d-flex" id="FAQContent" style="display: none; width:100%;">
+				<!-- #endregion -->
+
+				<!-- #region --> <!-- ? Content for FAQ Section -->
+				<div class="m-auto text-center" id="FAQContent" style="display: none; width:100%;">
 					<h2>
 						<span class="codeText" id="faqHeader"></span><span class="blinkCursor" id="faqCursor">|</span>
 					</h2>
 					<p>this is the FAQ page. yippee</p>
 				</div>
-				<div clas="m-auto text-center d-flex" id="ProjectsContent" style="display: none; width:100%;">
+				<!-- #endregion -->
+
+				<!-- #region --> <!-- ? Content for Projects Section -->
+				<div class="m-auto text-center" id="ProjectsContent" style="display: none; width:100%;">
 					<h2>
 						<span class="codeText" id="projectsHeader"></span><span class="blinkCursor" id="projectsCursor">|</span>
 					</h2>
 					<p>this is the Projects page. yippee</p>
 				</div>
-				<div clas="m-auto text-center d-flex flex-column justify-content-center align-items-center" id="ContactContent" style="display: none; width:100%; padding: 3%;">
+				<!-- #endregion -->
+
+				<!-- #region --> <!-- ? Content for Contact Section -->
+				<div class="m-auto text-center flex-column justify-content-center align-items-center" id="ContactContent" style="display: none; width:100%; padding: 3%;">
 					<div class="d-flex flex-column align-items-center customTabCard">
 						<h2>
 							<span class="codeText" id="contactHeader"></span><span class="blinkCursor" id="contactCursor">|</span>
@@ -126,6 +166,7 @@
 						</div>
 					</div>
 				</div>
+				<!-- #endregion -->
 			</div>
 		</main>
 

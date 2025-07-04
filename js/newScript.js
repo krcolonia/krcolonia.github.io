@@ -62,7 +62,7 @@ function textTypeEffect(id, text, blinkCursor, typeSpeed) {
 			return;
 		}
 
-		blinkEl.classList.remove('blinkCursor');
+		// blinkEl.classList.remove('blinkCursor');
 		blinkEl.style.animationPlayState = "paused";
 		textEl.innerHTML += text[textIndex++];
 		setTimeout(typeChar, typeSpeed);
@@ -89,7 +89,7 @@ function addTab(tabName) {
 
 	tabContainer.innerHTML += `
 	<div class="menuTab d-flex flex-row justify-content-between align-content-center p-1" id="${tabName}Tab">
-		<span class="flex-grow-1 mt-1 user-select-none" onClick="setCurrentTab('${tabName}')">${tabName}</span>
+		<span class="flex-grow-1 mt-1 user-select-none" onClick="setCurrentTab('${tabName}')" onAuxClick="removeTab('${tabName}')">${tabName}</span>
 		<button class="tabClose my-auto d-flex" onClick="removeTab('${tabName}')">
 			<img src="images/close.png">
 		</button>
@@ -97,6 +97,7 @@ function addTab(tabName) {
 	currentTabs.push(tabName);
 
 	setCurrentTab(tabName); // ? set the newly added tab as the currently active tab.
+	toggleSidebar();
 }
 
 function removeTab(tabName) {
@@ -136,7 +137,7 @@ function setCurrentTab(tabName) {
 
 //#region // ? functions for changing the content of body
 function clearHeaders() {
-	const headers = ['homeHeader', 'aboutHeader', 'tsHeader', 'faqHeader', 'projectsHeader', 'contactHeader'];
+	const headers = ['homeHeader', 'aboutText', 'tsHeader', 'faqHeader', 'projectsHeader', 'contactHeader'];
 	headers.forEach(id => {
 		document.getElementById(id).innerHTML = '';
 		if(window.typingSessions?.[id]) {
@@ -159,7 +160,10 @@ function setBodyContent(tabName) {
 			setTimeout(textTypeEffect, 80, 'homeHeader','<krColonia>', 'homeCursor', 150)
 			break;
 		case "AboutMe":
-			setTimeout(textTypeEffect, 80, 'aboutHeader','Console.WriteLine("Hello, World!");', 'aboutCursor', 65)
+			setTimeout(textTypeEffect, 80, 'aboutText',
+`		// ? I am an Information Technology graduate from New Era University's Main Campus, batch 2025.
+		// ? I have a passion for programming, seeing every bug not as a hurdle, but an exciting challenge to take on`,
+				'aboutCursor', 45);
 			break;
 		case "TechStack":
 			break;
