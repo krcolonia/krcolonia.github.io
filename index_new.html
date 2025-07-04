@@ -16,13 +16,12 @@
 	<link rel="icon" href="images/favicon.png">
 
 	<!-- preloading image to improve ux -->
-	<link rel="preload" as="image" href="https://i.imgur.com/z3rsDTU.png"> <!-- ? preloads my portolio's background image -->
 	<link rel="preload" as="image" href="https://i.imgur.com/YPeacUb.png"> <!-- ? preloads github footer icon -->
 	<link rel="preload" as="image" href="https://i.imgur.com/AUaixxY.png"> <!-- ? preloads linkedin footer icon -->
 	<link rel="preload" as="image" href="https://i.imgur.com/XZkfDdk.png"> <!-- ? preloads email footer icon -->
-	<link rel="preload" as="image" href="imaege/close.png" type="image/png">
-	<link rel="preload" as="image" href="imaege/sidebar-open.png" type="image/png">
-	<link rel="preload" as="image" href="imaege/sidebar-close.png" type="image/png">
+	<link rel="preload" as="image" href="./images/close.png" type="image/png">
+	<link rel="preload" as="image" href="./images/sidebar-open.png" type="image/png">
+	<link rel="preload" as="image" href="./images/sidebar-close.png" type="image/png">
 
 	<!-- ? Bootstrap 5.3.3 -->
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
@@ -35,12 +34,13 @@
 	<!-- <link rel="stylesheet" href="styles/style.css" type="text/css" charset="utf-8" /> -->
 	<link rel="stylesheet" href="styles/newStyle.css" type="text/css" charset="utf-8" />
 </head>
-<body onload="setTimeout(printHomeHeader(), 500)">
+<!-- <body onload="setTimeout(printHomeHeader(), 500)"> -->
+<body>
 	<div class="d-flex flex-row" style="height: 100vh;">
 		<div id="sidebarContainer">
-			<nav class="bg-black" id="sidebarNav">
+			<nav id="sidebarNav">
 				<div class="d-flex flex-row justify-content-between">
-					<h1 href="" class="d-flex align-items-center flex-shrink-0 p-2 bg-black">&lt;krC&gt;</h1>
+					<h1 href="" class="d-flex align-items-center flex-shrink-0 p-2 user-select-none">&lt;krC&gt;</h1>
 					<button 
 						id="sidebarBtn"
 						class="btn-outline-primary m-1 d-flex"
@@ -79,30 +79,52 @@
 		</div>
 		<main class="d-flex flex-column w-100" id="mainArea">
 			<div class="d-flex flex-row align-items-stretch w-100 bg-transparent border-1 text-white" id="tabContainer">
-				<div class="menuTab activeTab d-flex flex-row justify-content-between align-content-center p-1" id="HomeTab"><span class="flex-grow-1 mt-1" onClick="setCurrentTab('Home')">Home</span></div>
+				<div class="menuTab activeTab d-flex flex-row justify-content-between align-content-center p-1" id="HomeTab"><span class="flex-grow-1 mt-1 user-select-none" onClick="setCurrentTab('Home')">Home</span></div>
 			</div>
 			<div class="h-100" id="mainBody">
 				<div class="m-auto text-center" id="HomeContent" style="display: block;">
 					<h1 style="font-size: 4vw; margin:-5px;">
-						<span id="headerContent"></span><span class="blinkCursor">|</span>
+						<span class="" id="homeHeader"></span><span class="blinkCursor" id="homeCursor">|</span>
 					</h1>
-					<h2 id="dev-header"><span id="devType"></span> Developer</h2>
+					<h2 id="dev-header"><span id="devType"></span></h2>
 					<!-- <p class="fst-italic">Open the sidebar to view portfolio contents!</p> -->
 				</div>
-				<div clas="m-auto text-center" id="AboutMeContent" style="display: none;">
-					<p>this is the AboutMe page. yippee</p>
+				<div clas="m-auto text-center" id="AboutMeContent" style="display: none; width:100%;">
+					<h2>
+						<span class="codeText" id="aboutHeader"></span><span class="blinkCursor" id="aboutCursor">|</span>
+					</h2>
+					<p>I am an Information Technology graduate from New Era University. I am a passionate programmer that always seeks a challenge</p>
 				</div>
-				<div clas="m-auto text-center d-none" id="TechStackContent" style="display: none;">
-					<p>this is the TechStack page. yippee</p>
+				<div clas="m-auto text-center d-flex" id="TechStackContent" style="display: none; width:100%;">
+					<h2>
+						<span class="codeText" id="tsHeader"></span><span class="blinkCursor" id="tsCursor">|</span>
+					</h2>
+					<p></p>
 				</div>
-				<div clas="m-auto text-center d-none" id="FAQContent" style="display: none;">
+				<div clas="m-auto text-center d-flex" id="FAQContent" style="display: none; width:100%;">
+					<h2>
+						<span class="codeText" id="faqHeader"></span><span class="blinkCursor" id="faqCursor">|</span>
+					</h2>
 					<p>this is the FAQ page. yippee</p>
 				</div>
-				<div clas="m-auto text-center d-none" id="ProjectsContent" style="display: none;">
+				<div clas="m-auto text-center d-flex" id="ProjectsContent" style="display: none; width:100%;">
+					<h2>
+						<span class="codeText" id="projectsHeader"></span><span class="blinkCursor" id="projectsCursor">|</span>
+					</h2>
 					<p>this is the Projects page. yippee</p>
 				</div>
-				<div clas="m-auto text-center d-none" id="ContactContent" style="display: none;">
-					<p>this is the Contact page. yippee</p>
+				<div clas="m-auto text-center d-flex flex-column justify-content-center align-items-center" id="ContactContent" style="display: none; width:100%; padding: 3%;">
+					<div class="d-flex flex-column align-items-center customTabCard">
+						<h2>
+							<span class="codeText" id="contactHeader"></span><span class="blinkCursor" id="contactCursor">|</span>
+						</h2>
+						<p></p>
+						<div class="d-flex flex-row justify-content-between align-items-center w-75 h-50">
+							<p>krcolonia@gmail.com</p>
+							<div class="d-block" style="background-color: white; width: 3px; height: 100%;"></div>
+							<p>email address, insert something something around here</p>
+						</div>
+					</div>
 				</div>
 			</div>
 		</main>

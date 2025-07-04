@@ -10,4 +10,35 @@
   --Jacarta: #31304D;
   --GrayX11: #B6BBC4;
   --Alabaster: #F0ECE5;
+	/* JetBrains-Styled Color Palette for text */
+	--JBKeyword:#cc7833;
+	--JBVarName:#ffc66d;
+	--JBInteger:#6897bb;
+	--JBString:#629755;
+	--JBVarAttr:#9876aa;
+}
+
+@font-face {
+  font-family: 'bender';
+  src: url('../fonts/bender.woff2') format('woff2'),
+    url('../fonts/bender.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'jetbrainsmono';
+  src: 
+		url('../fonts/jetbrainsmono.woff') format('woff'),
+		url('../fonts/jetbrainsmono.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+.codeText {
+	font-family: 'jetbrainsmono';
 }

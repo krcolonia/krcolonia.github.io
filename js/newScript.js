@@ -7,17 +7,69 @@ function toggleSidebar() {
 	const sidebarBtnIcon = document.getElementById('sidebarBtnIcon');
 
 	if(sidebarOpen == true) {
-		sidebarContainer.style.width = '42px';
+		// sidebarContainer.style.width = '42px';
 		sidebar.style.left = '-208px';
 		sidebarBtnIcon.src = 'images/sidebar-open.png';
 		sidebarOpen = false;
 	}
 	else {
-		sidebarContainer.style.width = '250px';
+		// sidebarContainer.style.width = '250px';
 		sidebar.style.left = '0px';
 		sidebarBtnIcon.src = "images/sidebar-close.png";
 		sidebarOpen = true;
 	}
+}
+//#endregion
+
+//#region // ? Text Scramble
+
+// ? Credits to luthifbg for the JavaScript Scramble text script
+// ? link to origin of Scramble text script: https://github.com/luthfibg/sebelaslvl/blob/main/js_scramble_text/scramble.js
+
+const dev_type = [ "Programmer", "Full Stack Web Developer", "Game Developer", "Game Modder" ]
+const el = document.querySelector("#devType");
+const fx = new TextScramble(el);
+let counter = 0;
+
+const next = () => {
+	fx.setText(dev_type[counter]).then(() => {
+		setTimeout(next, 2500);
+	});
+	counter = (counter + 1) % dev_type.length;
+};
+
+next();
+//#endregion
+
+//#region // ? Text effect for each section of my portfolio that mimics typing
+function textTypeEffect(id, text, blinkCursor, typeSpeed) {
+	let textIndex = 0;
+	let cancelled = false;
+
+	if(!window.typingSessions) {
+		window.typingSessions = {};
+	}
+	window.typingSessions[id] = () => cancelled = true;
+
+	function typeChar() {
+		const blinkEl = document.getElementById(blinkCursor);
+		const textEl = document.getElementById(id);
+
+		if(cancelled || !textEl || !blinkEl) return;
+
+		if(textIndex >= text.length) {
+			blinkEl.style.animationPlayState = "running";
+			return;
+		}
+
+		blinkEl.classList.remove('blinkCursor');
+		blinkEl.style.animationPlayState = "paused";
+		textEl.innerHTML += text[textIndex++];
+		setTimeout(typeChar, typeSpeed);
+	}
+
+	document.getElementById(blinkCursor).classList.add('blinkCursor');
+	typeChar();
 }
 //#endregion
 
@@ -37,7 +89,7 @@ function addTab(tabName) {
 
 	tabContainer.innerHTML += `
 	<div class="menuTab d-flex flex-row justify-content-between align-content-center p-1" id="${tabName}Tab">
-		<span class="flex-grow-1 mt-1" onClick="setCurrentTab('${tabName}')">${tabName}</span>
+		<span class="flex-grow-1 mt-1 user-select-none" onClick="setCurrentTab('${tabName}')">${tabName}</span>
 		<button class="tabClose my-auto d-flex" onClick="removeTab('${tabName}')">
 			<img src="images/close.png">
 		</button>
@@ -65,6 +117,11 @@ function removeTab(tabName) {
 }
 
 function setCurrentTab(tabName) {
+	// if (tabName === activeTab)  {
+	// 	console.log('first guard clause error')
+	// 	return;
+	// }
+
 	if (tabName != activeTab) {
 		prevTab = activeTab;
 	}
@@ -78,6 +135,17 @@ function setCurrentTab(tabName) {
 //#endregion
 
 //#region // ? functions for changing the content of body
+function clearHeaders() {
+	const headers = ['homeHeader', 'aboutHeader', 'tsHeader', 'faqHeader', 'projectsHeader', 'contactHeader'];
+	headers.forEach(id => {
+		document.getElementById(id).innerHTML = '';
+		if(window.typingSessions?.[id]) {
+			window.typingSessions[id]();
+			delete window.typingSessions[id];
+		}
+	})
+}
+
 function setBodyContent(tabName) {
 	const body = document.getElementById("mainBody");
 
@@ -85,46 +153,27 @@ function setBodyContent(tabName) {
   .forEach(child => child.id !== `${tabName}Content` ? child.style.display = 'none' : null);
 	document.getElementById(`${tabName}Content`).style.display = 'block';
 
-	if(tabName === "Home") {
-		headIndx = 0;
-		document.getElementById("headerContent").innerHTML = '';
-		printHomeHeader();
+	clearHeaders();
+	switch(tabName) {
+		case "Home":
+			setTimeout(textTypeEffect, 80, 'homeHeader','<krColonia>', 'homeCursor', 150)
+			break;
+		case "AboutMe":
+			setTimeout(textTypeEffect, 80, 'aboutHeader','Console.WriteLine("Hello, World!");', 'aboutCursor', 65)
+			break;
+		case "TechStack":
+			break;
+		case "FAQ":
+			break;
+		case "Projects":
+			break;
+		case "Contact":
+			setTimeout(textTypeEffect, 80, 'contactHeader','Console.WriteLine("Let\'s Connect!");', 'contactCursor', 65)
+			break;
+		default:
+			console.log('dude you like, broke the code. that\'s so wizard lol');
 	}
 }
-
-//#region // ? Home Tab Content
-const headStr = "<krColonia>";
-let headIndx = 0;
-
-// ? Credits to luthifbg for the JavaScript Scramble text script
-// ? link to origin of Scramble text script: https://github.com/luthfibg/sebelaslvl/blob/main/js_scramble_text/scramble.js
-
-const dev_type = [ "Web", "Mobile", "Software" ]
-const el = document.querySelector("#devType");
-const fx = new TextScramble(el);
-let counter = 0;
-
-const next = () => {
-	fx.setText(dev_type[counter]).then(() => {
-		setTimeout(next, 2500);
-	});
-	counter = (counter + 1) % dev_type.length;
-};
-
-function printHomeHeader() {
-  if(headIndx < headStr.length){
-    document.getElementById("headerContent").innerHTML += headStr[headIndx];
-    headIndx++;
-  }
-  else {
-    document.querySelector(".blinkCursor").style.animationPlayState = "running";
-    return null;
-  }
-  setTimeout(printHomeHeader, 150);
-}
-
-next();
-//#endregion
 
 setBodyContent("Home"); // ? sets the body content to the home content by default;
 //#endregion
@@ -136,3 +185,4 @@ document.getElementById('footerYear').textContent = new Date().getFullYear();
 const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
 const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
 //#endregion
+
