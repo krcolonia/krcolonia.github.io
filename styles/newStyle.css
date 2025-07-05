@@ -84,7 +84,8 @@
 }
 
 .sidebarBtns {
-	width: 100%;
+	max-width: 100%;
+	height: auto;
 	/* max-width: 30px;
 	max-height: 30px; */
 	background: none;
