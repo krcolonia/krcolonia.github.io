@@ -20,8 +20,8 @@
 	--taskbarHeight: 45px;
 	--hoverColor: #FFFFFF0F;
 	--hoverBorder: #FFFFFF10;
-	--activeColor: #92ACFF0F;
-	--activeBorder: #92ACFF10;
+	--activeColor: #92acff23;
+	--activeBorder: #92acff50;
 }
 
 #loading-screen {
@@ -42,6 +42,7 @@
 	font-size: 5rem;
 }
 
+/* loadign spinner icon taken from https://css-loaders.com/spinner/ */
 /* HTML: <div class="loader"></div> */
 .loader {
   width: 50px;
