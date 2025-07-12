@@ -22,6 +22,35 @@
 	--hoverBorder: #FFFFFF10;
 }
 
+#loading-screen {
+	position: absolute;
+	display:none;
+	font-family: "bender", monospace;
+	/* background-color: black; */
+	z-index:100;
+}
+
+#loading-screen * {
+	margin: 65px;
+	user-select: none;
+	-moz-user-select: none;
+}
+
+#loading-screen h1 {
+	font-size: 5rem;
+}
+
+/* HTML: <div class="loader"></div> */
+.loader {
+  width: 50px;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  border: 8px solid;
+  border-color: white #0000;
+  animation: l1 0.75s infinite;
+}
+@keyframes l1 {to{transform: rotate(.5turn)}}
+
 .desktop-app {
 	z-index:1;
 	margin: 8px;
