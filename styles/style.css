@@ -53,7 +53,7 @@
 	color:black;
 }
 
-#window-header {
+#desktop-window-header {
   padding: 10px;
   cursor: move;
   z-index: 10;
