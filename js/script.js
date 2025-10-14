@@ -166,10 +166,13 @@ function setCurrentTab(tabName) {
 function clearTabContent(headers) {
 	headers.forEach(id => {
 		console.log(id);
-		document.getElementById(id).innerHTML = '';
-		if(window.typingSessions?.[id]) {
-			window.typingSessions[id]();
-			delete window.typingSessions[id];
+		const el = document.getElementById(id);
+		if(el) {
+			el.innerHTML = '';
+			if(window.typingSessions?.[id]) {
+				window.typingSessions[id]();
+				delete window.typingSessions[id];
+			}
 		}
 	})
 }
@@ -204,7 +207,7 @@ async function setBodyContent(tabName) {
 
 				const codeInsert = document.getElementById('aboutMainFunc');
 
-				if(document.getElementById('nameDelimit') === null) {
+				if(!document.getElementById('nameDelimit')) {
 					codeInsert.innerHTML += `<span class="code-keyword" id="nameKeyword"></span><span class="code-variable" id="nameVar"></span><span id="nameEqual"></span><span class="code-string" id="nameString"></span><span id="nameDelimit"></span>`;
 				}
 
@@ -227,7 +230,7 @@ async function setBodyContent(tabName) {
 				}
 				
 
-				if(document.getElementById('ageDelimit') === null) {
+				if(!document.getElementById('ageDelimit')) {
 					codeInsert.innerHTML += `<span class="code-keyword" id="ageKeyword"></span><span class="code-variable" id="ageVar"></span><span id="ageEqual"></span><span class="code-integer" id="ageInt"></span><span id="ageDelimit"></span>`;
 				}
 
@@ -250,7 +253,7 @@ async function setBodyContent(tabName) {
 					'aboutCursor', typeSpeed); 
 				}
 
-				if(document.getElementById('aboutDelimiter') === null) {
+				if(!document.getElementById('aboutDelimiter')) {
 					codeInsert.innerHTML += `<span class="comment-question" id="aboutText"></span><span class="comment-question" id="aboutDelimiter"></span>`;
 				}
 
@@ -268,31 +271,32 @@ async function setBodyContent(tabName) {
 		`, 'aboutCursor', typeSpeed);
 				}
 
-				if(document.getElementById('tsDelimiter') === null) {
+				if(!document.getElementById('tsDelimiter')) {
 					var techStack = `<span class="comment-question" id="tsSofDevSection"></span>`;
-					techStack += `<span class="code-string" id="tsJava"></span><span id="tsJavaComma">`;
-					techStack += `<span class="code-string" id="tsKotlin"></span><span id="tsKotlinComma">`;
-					techStack += `<span class="code-string" id="tsCSharp"></span><span id="tsCSharpComma">`;
+					techStack += `<span class="code-string" id="tsJava"></span><span id="tsJavaComma"></span>`;
+					techStack += `<span class="code-string" id="tsKotlin"></span><span id="tsKotlinComma"></span>`;
+					techStack += `<span class="code-string" id="tsCSharp"></span><span id="tsCSharpComma"></span>`;
 					techStack += `<span class="comment-question" id="tsWebDevSection"></span>`;
-					techStack += `<span class="code-string" id="tHtmls"></span><span id="tsHtmlComma">`;
-					techStack += `<span class="code-string" id="tsCss"></span><span id="tsCssComma">`;
-					techStack += `<span class="code-string" id="tsJs"></span><span id="tsJsComma">`;
-					techStack += `<span class="code-string" id="tsTs"></span><span id="tsTsComma">`;
-					techStack += `<span class="code-string" id="tsPhp"></span><span id="tsPhpComma">`;
+					techStack += `<span class="code-string" id="tsHtml"></span><span id="tsHtmlComma"></span>`;
+					techStack += `<span class="code-string" id="tsCss"></span><span id="tsCssComma"></span>`;
+					techStack += `<span class="code-string" id="tsJs"></span><span id="tsJsComma"></span>`;
+					techStack += `<span class="code-string" id="tsTs"></span><span id="tsTsComma"></span>`;
+					techStack += `<span class="code-string" id="tsPhp"></span><span id="tsPhpComma"></span>`;
 					techStack += `<span class="comment-question" id="tsDatabaseSection"></span>`;
-					techStack += `<span class="code-string" id="tsMySql"></span><span id="tsMySqlComma">`;
-					techStack += `<span class="code-string" id="tsPostgres"></span><span id="tsPostgresComma">`;
-					techStack += `<span class="code-string" id="tsFirebase"></span><span id="tsFirebaseComma">`;
+					techStack += `<span class="code-string" id="tsMySql"></span><span id="tsMySqlComma"></span>`;
+					techStack += `<span class="code-string" id="tsPostgres"></span><span id="tsPostgresComma"></span>`;
+					techStack += `<span class="code-string" id="tsFirebase"></span><span id="tsFirebaseComma"></span>`;
 					techStack += `<span class="comment-question" id="tsFrameworkToolSection"></span>`;
-					techStack += `<span class="code-string" id="tsComposer"></span><span id="tsComposerComma">`;
-					techStack += `<span class="code-string" id="tsLaravel"></span><span id="tsLaravelComma">`;
-					techStack += `<span class="code-string" id="tsNodeJs"></span><span id="tsNodeJsComma">`;
-					techStack += `<span class="code-string" id="tsReactJs"></span><span id="tsReactJsComma">`;
-					techStack += `<span class="code-string" id="tsReactTs"></span><span id="tsReactTsComma">`;
-					techStack += `<span class="code-string" id="tsBootstrap"></span><span id="tsBootstrapComma">`;
+					techStack += `<span class="code-string" id="tsComposer"></span><span id="tsComposerComma"></span>`;
+					techStack += `<span class="code-string" id="tsLaravel"></span><span id="tsLaravelComma"></span>`;
+					techStack += `<span class="code-string" id="tsNodeJs"></span><span id="tsNodeJsComma"></span>`;
+					techStack += `<span class="code-string" id="tsReactJs"></span><span id="tsReactJsComma"></span>`;
+					techStack += `<span class="code-string" id="tsReactTs"></span><span id="tsReactTsComma"></span>`;
+					techStack += `<span class="code-string" id="tsBootstrap"></span><span id="tsBootstrapComma"></span>`;
 					
 					// * the end is never the end is never the end is never the end is never the end -> this line probably.
-					codeInsert.innerHTML += `<span class="code-keyword" id="tsKeyword"></span><span id="tsKeyArr"></span><span class="code-variable" id="tsVar"></span><span id="tsEqual"></span><span id="tsOpenBracket">${techStack}</span><span id="tsCloseBracket"></span><span id="tsDelimiter"></span>`;
+					codeInsert.innerHTML += '<span class="code-keyword" id="tsKeyword"></span><span id="tsKeyArr"></span><span class="code-variable" id="tsVar"></span><span id="tsEqual"></span><span id="tsOpenBracket"></span>'+ techStack +'<span id="tsCloseBracket"></span><span id="tsDelimiter"></span>';
+					console.log(codeInsert.innerHTML)
 				}
 
 				if(document.getElementById('tsDelimiter').innerHTML.trim() == '') {
