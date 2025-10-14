@@ -188,8 +188,6 @@ async function setBodyContent(tabName) {
   .forEach(child => child.id !== `${tabName}Content` ? child.style.display = 'none' : null);
 	document.getElementById(`${tabName}Content`).style.display = 'block';
 
-	// clearTabContent();
-
 	let typeSpeed; // ? The lower the typeSpeed value, the faster the type effect goes
 
 	let isTyping = false;
@@ -198,8 +196,10 @@ async function setBodyContent(tabName) {
 
 	switch(tabName) {
 		case "Home":
-			clearTabContent(['homeHeader']);
-			setTimeout(textTypeEffect, 80, 'homeHeader','<krColonia>', 'homeCursor', 150)
+			if(!document.getElementById('homeHeader').innerHTML) {
+				clearTabContent(['homeHeader']);
+				setTimeout(textTypeEffect, 80, 'homeHeader','<krColonia>', 'homeCursor', 150)
+			}
 			break;
 		case "AboutMe":
 			typeSpeed = 20;
@@ -629,15 +629,17 @@ async function setBodyContent(tabName) {
 
 			if(isTyping) await aboutMeContent();
 			else aboutMeContentNoAnim();
-			break;
-		case "TechStack":
+
 			break;
 		case "FAQ":
 			break;
 		case "Projects":
 			break;
 		case "Contact":
-			setTimeout(textTypeEffect, 80, 'contactHeader','Console.WriteLine("Let\'s Connect!");', 'contactCursor', 65)
+			if(!document.getElementById('contactHeader').innerHTML) {
+				clearTabContent(['contactHeader']);
+				setTimeout(textTypeEffect, 80, 'contactHeader','Console.WriteLine("Let\'s Connect!");', 'contactCursor', 65)
+			}
 			break;
 		default:
 			console.log('dude you like, broke the code. that\'s so wizard lol');
