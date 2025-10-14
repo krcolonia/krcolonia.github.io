@@ -117,6 +117,9 @@ function addTab(tabName) {
 		case "Projects":
 			tabExt = ".gd";
 			break;
+		case "Contact":
+			tabExt = ".cs";
+			break;
 	}
 
 	tabContainer.innerHTML += `
@@ -260,11 +263,10 @@ async function setBodyContent(tabName) {
 				if(document.getElementById('aboutDelimiter').innerHTML.trim() == '') {
 					clearTabContent(['aboutText', 'aboutDelimiter'])
 					await safeType('aboutText',
-`		// ? I'm a Software Developer based in Quezon City, Philippines.
-		// ? My interest in programming started with game development in Unity.
-		// ? I've made and worked on Web and Mobile Apps, both Frontend and Backend,
-		// ? During my free time, I play video games and make mods for them,
-		// ? And also update my portfolio site (this one!) from time to time`,
+`		// ? I'm an aspiring Full Stack Developer based in Quezon City, Philippines.
+		// ? I've recently recently graduated Bachelor of Science in Information Technology from New Era University - Main Campus. 
+		// ? I've worked on Web Apps utilizing the Laravel Framework, both Frontend and Backend, however my skills lean more towards Backend development
+		// ? I have a keen attention to detail, adaptable and am a fast learner, with analytical and problem solving skills`,
 					'aboutCursor', typeSpeed);
 					await safeType('aboutDelimiter', `.
 		
@@ -275,24 +277,34 @@ async function setBodyContent(tabName) {
 					var techStack = `<span class="comment-question" id="tsSofDevSection"></span>`;
 					techStack += `<span class="code-string" id="tsJava"></span><span id="tsJavaComma"></span>`;
 					techStack += `<span class="code-string" id="tsKotlin"></span><span id="tsKotlinComma"></span>`;
+					techStack += `<span class="code-string" id="tsPython"></span><span id="tsPythonComma"></span>`;
 					techStack += `<span class="code-string" id="tsCSharp"></span><span id="tsCSharpComma"></span>`;
 					techStack += `<span class="comment-question" id="tsWebDevSection"></span>`;
 					techStack += `<span class="code-string" id="tsHtml"></span><span id="tsHtmlComma"></span>`;
 					techStack += `<span class="code-string" id="tsCss"></span><span id="tsCssComma"></span>`;
 					techStack += `<span class="code-string" id="tsJs"></span><span id="tsJsComma"></span>`;
-					techStack += `<span class="code-string" id="tsTs"></span><span id="tsTsComma"></span>`;
 					techStack += `<span class="code-string" id="tsPhp"></span><span id="tsPhpComma"></span>`;
+					techStack += `<span class="code-string" id="tsRestApi"></span><span id="tsRestApiComma"></span>`;
 					techStack += `<span class="comment-question" id="tsDatabaseSection"></span>`;
 					techStack += `<span class="code-string" id="tsMySql"></span><span id="tsMySqlComma"></span>`;
 					techStack += `<span class="code-string" id="tsPostgres"></span><span id="tsPostgresComma"></span>`;
 					techStack += `<span class="code-string" id="tsFirebase"></span><span id="tsFirebaseComma"></span>`;
+					techStack += `<span class="code-string" id="tsDbeaver"></span><span id="tsDbeaverComma"></span>`;
 					techStack += `<span class="comment-question" id="tsFrameworkToolSection"></span>`;
 					techStack += `<span class="code-string" id="tsComposer"></span><span id="tsComposerComma"></span>`;
 					techStack += `<span class="code-string" id="tsLaravel"></span><span id="tsLaravelComma"></span>`;
 					techStack += `<span class="code-string" id="tsNodeJs"></span><span id="tsNodeJsComma"></span>`;
+					techStack += `<span class="code-string" id="tsJquery"></span><span id="tsJqueryComma"></span>`;
 					techStack += `<span class="code-string" id="tsReactJs"></span><span id="tsReactJsComma"></span>`;
-					techStack += `<span class="code-string" id="tsReactTs"></span><span id="tsReactTsComma"></span>`;
+					techStack += `<span class="code-string" id="tsTailwind"></span><span id="tsTailwindComma"></span>`;
 					techStack += `<span class="code-string" id="tsBootstrap"></span><span id="tsBootstrapComma"></span>`;
+					techStack += `<span class="comment-question" id="tsOpSysSection"></span>`;
+					techStack += `<span class="code-string" id="tsWindows"></span><span id="tsWindowsComma"></span>`;
+					techStack += `<span class="code-string" id="tsLinux"></span><span id="tsLinuxComma"></span>`;
+					techStack += `<span class="comment-question" id="tsVersionControlSection"></span>`
+					techStack += `<span class="code-string" id="tsGit"></span><span id="tsGitComma"></span>`;
+					techStack += `<span class="code-string" id="tsGithub"></span><span id="tsGithubComma"></span>`;
+
 					
 					// * the end is never the end is never the end is never the end is never the end -> this line probably.
 					codeInsert.innerHTML += '<span class="code-keyword" id="tsKeyword"></span><span id="tsKeyArr"></span><span class="code-variable" id="tsVar"></span><span id="tsEqual"></span><span id="tsOpenBracket"></span>'+ techStack +'<span id="tsCloseBracket"></span><span id="tsDelimiter"></span>';
@@ -309,24 +321,33 @@ async function setBodyContent(tabName) {
 							'tsSofDevSection',
 								'tsJava', 'tsJavaComma',
 								'tsKotlin', 'tsKotlinComma',
+								'tsPython', 'tsPythonComma',
 								'tsCSharp', 'tsCSharpComma',
 							'tsWebDevSection',
 								'tsHtml', 'tsHtmlComma',
 								'tsCss', 'tsCssComma',
 								'tsJs', 'tsJsComma',
-								'tsTs', 'tsTsComma',
 								'tsPhp', 'tsPhpComma',
+								'tsRestApi', 'tsRestApiComma',
 							'tsDatabaseSection',
 								'tsMySql', 'tsMySqlComma',
 								'tsPostgres', 'tsPostgresComma',
 								'tsFirebase', 'tsFirebaseComma',
+								'tsDbeaver', 'tsDbeaverComma',
 							'tsFrameworkToolSection',
 								'tsComposer', 'tsComposerComma',
 								'tsLaravel', 'tsLaravelComma',
 								'tsNodeJs', 'tsNodeJsComma',
+								'tsJquery', 'tsJqueryComma',
 								'tsReactJs', 'tsReactJsComma',
-								'tsReactTs', 'tsReactTsComma',
+								'tsTailwind', 'tsTailwindComma',
 								'tsBootstrap', 'tsBootstrapComma',
+							'tsOpSysSection',
+								'tsWindows', 'tsWindowsComma',
+								'tsLinux', 'tsLinuxComma',
+							'tsVersionControlSection',
+								'tsGit', 'tsGitComma',
+								'tsGithub', 'tsGithubComma',
 						'tsCloseBracket',
 						'tsDelimiter'
 					]);
@@ -341,6 +362,7 @@ async function setBodyContent(tabName) {
 			`, 'aboutCursor', typeSpeed);
 					await safeType('tsJava', `"Java"`, 'aboutCursor', typeSpeed); await safeType('tsJavaComma', `, `, 'aboutCursor', typeSpeed);
 					await safeType('tsKotlin', `"Kotlin"`, 'aboutCursor', typeSpeed); await safeType('tsKotlinComma', `, `, 'aboutCursor', typeSpeed);
+					await safeType('tsPython', `"Python"`, 'aboutCursor', typeSpeed); await safeType('tsPythonComma', `, `, 'aboutCursor', typeSpeed);
 					await safeType('tsCSharp', `"C#"`, 'aboutCursor', typeSpeed); await safeType('tsCSharpComma', `,
 			`, 'aboutCursor', typeSpeed);
 					
@@ -350,25 +372,42 @@ async function setBodyContent(tabName) {
 					await safeType('tsHtml', `"HTML"`, 'aboutCursor', typeSpeed); await safeType('tsHtmlComma', `, `, 'aboutCursor', typeSpeed);
 					await safeType('tsCss', `"CSS"`, 'aboutCursor', typeSpeed); await safeType('tsCssComma', `, `, 'aboutCursor', typeSpeed);
 					await safeType('tsJs', `"JavaScript"`, 'aboutCursor', typeSpeed); await safeType('tsJsComma', `, `, 'aboutCursor', typeSpeed);
-					await safeType('tsTs', `"TypeScript"`, 'aboutCursor', typeSpeed); await safeType('tsTsComma', `, `, 'aboutCursor', typeSpeed);
-					await safeType('tsPhp', `"PHP"`, 'aboutCursor', typeSpeed); await safeType('tsPhpComma', `,
+					await safeType('tsPhp', `"PHP"`, 'aboutCursor', typeSpeed); await safeType('tsPhpComma', `, `, 'aboutCursor', typeSpeed);
+					await safeType('tsRestApi', `"Rest APIs and HTTP Methods"`, 'aboutCursor', typeSpeed); await safeType('tsRestApiComma', `,
 			`, 'aboutCursor', typeSpeed);
 					
 					await safeType('tsDatabaseSection', `
 			// ? Database Management
 			`, 'aboutCursor', typeSpeed);
-					await safeType('tsMySql', `MySQL`, 'aboutCursor', typeSpeed); await safeType('tsMySqlComma', `, `, 'aboutCursor', typeSpeed);
-					await safeType('tsPostgres', `PostgreSQL`, 'aboutCursor', typeSpeed); await safeType('tsPostgresComma', `, `, 'aboutCursor', typeSpeed);
-					await safeType('tsFirebase', `Firebase`, 'aboutCursor', typeSpeed); await safeType('tsFirebaseComma', `,
+					await safeType('tsMySql', `"MySQL"`, 'aboutCursor', typeSpeed); await safeType('tsMySqlComma', `, `, 'aboutCursor', typeSpeed);
+					await safeType('tsPostgres', `"PostgreSQL"`, 'aboutCursor', typeSpeed); await safeType('tsPostgresComma', `, `, 'aboutCursor', typeSpeed);
+					await safeType('tsFirebase', `"Firebase"`, 'aboutCursor', typeSpeed); await safeType('tsFirebaseComma', `, `, 'aboutCursor', typeSpeed);
+					await safeType('tsDbeaver', `"DBeaver"`, 'aboutCursor', typeSpeed); await safeType('tsDbeaverComma', `,
 			`, 'aboutCursor', typeSpeed);
 
 					await safeType('tsFrameworkToolSection', `
-			// ? Frameworks and Tools
+			// ? Frameworks
 			`, 'aboutCursor', typeSpeed);
 					await safeType('tsLaravel', `"PHP Laravel"`, 'aboutCursor', typeSpeed); await safeType('tsLaravelComma', `, `, 'aboutCursor', typeSpeed);
+					await safeType('tsNodeJs', `"Node.JS"`, 'aboutCursor', typeSpeed); await safeType('tsNodeJsComma', `, `, 'aboutCursor', typeSpeed);
+					await safeType('tsJquery', `"jQuery and AJAX"`, 'aboutCursor', typeSpeed); await safeType('tsJqueryComma', `, `, 'aboutCursor', typeSpeed);
 					await safeType('tsReactJs', `"React.JS"`, 'aboutCursor', typeSpeed); await safeType('tsReactJsComma', `, `, 'aboutCursor', typeSpeed);
-					await safeType('tsReactTs', `"React.TS"`, 'aboutCursor', typeSpeed); await safeType('tsReactTsComma', `, `, 'aboutCursor', typeSpeed);
+					await safeType('tsTailwind', `"Tailwind CSS"`, 'aboutCursor', typeSpeed); await safeType('tsTailwindComma', `, `, 'aboutCursor', typeSpeed);
 					await safeType('tsBootstrap', `"CSS Bootstrap"`, 'aboutCursor', typeSpeed); await safeType('tsBootstrapComma', `,
+		`, 'aboutCursor', typeSpeed);
+
+					await safeType('tsOpSysSection', `
+			// ? Operating Systems
+			`, 'aboutCursor', typeSpeed);
+					await safeType('tsWindows', `"Windows 10"`, 'aboutCursor', typeSpeed); await safeType('tsWindowsComma', `, `, 'aboutCursor', typeSpeed);
+					await safeType('tsLinux', `"Linux (Debian WSL and Kali Linux)"`, 'aboutCursor', typeSpeed); await safeType('tsLinuxComma', `,
+		`, 'aboutCursor', typeSpeed);
+
+					await safeType('tsVersionControlSection', `
+			// ? Version Control
+			`, 'aboutCursor', typeSpeed);
+					await safeType('tsGit', `"Git"`, 'aboutCursor', typeSpeed); await safeType('tsGitComma', `, `, 'aboutCursor', typeSpeed);
+					await safeType('tsGithub', `"Github"`, 'aboutCursor', typeSpeed); await safeType('tsGithubComma', `,
 		`, 'aboutCursor', typeSpeed);
 
 					await safeType('tsCloseBracket', '}', 'aboutCursor', typeSpeed);
