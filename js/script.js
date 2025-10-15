@@ -45,7 +45,7 @@ function toggleSidebar() {
 // ? Credits to luthifbg for the JavaScript Scramble text script
 // ? link to origin of Scramble text script: https://github.com/luthfibg/sebelaslvl/blob/main/js_scramble_text/scramble.js
 
-const dev_type = [ "Programmer", "Full Stack Web Developer", "Game Developer", "Game Modder" ]
+const dev_type = [ "Programmer", "Aspiring Full Stack Web Developer",  "Laravel Developer" ]
 const el = document.querySelector("#devType");
 const fx = new TextScramble(el);
 let scrambleCounter = 0;
@@ -268,8 +268,9 @@ async function setBodyContent(tabName) {
 					clearTabContent(['aboutText', 'aboutDelimiter'])
 					await safeType('aboutText',
 `		// ? I'm an aspiring Full Stack Developer based in Quezon City, Philippines.
-		// ? I've recently recently graduated Bachelor of Science in Information Technology from New Era University - Main Campus. 
-		// ? I've worked on Web Apps utilizing the Laravel Framework, both Frontend and Backend, however my skills lean more towards Backend development
+		// ? I've recently graduated BS Information Technology from New Era University - Main Campus. 
+		// ? I've worked on Web Apps utilizing the Laravel Framework, both Frontend and Backend.
+		// ? Despite being a full stack developer, my skills are more Backend-oriented.
 		// ? I have a keen attention to detail, adaptable and am a fast learner, with analytical and problem solving skills`,
 					'aboutCursor', typeSpeed);
 					await safeType('aboutDelimiter', `.
@@ -283,6 +284,7 @@ async function setBodyContent(tabName) {
 					techStack += `<span class="code-string" id="tsKotlin"></span><span id="tsKotlinComma"></span>`;
 					techStack += `<span class="code-string" id="tsPython"></span><span id="tsPythonComma"></span>`;
 					techStack += `<span class="code-string" id="tsCSharp"></span><span id="tsCSharpComma"></span>`;
+					techStack += `<span class="code-string" id="tsOop"></span><span id="tsOopComma"></span>`;
 					techStack += `<span class="comment-question" id="tsWebDevSection"></span>`;
 					techStack += `<span class="code-string" id="tsHtml"></span><span id="tsHtmlComma"></span>`;
 					techStack += `<span class="code-string" id="tsCss"></span><span id="tsCssComma"></span>`;
@@ -327,6 +329,7 @@ async function setBodyContent(tabName) {
 								'tsKotlin', 'tsKotlinComma',
 								'tsPython', 'tsPythonComma',
 								'tsCSharp', 'tsCSharpComma',
+								'tsOop', 'tsOopComma',
 							'tsWebDevSection',
 								'tsHtml', 'tsHtmlComma',
 								'tsCss', 'tsCssComma',
@@ -367,7 +370,8 @@ async function setBodyContent(tabName) {
 					await safeType('tsJava', `"Java"`, 'aboutCursor', typeSpeed); await safeType('tsJavaComma', `, `, 'aboutCursor', typeSpeed);
 					await safeType('tsKotlin', `"Kotlin"`, 'aboutCursor', typeSpeed); await safeType('tsKotlinComma', `, `, 'aboutCursor', typeSpeed);
 					await safeType('tsPython', `"Python"`, 'aboutCursor', typeSpeed); await safeType('tsPythonComma', `, `, 'aboutCursor', typeSpeed);
-					await safeType('tsCSharp', `"C#"`, 'aboutCursor', typeSpeed); await safeType('tsCSharpComma', `,
+					await safeType('tsCSharp', `"C#"`, 'aboutCursor', typeSpeed); await safeType('tsCSharpComma', `, `, 'aboutCursor', typeSpeed);
+					await safeType('tsOop', `"Object-Oriented Programming"`, 'aboutCursor', typeSpeed); await safeType('tsOopComma', `,
 			`, 'aboutCursor', typeSpeed);
 					
 					await safeType('tsWebDevSection', `
@@ -476,8 +480,9 @@ async function setBodyContent(tabName) {
 					clearTabContent(['aboutText', 'aboutDelimiter'])
 					document.getElementById('aboutText').innerHTML = 
 `		// ? I'm an aspiring Full Stack Developer based in Quezon City, Philippines.
-		// ? I've recently recently graduated Bachelor of Science in Information Technology from New Era University - Main Campus. 
-		// ? I've worked on Web Apps utilizing the Laravel Framework, both Frontend and Backend, however my skills lean more towards Backend development
+		// ? I've recently graduated BS Information Technology from New Era University - Main Campus. 
+		// ? I've worked on Web Apps utilizing the Laravel Framework, both Frontend and Backend.
+		// ? Despite being a full stack developer, my skills are more Backend-oriented.
 		// ? I have a keen attention to detail, adaptable and am a fast learner, with analytical and problem solving skills`;
 					document.getElementById('aboutDelimiter').innerHTML =
 `.
@@ -491,6 +496,7 @@ async function setBodyContent(tabName) {
 					techStack += `<span class="code-string" id="tsKotlin"></span><span id="tsKotlinComma"></span>`;
 					techStack += `<span class="code-string" id="tsPython"></span><span id="tsPythonComma"></span>`;
 					techStack += `<span class="code-string" id="tsCSharp"></span><span id="tsCSharpComma"></span>`;
+					techStack += `<span class="code-string" id="tsOop"></span><span id="tsOopComma"></span>`;
 					techStack += `<span class="comment-question" id="tsWebDevSection"></span>`;
 					techStack += `<span class="code-string" id="tsHtml"></span><span id="tsHtmlComma"></span>`;
 					techStack += `<span class="code-string" id="tsCss"></span><span id="tsCssComma"></span>`;
@@ -535,6 +541,7 @@ async function setBodyContent(tabName) {
 								'tsKotlin', 'tsKotlinComma',
 								'tsPython', 'tsPythonComma',
 								'tsCSharp', 'tsCSharpComma',
+								'tsOop', 'tsOopComma',
 							'tsWebDevSection',
 								'tsHtml', 'tsHtmlComma',
 								'tsCss', 'tsCssComma',
@@ -575,7 +582,8 @@ async function setBodyContent(tabName) {
 					document.getElementById('tsJava').innerHTML = `"Java"`; document.getElementById('tsJavaComma').innerHTML = `, `;
 					document.getElementById('tsKotlin').innerHTML = `"Kotlin"`; document.getElementById('tsKotlinComma').innerHTML = `, `;
 					document.getElementById('tsPython').innerHTML = `"Python"`; document.getElementById('tsPythonComma').innerHTML = `, `;
-					document.getElementById('tsCSharp').innerHTML = `"C#"`; document.getElementById('tsCSharpComma').innerHTML = `, 
+					document.getElementById('tsCSharp').innerHTML = `"C#"`; document.getElementById('tsCSharpComma').innerHTML = `, `;
+					document.getElementById('tsOop').innerHTML = `"Object-Oriented Programming"`; document.getElementById('tsOopComma').innerHTML = `, 
 			`;
 
 					document.getElementById('tsWebDevSection').innerHTML = `
