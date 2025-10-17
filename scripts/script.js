@@ -70,6 +70,7 @@ async function loadingScreen() {
 
 	loadingElement.classList.remove('d-flex');
 	loadingElement.classList.add('d-none');
+	canClick = true;
 }
 
 loadingScreen()
@@ -77,17 +78,22 @@ loadingScreen()
 
 //#region
 // ? Mouse Click Sounds
+var canClick = false;
 const leftClickSound = new Audio('../sounds/mouseleft.ogg')
 const rightClickSound = new Audio('../sounds/mouseright.ogg')
 
 document.addEventListener('click', () => {
-	leftClickSound.currentTime = 0;
-	leftClickSound.play();
+	if(canClick) {
+		leftClickSound.currentTime = 0;
+		leftClickSound.play();
+	}
 })
 
 document.addEventListener('contextmenu', () => {
-	rightClickSound.currentTime = 0;
-	rightClickSound.play();
+	if(canClick) {
+		rightClickSound.currentTime = 0;
+		rightClickSound.play();
+	}
 });
 //#endregion
 
