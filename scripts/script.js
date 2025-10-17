@@ -47,6 +47,22 @@ function dragWindow(element) {
 	}
 }
 
-dragWindow(document.getElementById("desktop-window"));
+// dragWindow(document.getElementById("desktop-window"));
+
+//#region
+// ? Mouse Click Sounds
+const leftClickSound = new Audio('../sounds/mouseleft.ogg')
+const rightClickSound = new Audio('../sounds/mouseright.ogg')
+
+document.addEventListener('click', () => {
+	leftClickSound.currentTime = 0;
+	leftClickSound.play();
+})
+
+document.addEventListener('contextmenu', () => {
+	rightClickSound.currentTime = 0;
+	rightClickSound.play();
+});
+//#endregion
 
 // TODO -> i might actually steal (borrow) some code from w3schools again lmao. I love programming https://www.w3schools.com/html/html5_draganddrop.asp

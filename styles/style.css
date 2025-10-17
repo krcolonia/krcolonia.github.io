@@ -26,9 +26,10 @@
 
 #loading-screen {
 	position: absolute;
-	display:none;
 	font-family: "bender", monospace;
-	/* background-color: black; */
+	background-color: black;
+	width:100vw;
+	height:100vh;
 	z-index:100;
 }
 
@@ -45,7 +46,7 @@
 /* loadign spinner icon taken from https://css-loaders.com/spinner/ */
 /* HTML: <div class="loader"></div> */
 .loader {
-  width: 50px;
+  width: 40px;
   aspect-ratio: 1;
   border-radius: 50%;
   border: 8px solid;
@@ -53,6 +54,12 @@
   animation: l1 0.75s infinite;
 }
 @keyframes l1 {to{transform: rotate(.5turn)}}
+
+.desktop-empty {
+	z-index: 1;
+	margin: 8px;
+	width: 75px;
+}
 
 .desktop-app {
 	z-index:1;
