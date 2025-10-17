@@ -108,14 +108,14 @@ function addTab(tabName) {
 		case "AboutMe":
 			tabExt = ".java";
 			break;
-		case "TechStack":
-			tabExt = ".py";
-			break;
-		case "FAQ":
-			tabExt = ".json";
-			break;
+		// case "TechStack":
+		// 	tabExt = ".py";
+		// 	break;
+		// case "FAQ":
+		// 	tabExt = ".json";
+		// 	break;
 		case "Projects":
-			tabExt = ".gd";
+			tabExt = ".json";
 			break;
 		case "Contact":
 			tabExt = ".cs";
@@ -639,8 +639,8 @@ async function setBodyContent(tabName) {
 			else aboutMeContentNoAnim();
 
 			break;
-		case "FAQ":
-			break;
+		// case "FAQ":
+		// 	break;
 		case "Projects":
 			break;
 		case "Contact":
