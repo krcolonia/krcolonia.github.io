@@ -34,29 +34,48 @@
 </head>
 
 <body class="d-flex flex-column">
-	<div class="flex-column justify-content-center align-items-center w-100 h-100" id="loading-screen">
+	<div class="d-none flex-column justify-content-center align-items-center" id="loading-screen">
 		<h1>&lt;krC&gt;</h1>
-		<div class="loader"></div>
+		<div class="loader mb-4"></div>
+		<p class="m-0 p-0">Loading</p>
 	</div>
 
 
-	<div class="flex-grow-1 desktop-main">
-		<button class="d-flex flex-column align-items-center desktop-app">
-			<img src="./images/desktop-icons/pdf.png" alt="">
-			<p>Desktop App</p>
-		</button>
+	<div class="desktop-main d-flex flex-column" style="height:100vh;">
+		<div class="h-100 w-100 d-grid overflow-hidden" style="grid-auto-flow: column; grid-template-rows: repeat(auto-fill, 100px); grid-template-columns: repeat(auto-fill, 80px); align-content:start; justify-content:start;">
+			<button class="d-flex flex-column align-items-center desktop-app">
+				<img src="./images/desktop-icons/trash.png" alt="">
+				<p>Recycle Bin</p>
+			</button>
+			<button class="d-flex flex-column align-items-center desktop-app">
+				<img src="./images/desktop-icons/scrapbook.png" alt="">
+				<p>About Me</p>
+			</button>
+			<button class="d-flex flex-column align-items-center desktop-app">
+				<img src="./images/desktop-icons/projects.png" alt="">
+				<p>My Projects</p>
+			</button>
+			<button class="d-flex flex-column align-items-center desktop-app">
+				<img src="./images/desktop-icons/contact.png" alt="">
+				<p>Contact Me</p>
+			</button>			
+			<button class="d-flex flex-column align-items-center desktop-app">
+				<img src="./images/desktop-icons/file.png" alt="">
+				<p>My Resume</p>
+			</button>
 
-		<div id="desktop-window">
-			<div id="desktop-window-header">About Me</div>
-			<p>a</p>
+			<!-- <div id="desktop-window">
+				<div id="desktop-window-header">About Me</div>
+				<p>a</p>
+			</div> -->
 		</div>
-	</div>
-	<div class="taskbar">
-		<button id="start-button">
-			<span class="d-flex flex-row justify-content-center align-items-center">
-				&lt;krC&gt;
-			</span>
-		</button>
+		<div class="taskbar fixed bottom-0">
+			<button id="start-button">
+				<span class="d-flex flex-row justify-content-center align-items-center">
+					&lt;krC&gt;
+				</span>
+			</button>
+		</div>
 	</div>
 
 	<script src="scripts/script.js"></script>
