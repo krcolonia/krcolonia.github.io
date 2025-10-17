@@ -50,6 +50,32 @@ function dragWindow(element) {
 // dragWindow(document.getElementById("desktop-window"));
 
 //#region
+
+async function loadingScreen() {
+	const loadingElement = document.getElementById('loading-screen');
+	const loadingIcon = document.getElementById('loading-icon');
+	const loadingText = document.getElementById('loading-text')
+
+	await new Promise(resolve => setTimeout(resolve, 5500))
+
+	loadingIcon.classList.add('d-none');
+	loadingText.innerText = "Welcome to my Web Portfolio!"
+
+	await new Promise(resolve => setTimeout(resolve, 1000))
+
+	loadingElement.classList.remove('opacity-100');
+	loadingElement.classList.add('opacity-0');
+
+	await new Promise(resolve => setTimeout(resolve, 1000))
+
+	loadingElement.classList.remove('d-flex');
+	loadingElement.classList.add('d-none');
+}
+
+loadingScreen()
+//#endregion
+
+//#region
 // ? Mouse Click Sounds
 const leftClickSound = new Audio('../sounds/mouseleft.ogg')
 const rightClickSound = new Audio('../sounds/mouseright.ogg')
