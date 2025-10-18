@@ -91,7 +91,7 @@ class DraggableWindow {
 		let isDragging = false
 		let currentX, currentY, initialX, initialY
 
-		this.element.addEventListener('moused own', () => {
+		this.element.addEventListener('mousedown', () => {
 			this.bringToFront();
 		})
 

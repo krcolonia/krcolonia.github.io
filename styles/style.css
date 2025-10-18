@@ -43,7 +43,7 @@
 
 #loading-pfp {
 	height: 270px;
-	transition: opacity ease-in-out 0.2s;
+	transition: opacity ease-in-out 0.5s;
 }
 
 /* loadign spinner icon taken from https://css-loaders.com/spinner/ */
@@ -55,7 +55,7 @@
 	border: 8px solid;
 	border-color: white #0000;
 	animation: l1 0.75s infinite;
-	transition: opacity ease-in-out 0.2s;
+	transition: opacity ease-in-out 0.5s;
 }
 @keyframes l1 {to{transform: rotate(.5turn)}}
 
