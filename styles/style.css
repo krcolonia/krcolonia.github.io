@@ -101,14 +101,17 @@
 	position: absolute;
 	z-index: 9;
 	background-color: #f1f1f1;
-	/* border: 1px solid #d3d3d3; */
 	border-radius: 5px;
 	text-align: center;
 	color:black;
+	width:45%;
 }
 
 .desktop-window-header {
-	padding: 10px;
+	display:flex;
+	flex-direction: row;
+	justify-content: space-between;
+	padding: 8px;
 	border-top-left-radius: 5px;
 	border-top-right-radius: 5px;
 	cursor: move;
@@ -148,6 +151,11 @@
 
 .taskbar-icon:hover {
 	background-color: #FFFFFF15;
+}
+
+.taskbar-icon img {
+	user-select: none;
+	-moz-user-select: none;
 }
 
 #taskbar-time p {

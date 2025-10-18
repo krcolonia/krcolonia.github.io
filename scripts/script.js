@@ -36,15 +36,24 @@ class DraggableWindow {
 	}
 
 	createWindow(title, content) {
-		const window = document.createElement('div');
-		window.id = this.id
-		window.className = 'desktop-window'
-		window.innerHTML = `
-			<div class="desktop-window-header">${title}</div>
-			<div class="window-content">${content}</div>
+		const windowElement = document.createElement('div');
+		windowElement.id = this.id
+		windowElement.className = 'desktop-window'
+		windowElement.innerHTML = `
+			<div class="desktop-window-header">${title}<div class="m-0 p-0"><button class="m-0">X</button></div></div>
+			<div class="desktop-window-content">${content}</div>
 		`
-		document.body.appendChild(window)
-		return window
+		document.body.appendChild(windowElement)
+
+		const windowWidth = windowElement.offsetWidth
+		const windowHeight = windowElement.offsetHeight
+		const viewportWidth = window.innerWidth
+		const viewportHeight = window.innerHeight - 45
+
+		windowElement.style.left = (viewportWidth - windowWidth) / 2 + "px"
+		windowElement.style.top = (viewportHeight - windowHeight) / 2 + "px"
+
+		return windowElement
 	}
 
 	makeDraggable() {
@@ -70,7 +79,7 @@ class DraggableWindow {
 				const windowWidth = this.element.offsetWidth
 				const windowHeight = this.element.offsetHeight
 				const viewportWidth = window.innerWidth
-				const viewportHeight = window.innerHeight
+				const viewportHeight = window.innerHeight - 45
 
 				currentX = Math.max(0, Math.min(currentX, viewportWidth - windowWidth))
 				currentY = Math.max(0, Math.min(currentY, viewportHeight - windowHeight))

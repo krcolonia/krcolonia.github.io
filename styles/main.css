@@ -36,29 +36,39 @@
 }
 
 html {
-  scroll-behavior: smooth;
+	scroll-behavior: smooth;
 }
 
 body {
-  margin: 0;
-  padding: 0;
-  /* font-family: 'bender', monospace; */
-  /* display: flex;
-  flex-direction: column; */
-  min-height: 100vh;
+	margin: 0;
+	padding: 0;
+	position: relative;
+	/* font-family: 'bender', monospace; */
+	min-height: 100vh;
 
-  /* background-image: url('https://i.imgur.com/z3rsDTU.png'); */
-	background-color: #252526;
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
+	background-color: black;
 
-  scrollbar-width: thin;
-  scrollbar-color: transparent transparent;
-  -ms-overflow-style: none;
-  scrollbar-width: none;
-  overflow: auto;
+	scrollbar-width: thin;
+	scrollbar-color: transparent transparent;
+	-ms-overflow-style: none;
+	scrollbar-width: none;
+	overflow: auto;
 
-  color: white;
+	color: white;
+}
+
+body::before {
+	content: "";
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-image: url('../images/desktop-background.jpg');
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	filter: blur(3px) contrast(115%);
+	z-index: -1;
 }
