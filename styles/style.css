@@ -7,12 +7,9 @@
 
 ? Icons taken from flaticon.com:
 
-* Azland Studio -> sidebar button icon
-* ariefstudio -> close button for the tabs
-* Freepik -> pin icon used for tab
-* Pixel perfect -> settings gear icon
-
-* Dimitry Miroliubov -> PDF file icon
+* Freepik -> Desktop Icons, Taskbar Gmail Icon
+* riajulislam -> Taskbar Linkedin Icon
+* Pixel perfect - Taskbar Github Icon
 
 */
 
@@ -31,7 +28,7 @@
 	width:100vw;
 	height:100vh;
 	z-index:100;
-	transition: ease-in-out 1s;
+	transition: opacity ease-in-out 1s;
 }
 
 #loading-screen * {
@@ -47,12 +44,12 @@
 /* loadign spinner icon taken from https://css-loaders.com/spinner/ */
 /* HTML: <div class="loader"></div> */
 .loader {
-  width: 40px;
-  aspect-ratio: 1;
-  border-radius: 50%;
-  border: 8px solid;
-  border-color: white #0000;
-  animation: l1 0.75s infinite;
+	width: 40px;
+	aspect-ratio: 1;
+	border-radius: 50%;
+	border: 8px solid;
+	border-color: white #0000;
+	animation: l1 0.75s infinite;
 }
 @keyframes l1 {to{transform: rotate(.5turn)}}
 
@@ -95,24 +92,29 @@
 	background-color:var(--activeColor);
 }
 
+.desktop-app-selected {
+	border: 1px solid var(--activeBorder);
+	background-color:var(--activeColor);
+}
+
 #desktop-window {
-  position: absolute;
-  z-index: 9;
-  background-color: #f1f1f1;
-  /* border: 1px solid #d3d3d3; */
+	position: absolute;
+	z-index: 9;
+	background-color: #f1f1f1;
+	/* border: 1px solid #d3d3d3; */
 	border-radius: 5px;
-  text-align: center;
+	text-align: center;
 	color:black;
 }
 
 #desktop-window-header {
-  padding: 10px;
+	padding: 10px;
 	border-top-left-radius: 5px;
 	border-top-right-radius: 5px;
-  cursor: move;
-  z-index: 10;
-  background-color: #2196F3;
-  color: white;
+	cursor: move;
+	z-index: 10;
+	background-color: #2196F3;
+	color: white;
 }
 
 .taskbar {
@@ -137,4 +139,19 @@
 
 #start-button:hover {
 	background-color: #FFFFFF15;
+}
+
+.taskbar-icon {
+	background-color:black;
+	transition: background-color ease-in-out 5ms;
+}
+
+.taskbar-icon:hover {
+	background-color: #FFFFFF15;
+}
+
+#taskbar-time p {
+	user-select: none;
+	-moz-user-select: none;
+	font-size: 0.8rem;
 }

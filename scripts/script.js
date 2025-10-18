@@ -5,6 +5,87 @@
 
 // TODO -> make the function flexible towards multiple windows in the case that I add in all the other content
 
+//#region
+// ? Mouse Click Sounds
+var canClick = false;
+const leftClickSound = new Audio('../sounds/mouseleft.ogg')
+const rightClickSound = new Audio('../sounds/mouseright.ogg')
+
+document.addEventListener('click', () => {
+	if(canClick) {
+		leftClickSound.currentTime = 0;
+		leftClickSound.play();
+	}
+})
+
+document.addEventListener('contextmenu', () => {
+	if(canClick) {
+		rightClickSound.currentTime = 0;
+		rightClickSound.play();
+	}
+});
+//#endregion
+
+//#region
+// ? Icon Selection script
+let selectedIcon = null;
+let clickTimer = null;
+
+function handleIconClick(iconElement, actionCallback) {
+	clearTimeout(clickTimer);
+
+	if(selectedIcon === iconElement) {
+		actionCallback();
+		selectedIcon = null;
+		iconElement.classList.remove('desktop-app-selected');
+	}
+	else {
+		if(selectedIcon) {
+			selectedIcon.classList.remove('desktop-app-selected');
+		}
+		selectedIcon = iconElement;
+		iconElement.classList.add('desktop-app-selected');
+
+		clickTimer = setTimeout(() => {
+			if(selectedIcon === iconElement) {
+				iconElement.classList.remove('desktop-app-selected');
+				selectedIcon = null;
+			}
+		}, 3000);
+	}
+}
+
+document.getElementById('recycle-icon').addEventListener('click', function() {
+	handleIconClick(this, () => {
+		console.log('recycle')
+	})
+});
+
+document.getElementById('about-icon').addEventListener('click', function() {
+	handleIconClick(this, () => {
+		console.log('about')
+	})
+});
+
+document.getElementById('project-icon').addEventListener('click', function() {
+	handleIconClick(this, () => {
+		console.log('project')
+	})
+});
+
+document.getElementById('contact-icon').addEventListener('click', function() {
+	handleIconClick(this, () => {
+		console.log('contact')
+	})
+});
+
+document.getElementById('resume-icon').addEventListener('click', function() {
+	handleIconClick(this, () => {
+		console.log('resume')
+	})
+});
+//#endregion
+
 function dragWindow(element) {
 	var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
 	var windowHeader = document.getElementById(element.id + '-header');
@@ -50,7 +131,6 @@ function dragWindow(element) {
 // dragWindow(document.getElementById("desktop-window"));
 
 //#region
-
 async function loadingScreen() {
 	const loadingElement = document.getElementById('loading-screen');
 	const loadingIcon = document.getElementById('loading-icon');
@@ -77,24 +157,24 @@ loadingScreen()
 //#endregion
 
 //#region
-// ? Mouse Click Sounds
-var canClick = false;
-const leftClickSound = new Audio('../sounds/mouseleft.ogg')
-const rightClickSound = new Audio('../sounds/mouseright.ogg')
+// ? Taskbar Date and Time section
+function startTime() {
+	const today = new Date();
+	var hours = today.getHours();
+	var minutes = today.getMinutes();
+	var seconds = today.getSeconds();
+	var ampm = hours >= 12 ? 'PM' : 'AM';
+	hours = hours % 12;
+	hours = hours ? hours : 12;
+	minutes = minutes < 10 ? '0'+minutes : minutes;
+	// seconds = seconds < 10 ? '0'+seconds: seconds;
+	// document.getElementById('taskbar-clock').innerHTML = hours + ':' + minutes + ':' + seconds + ' ' + ampm;
+	document.getElementById('taskbar-clock').innerHTML = hours + ':' + minutes + ' ' + ampm;
+	setTimeout(startTime, 1000);
+}
 
-document.addEventListener('click', () => {
-	if(canClick) {
-		leftClickSound.currentTime = 0;
-		leftClickSound.play();
-	}
-})
-
-document.addEventListener('contextmenu', () => {
-	if(canClick) {
-		rightClickSound.currentTime = 0;
-		rightClickSound.play();
-	}
-});
+startTime()
 //#endregion
+document.getElementById('currentYear').textContent = new Date().getFullYear();
 
 // TODO -> i might actually steal (borrow) some code from w3schools again lmao. I love programming https://www.w3schools.com/html/html5_draganddrop.asp
