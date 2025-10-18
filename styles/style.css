@@ -127,7 +127,6 @@
 
 .taskbar {
 	height: var(--taskbarHeight);
-	z-index: 9999;
 	background-color: black;
 }
 
