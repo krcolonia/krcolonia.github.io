@@ -27,6 +27,67 @@ document.addEventListener('contextmenu', () => {
 //#endregion
 
 //#region
+// ? Draggable Window code
+class DraggableWindow {
+	constructor(title, content) {
+		this.id = `window-${Date.now()}-${Math.random()}`
+		this.element = this.createWindow(title, content)
+		this.makeDraggable()
+	}
+
+	createWindow(title, content) {
+		const window = document.createElement('div');
+		window.id = this.id
+		window.className = 'desktop-window'
+		window.innerHTML = `
+			<div class="desktop-window-header">${title}</div>
+			<div class="window-content">${content}</div>
+		`
+		document.body.appendChild(window)
+		return window
+	}
+
+	makeDraggable() {
+		const header = this.element.querySelector('.desktop-window-header')
+		let isDragging = false
+		let currentX, currentY, initialX, initialY
+
+		header.addEventListener('mousedown', (e) => {
+			isDragging = true;
+			initialX = e.clientX - this.element.offsetLeft
+			initialY = e.clientY - this.element.offsetTop
+
+			this.element.style.zIndex = Date.now()
+		})
+
+		document.addEventListener('mousemove', (e) => {
+			if(isDragging) {
+				e.preventDefault()
+
+				currentX = e.clientX - initialX
+				currentY = e.clientY - initialY
+
+				const windowWidth = this.element.offsetWidth
+				const windowHeight = this.element.offsetHeight
+				const viewportWidth = window.innerWidth
+				const viewportHeight = window.innerHeight
+
+				currentX = Math.max(0, Math.min(currentX, viewportWidth - windowWidth))
+				currentY = Math.max(0, Math.min(currentY, viewportHeight - windowHeight))
+
+				this.element.style.left = currentX + 'px'
+				this.element.style.top = currentY + 'px'
+			}
+		})
+
+		document.addEventListener('mouseup', () => {
+			isDragging = false;
+		})
+	}
+}
+//#endregion
+
+//#region
 // ? Icon Selection script
 let selectedIcon = null;
 let clickTimer = null;
@@ -58,30 +119,35 @@ function handleIconClick(iconElement, actionCallback) {
 document.getElementById('recycle-icon').addEventListener('click', function() {
 	handleIconClick(this, () => {
 		console.log('recycle')
+		new DraggableWindow('Recycle Bin', `<p>content</p>`);
 	})
 });
 
 document.getElementById('about-icon').addEventListener('click', function() {
 	handleIconClick(this, () => {
 		console.log('about')
+		new DraggableWindow('About Me', `<p>content</p>`);
 	})
 });
 
 document.getElementById('project-icon').addEventListener('click', function() {
 	handleIconClick(this, () => {
 		console.log('project')
+		new DraggableWindow('My Projects', `<p>content</p>`);
 	})
 });
 
 document.getElementById('contact-icon').addEventListener('click', function() {
 	handleIconClick(this, () => {
 		console.log('contact')
+		new DraggableWindow('Contact Me', `<p>content</p>`);
 	})
 });
 
 document.getElementById('resume-icon').addEventListener('click', function() {
 	handleIconClick(this, () => {
 		console.log('resume')
+		new DraggableWindow('My Resume', `<p>content</p>`);
 	})
 });
 //#endregion
