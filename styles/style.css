@@ -104,6 +104,7 @@
 	z-index: 9;
 	background-color: #f1f1f1;
 	border-radius: 5px;
+	border: solid 1px black;
 	text-align: center;
 	color:black;
 	width:45%;
@@ -126,6 +127,7 @@
 
 .taskbar {
 	height: var(--taskbarHeight);
+	z-index: 9999;
 	background-color: black;
 }
 

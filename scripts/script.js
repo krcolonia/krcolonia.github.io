@@ -35,6 +35,8 @@ document.addEventListener('contextmenu', () => {
 let activeWindows = [];
 
 class DraggableWindow {
+	static highestZ = 1000;
+
 	constructor(icon, title, content) {
 		this.id = `window-${Date.now()}-${Math.random()}`
 		this.element = this.createWindow(icon, title, content)
@@ -45,8 +47,16 @@ class DraggableWindow {
 		const windowElement = document.createElement('div');
 		windowElement.id = this.id
 		windowElement.className = 'desktop-window'
+		windowElement.style.zIndex = ++DraggableWindow.highestZ;
 		windowElement.innerHTML = `
-			<div class="desktop-window-header"><div class="d-flex flex-row gap-2"><img src="./images/desktop-icons/${icon}.png" />${title}</div><div class="m-0 p-0"><button class="m-0 close-window">X</button></div></div>
+			<div class="desktop-window-header">
+				<div class="d-flex flex-row gap-2">
+					<img src="./images/desktop-icons/${icon}.png" />${title}
+					</div>
+					<div class="m-0 p-0">
+						<button class="m-0 close-window">X</button>
+					</div>
+				</div>
 			<div class="desktop-window-content">${content}</div>
 		`
 
@@ -70,10 +80,18 @@ class DraggableWindow {
 		return windowElement
 	}
 
+	bringToFront() {
+		this.element.style.zIndex = ++DraggableWindow.highestZ
+	}
+
 	makeDraggable() {
 		const header = this.element.querySelector('.desktop-window-header')
 		let isDragging = false
 		let currentX, currentY, initialX, initialY
+
+		this.element.addEventListener('mousedown', () => {
+			this.bringToFront();
+		})
 
 		header.addEventListener('mousedown', (e) => {
 			isDragging = true;
