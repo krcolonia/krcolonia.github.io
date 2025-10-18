@@ -65,6 +65,7 @@
 	width:75px;
 	background: none;
 	border: 1px solid transparent;
+	text-decoration: none;
 }
 
 .desktop-app img {
@@ -80,6 +81,7 @@
 	font-size: 80%;
 	margin-bottom:5px;
 	line-height: 1.2;
+	text-align: center;
 }
 
 .desktop-app:hover {
