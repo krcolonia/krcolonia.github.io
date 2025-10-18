@@ -49,14 +49,16 @@ class DraggableWindow {
 		windowElement.className = 'desktop-window'
 		windowElement.style.zIndex = ++DraggableWindow.highestZ;
 		windowElement.innerHTML = `
-			<div class="desktop-window-header">
-				<div class="d-flex flex-row gap-2">
+			<div class="desktop-window-header p-0">
+				<div class="p-2 d-flex flex-row gap-2">
 					<img src="./images/desktop-icons/${icon}.png" />${title}
-					</div>
-					<div class="m-0 p-0">
-						<button class="m-0 close-window">X</button>
-					</div>
 				</div>
+				<div class="p-2 px-2 d-flex justify-content-end align-items-center">
+					<button class="m-0 p-0 border-0 bg-transparent close-window h-100">
+						<img src="./images/close.png" class="p-1 h-100">
+					</button>
+				</div>
+			</div>
 			<div class="desktop-window-content">${content}</div>
 		`
 
@@ -89,7 +91,7 @@ class DraggableWindow {
 		let isDragging = false
 		let currentX, currentY, initialX, initialY
 
-		this.element.addEventListener('mousedown', () => {
+		this.element.addEventListener('moused own', () => {
 			this.bringToFront();
 		})
 
@@ -202,14 +204,20 @@ document.getElementById('resume-icon').addEventListener('click', function() {
 async function loadingScreen() {
 	const loadingElement = document.getElementById('loading-screen');
 	const loadingIcon = document.getElementById('loading-icon');
-	const loadingText = document.getElementById('loading-text')
+	const loadingText = document.getElementById('loading-text');
+	const loadingPfp = document.getElementById('loading-pfp')
 
 	await new Promise(resolve => setTimeout(resolve, 5500))
+	
+	loadingPfp.classList.remove('opacity-0');
+	loadingPfp.classList.add('opacity-100');
 
-	loadingIcon.classList.add('d-none');
+	loadingIcon.classList.remove('opacity-100');
+	loadingIcon.classList.add('opacity-0');
+
 	loadingText.innerText = "Welcome to Kurt Colonia's Web Portfolio."
 
-	await new Promise(resolve => setTimeout(resolve, 1000))
+	await new Promise(resolve => setTimeout(resolve, 1500))
 
 	loadingElement.classList.remove('opacity-100');
 	loadingElement.classList.add('opacity-0');
