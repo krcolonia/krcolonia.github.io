@@ -215,7 +215,7 @@ async function loadingScreen() {
 	loadingIcon.classList.remove('opacity-100');
 	loadingIcon.classList.add('opacity-0');
 
-	loadingText.innerText = "Welcome to Kurt Colonia's Web Portfolio."
+	loadingText.innerText = "Welcome back, Kurt Colonia."
 
 	await new Promise(resolve => setTimeout(resolve, 1500))
 
