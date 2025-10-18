@@ -1,6 +1,9 @@
 /* 
 ? draggable window code borrowed from w3schools with some slight modifications
 ? https://www.w3schools.com/howto/howto_js_draggable.asp
+
+? my portfolio site also takes huge inspiration from Shar Yap's portfolio
+? check it here: https://www.sharyap.com/
 */
 
 // TODO -> make the function flexible towards multiple windows in the case that I add in all the other content
