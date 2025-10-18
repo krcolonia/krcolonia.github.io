@@ -35,18 +35,18 @@ document.addEventListener('contextmenu', () => {
 let activeWindows = [];
 
 class DraggableWindow {
-	constructor(title, content) {
+	constructor(icon, title, content) {
 		this.id = `window-${Date.now()}-${Math.random()}`
-		this.element = this.createWindow(title, content)
+		this.element = this.createWindow(icon, title, content)
 		this.makeDraggable()
 	}
 
-	createWindow(title, content) {
+	createWindow(icon, title, content) {
 		const windowElement = document.createElement('div');
 		windowElement.id = this.id
 		windowElement.className = 'desktop-window'
 		windowElement.innerHTML = `
-			<div class="desktop-window-header">${title}<div class="m-0 p-0"><button class="m-0 close-window">X</button></div></div>
+			<div class="desktop-window-header"><div class="d-flex flex-row gap-2"><img src="./images/desktop-icons/${icon}.png" />${title}</div><div class="m-0 p-0"><button class="m-0 close-window">X</button></div></div>
 			<div class="desktop-window-content">${content}</div>
 		`
 
@@ -142,7 +142,7 @@ function handleIconClick(iconElement, actionCallback) {
 document.getElementById('recycle-icon').addEventListener('click', function() {
 	handleIconClick(this, () => {
 		if(!activeWindows.includes('Recycle Bin')) {
-			new DraggableWindow('Recycle Bin', `<p>content</p>`);
+			new DraggableWindow('trash', 'Recycle Bin', `<p>content</p>`);
 		}
 	})
 });
@@ -150,7 +150,7 @@ document.getElementById('recycle-icon').addEventListener('click', function() {
 document.getElementById('about-icon').addEventListener('click', function() {
 	handleIconClick(this, () => {
 		if(!activeWindows.includes('About Me')) {
-			new DraggableWindow('About Me', `<p>content</p>`);
+			new DraggableWindow('scrapbook', 'About Me', `<p>content</p>`);
 		}
 	})
 });
@@ -158,7 +158,7 @@ document.getElementById('about-icon').addEventListener('click', function() {
 document.getElementById('project-icon').addEventListener('click', function() {
 	handleIconClick(this, () => {
 		if(!activeWindows.includes('My Projects')) {
-			new DraggableWindow('My Projects', `<p>content</p>`);
+			new DraggableWindow('projects', 'My Projects', `<p>content</p>`);
 		}
 	})
 });
@@ -166,7 +166,7 @@ document.getElementById('project-icon').addEventListener('click', function() {
 document.getElementById('contact-icon').addEventListener('click', function() {
 	handleIconClick(this, () => {
 		if(!activeWindows.includes('Contact Me')) {
-			new DraggableWindow('Contact Me', `<p>content</p>`);
+			new DraggableWindow('contact', 'Contact Me', `<p>content</p>`);
 		}
 	})
 });
@@ -174,7 +174,7 @@ document.getElementById('contact-icon').addEventListener('click', function() {
 document.getElementById('resume-icon').addEventListener('click', function() {
 	handleIconClick(this, () => {
 		if(!activeWindows.includes('My Resume')) {
-			new DraggableWindow('My Resume', `<p>content</p>`);
+			new DraggableWindow('file', 'My Resume', `<p>content</p>`);
 		}
 	})
 });
