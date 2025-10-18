@@ -69,6 +69,6 @@ body::before {
 	background-position: center;
 	background-repeat: no-repeat;
 	background-attachment: fixed;
-	filter: blur(3px) contrast(115%);
+	filter: blur(4px) contrast(115%);
 	z-index: -1;
 }
