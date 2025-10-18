@@ -28,6 +28,9 @@ document.addEventListener('contextmenu', () => {
 
 //#region
 // ? Draggable Window code
+
+let activeWindows = [];
+
 class DraggableWindow {
 	constructor(title, content) {
 		this.id = `window-${Date.now()}-${Math.random()}`
@@ -40,10 +43,18 @@ class DraggableWindow {
 		windowElement.id = this.id
 		windowElement.className = 'desktop-window'
 		windowElement.innerHTML = `
-			<div class="desktop-window-header">${title}<div class="m-0 p-0"><button class="m-0">X</button></div></div>
+			<div class="desktop-window-header">${title}<div class="m-0 p-0"><button class="m-0 close-window">X</button></div></div>
 			<div class="desktop-window-content">${content}</div>
 		`
+
+		activeWindows.push(title);
 		document.body.appendChild(windowElement)
+
+		const closeButton = windowElement.querySelector('.close-window')
+		closeButton.addEventListener('click', () => {
+			windowElement.remove()
+			activeWindows = activeWindows.filter(item => item !== title);
+		})
 
 		const windowWidth = windowElement.offsetWidth
 		const windowHeight = windowElement.offsetHeight
@@ -127,83 +138,44 @@ function handleIconClick(iconElement, actionCallback) {
 
 document.getElementById('recycle-icon').addEventListener('click', function() {
 	handleIconClick(this, () => {
-		console.log('recycle')
-		new DraggableWindow('Recycle Bin', `<p>content</p>`);
+		if(!activeWindows.includes('Recycle Bin')) {
+			new DraggableWindow('Recycle Bin', `<p>content</p>`);
+		}
 	})
 });
 
 document.getElementById('about-icon').addEventListener('click', function() {
 	handleIconClick(this, () => {
-		console.log('about')
-		new DraggableWindow('About Me', `<p>content</p>`);
+		if(!activeWindows.includes('About Me')) {
+			new DraggableWindow('About Me', `<p>content</p>`);
+		}
 	})
 });
 
 document.getElementById('project-icon').addEventListener('click', function() {
 	handleIconClick(this, () => {
-		console.log('project')
-		new DraggableWindow('My Projects', `<p>content</p>`);
+		if(!activeWindows.includes('My Projects')) {
+			new DraggableWindow('My Projects', `<p>content</p>`);
+		}
 	})
 });
 
 document.getElementById('contact-icon').addEventListener('click', function() {
 	handleIconClick(this, () => {
-		console.log('contact')
-		new DraggableWindow('Contact Me', `<p>content</p>`);
+		if(!activeWindows.includes('Contact Me')) {
+			new DraggableWindow('Contact Me', `<p>content</p>`);
+		}
 	})
 });
 
 document.getElementById('resume-icon').addEventListener('click', function() {
 	handleIconClick(this, () => {
-		console.log('resume')
-		new DraggableWindow('My Resume', `<p>content</p>`);
+		if(!activeWindows.includes('My Resume')) {
+			new DraggableWindow('My Resume', `<p>content</p>`);
+		}
 	})
 });
 //#endregion
-
-function dragWindow(element) {
-	var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
-	var windowHeader = document.getElementById(element.id + '-header');
-	if(windowHeader) {
-		windowHeader.onmousedown = dragMouseDown;
-	}
-	else {
-		element.onmousedown = dragMouseDown;
-	}
-
-	function dragMouseDown(e) {
-		e = e || window.event;
-		e.preventDefault();
-		// ? get the mouse cursor position at startup
-		pos3 = e.clientX;
-		pos4 = e.clientY;
-
-		document.onmouseup = closeDragElement;
-		// ? call a function whenever the cursor moves
-		document.onmousemove = elementDrag
-	}
-
-	function elementDrag(e) {
-		e = e || window.event;
-		e.preventDefault();
-		// ? calculate the new cursor position;
-		pos1 = pos3 - e.clientX;
-		pos2 = pos4 - e.clientY;
-		pos3 = e.clientX;
-		pos4 = e.clientY;
-		// set the element's new position
-		element.style.top = (element.offsetTop - pos2) + "px";
-		element.style.left = (element.offsetLeft - pos1) + "px";
-	}
-
-	function closeDragElement() {
-		// ? stop moving when mouse button is released
-		document.onmouseup = null;
-		document.onmousemove = null;
-	}
-}
-
-// dragWindow(document.getElementById("desktop-window"));
 
 //#region
 async function loadingScreen() {
@@ -214,7 +186,7 @@ async function loadingScreen() {
 	await new Promise(resolve => setTimeout(resolve, 5500))
 
 	loadingIcon.classList.add('d-none');
-	loadingText.innerText = "Welcome to my Web Portfolio!"
+	loadingText.innerText = "Welcome to Kurt Colonia's Web Portfolio."
 
 	await new Promise(resolve => setTimeout(resolve, 1000))
 
