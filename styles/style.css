@@ -88,6 +88,8 @@
 	margin-bottom:5px;
 	line-height: 1.2;
 	text-align: center;
+	user-select: none;
+	-moz-user-select: none;
 }
 
 .desktop-app:hover {
@@ -131,8 +133,13 @@
 }
 
 .close-window img {
-	filter:invert(100%);
+	filter: invert(100%);
 }
+
+.close-window img:hover {
+	filter: brightness(0) saturate(100%) invert(58%) sepia(67%) saturate(4522%) hue-rotate(323deg) brightness(101%) contrast(105%);
+}
+
 
 .taskbar {
 	height: var(--taskbarHeight);
