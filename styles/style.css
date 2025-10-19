@@ -19,6 +19,8 @@
 	--hoverBorder: #FFFFFF10;
 	--activeColor: #92acff23;
 	--activeBorder: #92acff50;
+
+	--desktopWindowRadius: 5px;
 }
 
 #loading-screen {
@@ -27,7 +29,7 @@
 	background-color: black;
 	width:100vw;
 	height:100vh;
-	z-index:100;
+	z-index:9999;
 	transition: opacity ease-in-out 1s;
 }
 
@@ -111,11 +113,9 @@
 	position: absolute;
 	z-index: 9;
 	background-color: #f1f1f1;
-	border-radius: 5px;
+	border-radius: var(--desktopWindowRadius);
 	border: solid 1px black;
-	text-align: center;
 	color:black;
-	width:45%;
 }
 
 .desktop-window-header {
@@ -123,20 +123,30 @@
 	flex-direction: row;
 	justify-content: space-between;
 	align-content:center;
-	height:45px;
-	border-top-left-radius: 5px;
-	border-top-right-radius: 5px;
+	height:40px;
+	border-top-left-radius: var(--desktopWindowRadius) + 1;
+	border-top-right-radius: var(--desktopWindowRadius) + 1;
 	cursor: move;
 	z-index: 10;
 	background-color: rgb(35, 39, 43);
 	color: white;
 }
 
+.desktop-window-header span {
+	margin-top:-2px;
+}
+
+.desktop-window-header span, .desktop-window-icon {
+	-moz-user-select: none;
+	user-select: none;
+	pointer-events: none;
+}
+
 .close-window img {
 	filter: invert(100%);
 }
 
-.close-window img:hover {
+.close-window:hover {
 	filter: brightness(0) saturate(100%) invert(58%) sepia(67%) saturate(4522%) hue-rotate(323deg) brightness(101%) contrast(105%);
 }
 
