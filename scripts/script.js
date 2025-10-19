@@ -218,7 +218,7 @@ document.getElementById('about-icon').addEventListener('click', function() {
 						<p>Aspiring Full-Stack Developer</p>
 					</div>
 				</div>
-				<p class="m-0 p-0 h-100 w-100">content</p>
+				<p class="m-0 p-0 w-100">content</p>
 				`,
 				'50',
 				'65'
@@ -233,7 +233,7 @@ document.getElementById('project-icon').addEventListener('click', function() {
 			new DraggableWindow(
 				'projects', 
 				'My Projects', 
-				`<p class="m-0 p-0 h-100 w-100">content</p>`,
+				`<p class="m-0 p-0 w-100">content</p>`,
 				'45',
 			);
 		}
@@ -246,7 +246,7 @@ document.getElementById('contact-icon').addEventListener('click', function() {
 			new DraggableWindow(
 				'contact', 
 				'Contact Me', 
-				`<p class="m-0 p-0 h-100 w-100">content</p>`,
+				`<p class="m-0 p-0 w-100">content</p>`,
 				'45',
 			);
 		}
