@@ -163,18 +163,18 @@ function handleIconClick(iconElement, actionCallback) {
 
 const guideContent = `
 <h3 align="center">Welcome to Kurt Colonia's Portfolio!</h3>
-<p class="m-0 p-0 h-100 w-100">Welcome to my portfolio!</p>
+<p class="m-0 p-0 h-100 w-100" style="text-indent: 25px;">This is the current iteration/redesign of my web portfolio! I wanted to make my portfolio look like a desktop environment to make my portfolio a bit more unique compared to other people's portfolio.</p>
 `;
 const guideWidth = '70';
 const guideHeight = '65';
 
-// new DraggableWindow(
-// 	'guide',
-// 	'User Guide',
-// 	guideContent,
-// 	guideWidth,
-// 	guideHeight
-// );
+new DraggableWindow(
+	'guide',
+	'User Guide',
+	guideContent,
+	guideWidth,
+	guideHeight
+);
 
 document.getElementById('guide-icon').addEventListener('click', function() {
 	if(!activeWindows.includes('User Guide')) {
@@ -210,8 +210,18 @@ document.getElementById('about-icon').addEventListener('click', function() {
 			new DraggableWindow(
 				'scrapbook', 
 				'About Me', 
-				`<p class="m-0 p-0 h-100 w-100">content</p>`,
-				'45',
+				`
+				<div class="d-flex flex-row p-2 justify-content-center align-items-center gap-3">
+					<img src="./images/PFP.png" class="rounded-circle m-0 p-0" style="width: 25%; border: 2px solid black;">
+					<div class="d-flex flex-column">
+						<h3 class="fw-bold">Kurt Robin Colonia</h3>
+						<p>Aspiring Full-Stack Developer</p>
+					</div>
+				</div>
+				<p class="m-0 p-0 h-100 w-100">content</p>
+				`,
+				'50',
+				'65'
 			);
 		}
 	})
