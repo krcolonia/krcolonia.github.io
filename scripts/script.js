@@ -37,29 +37,31 @@ let activeWindows = [];
 class DraggableWindow {
 	static highestZ = 1000;
 
-	constructor(icon, title, content) {
+	constructor(icon, title, content, width, height) {
 		this.id = `window-${Date.now()}-${Math.random()}`
-		this.element = this.createWindow(icon, title, content)
+		this.element = this.createWindow(icon, title, content, width, height)
 		this.makeDraggable()
 	}
 
-	createWindow(icon, title, content) {
+	createWindow(icon, title, content, width, height) {
 		const windowElement = document.createElement('div');
 		windowElement.id = this.id
 		windowElement.className = 'desktop-window'
+		windowElement.style.width = width + '%';
+		windowElement.style.height = height + '%';
 		windowElement.style.zIndex = ++DraggableWindow.highestZ;
 		windowElement.innerHTML = `
 			<div class="desktop-window-header p-0">
-				<div class="p-2 d-flex flex-row gap-2">
-					<img src="./images/desktop-icons/${icon}.png" />${title}
+				<div class="p-2 d-flex gap-2 justify-content-start align-items-center">
+						<img src="./images/desktop-icons/${icon}.png" class="desktop-window-icon h-100"/><span>${title}</span>
 				</div>
-				<div class="p-2 px-2 d-flex justify-content-end align-items-center">
-					<button class="m-0 p-0 border-0 bg-transparent close-window h-100">
-						<img src="./images/close.png" class="p-1 h-100">
+				<div class="p-2 d-flex justify-content-end align-items-center">
+					<button class="d-flex p-1 border-0 bg-transparent close-window h-100">
+						<img src="./images/close.png" class="h-100">
 					</button>
 				</div>
 			</div>
-			<div class="desktop-window-content">${content}</div>
+			<div class="desktop-window-content" style="height:100%; width: 100%;">${content}</div>
 		`
 
 		activeWindows.push(title);
@@ -159,18 +161,58 @@ function handleIconClick(iconElement, actionCallback) {
 	}
 }
 
-document.getElementById('recycle-icon').addEventListener('click', function() {
+const guideContent = `
+<h3 align="center">Welcome to Kurt Colonia's Portfolio!</h3>
+<p class="m-0 p-0 h-100 w-100">Welcome to my portfolio!</p>
+`;
+const guideWidth = '70';
+const guideHeight = '65';
+
+// new DraggableWindow(
+// 	'guide',
+// 	'User Guide',
+// 	guideContent,
+// 	guideWidth,
+// 	guideHeight
+// );
+
+document.getElementById('guide-icon').addEventListener('click', function() {
+	if(!activeWindows.includes('User Guide')) {
+		new DraggableWindow(
+			'guide',
+			'User Guide',
+			guideContent,
+			guideWidth,
+			guideHeight
+		);
+	}
 	handleIconClick(this, () => {
-		if(!activeWindows.includes('Recycle Bin')) {
-			new DraggableWindow('trash', 'Recycle Bin', `<p>content</p>`);
-		}
+		
 	})
 });
+
+// document.getElementById('recycle-icon').addEventListener('click', function() {
+// 	handleIconClick(this, () => {
+// 		if(!activeWindows.includes('Recycle Bin')) {
+// 			new DraggableWindow(
+// 				'trash', 
+// 				'Recycle Bin', 
+// 				`<p class="m-0 p-0 h-100 w-100">content</p>`,
+// 				'45',
+// 			);
+// 		}
+// 	})
+// });
 
 document.getElementById('about-icon').addEventListener('click', function() {
 	handleIconClick(this, () => {
 		if(!activeWindows.includes('About Me')) {
-			new DraggableWindow('scrapbook', 'About Me', `<p>content</p>`);
+			new DraggableWindow(
+				'scrapbook', 
+				'About Me', 
+				`<p class="m-0 p-0 h-100 w-100">content</p>`,
+				'45',
+			);
 		}
 	})
 });
@@ -178,7 +220,12 @@ document.getElementById('about-icon').addEventListener('click', function() {
 document.getElementById('project-icon').addEventListener('click', function() {
 	handleIconClick(this, () => {
 		if(!activeWindows.includes('My Projects')) {
-			new DraggableWindow('projects', 'My Projects', `<p>content</p>`);
+			new DraggableWindow(
+				'projects', 
+				'My Projects', 
+				`<p class="m-0 p-0 h-100 w-100">content</p>`,
+				'45',
+			);
 		}
 	})
 });
@@ -186,7 +233,12 @@ document.getElementById('project-icon').addEventListener('click', function() {
 document.getElementById('contact-icon').addEventListener('click', function() {
 	handleIconClick(this, () => {
 		if(!activeWindows.includes('Contact Me')) {
-			new DraggableWindow('contact', 'Contact Me', `<p>content</p>`);
+			new DraggableWindow(
+				'contact', 
+				'Contact Me', 
+				`<p class="m-0 p-0 h-100 w-100">content</p>`,
+				'45',
+			);
 		}
 	})
 });
@@ -194,10 +246,45 @@ document.getElementById('contact-icon').addEventListener('click', function() {
 document.getElementById('resume-icon').addEventListener('click', function() {
 	handleIconClick(this, () => {
 		if(!activeWindows.includes('My Resume')) {
-			new DraggableWindow('file', 'My Resume', `<p>content</p>`);
+			new DraggableWindow(
+				'file', 
+				'My Resume', 
+				`
+				<embed src="./objects/Colonia_Resume.pdf" class="w-100 h-100 pb-5">
+				`,
+				'50',
+				'85'
+			);
 		}
 	})
 });
+
+document.getElementById('linkedin-icon').addEventListener('click', function() {
+	handleIconClick(this, () => {
+		window.open(
+			'https://www.linkedin.com/in/krcolonia/', 
+			'_blank'
+		);
+	})
+})
+
+document.getElementById('github-icon').addEventListener('click', function() {
+	handleIconClick(this, () => {
+		window.open(
+			'https://github.com/krcolonia', 
+			'_blank'
+		);
+	})
+})
+
+document.getElementById('gmail-icon').addEventListener('click', function() {
+	handleIconClick(this, () => {
+		window.open(
+			'mailto:krcolonia@gmail.com', 
+			'_blank'
+		);
+	})
+})
 //#endregion
 
 //#region
