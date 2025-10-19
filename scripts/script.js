@@ -61,7 +61,7 @@ class DraggableWindow {
 					</button>
 				</div>
 			</div>
-			<div class="desktop-window-content" style="height:100%; width: 100%;">${content}</div>
+			<div class="desktop-window-content flex-grow-1">${content}</div>
 		`
 
 		activeWindows.push(title);
@@ -162,8 +162,10 @@ function handleIconClick(iconElement, actionCallback) {
 }
 
 const guideContent = `
-<h3 align="center">Welcome to Kurt Colonia's Portfolio!</h3>
-<p class="m-0 p-0 h-100 w-100">Welcome to my portfolio!</p>
+<div class="h-100 w-100 px-3 py-2">
+	<h3 align="center">Welcome to Kurt Colonia's Portfolio!</h3>
+	<p class="m-0 p-0 h-100 w-100">Welcome to my portfolio!</p>
+</div>
 `;
 const guideWidth = '70';
 const guideHeight = '65';
@@ -250,7 +252,7 @@ document.getElementById('resume-icon').addEventListener('click', function() {
 				'file', 
 				'My Resume', 
 				`
-				<embed src="./objects/Colonia_Resume.pdf" class="w-100 h-100 pb-5">
+				<embed src="./objects/Colonia_Resume.pdf" class="w-100 h-100 p-1" style="border-radius: 8px;">
 				`,
 				'50',
 				'85'

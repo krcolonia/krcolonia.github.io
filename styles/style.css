@@ -111,6 +111,8 @@
 
 .desktop-window {
 	position: absolute;
+	display:flex;
+	flex-flow: column;
 	z-index: 9;
 	background-color: #f1f1f1;
 	border-radius: var(--desktopWindowRadius);
