@@ -118,6 +118,9 @@
 	border-radius: var(--desktopWindowRadius);
 	border: solid 1px black;
 	color:black;
+
+	scrollbar-width: thin;
+	/* scrollbar-color: transparent transparent; */
 }
 
 .desktop-window-header {
@@ -132,6 +135,18 @@
 	z-index: 10;
 	background-color: rgb(35, 39, 43);
 	color: white;
+
+	border-bottom: 1px black solid;
+
+	cursor:grab;
+	cursor:-moz-grab;
+	cursor:-webkit-grab;
+}
+
+.desktop-window-header:active {
+	cursor:grabbing;
+	cursor:-moz-grabbing;
+	cursor:-webkit-grabbing;
 }
 
 .desktop-window-header span {
@@ -142,6 +157,15 @@
 	-moz-user-select: none;
 	user-select: none;
 	pointer-events: none;
+}
+
+.desktop-window-content {
+	font-family: 'bender';
+	font-size: 1.2rem;
+}
+
+.close-window {
+	padding: 6px;
 }
 
 .close-window img {
@@ -195,4 +219,16 @@
 	user-select: none;
 	-moz-user-select: none;
 	font-size: 0.8rem;
+}
+
+
+#about-header {
+	font-family: 'bender';
+	color: white;
+	background:url('../images/webres_bg.png');
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+
+	border-radius: 5px;
 }
