@@ -20,7 +20,7 @@ let headIndx = 0;
 // ? Credits to luthifbg for the JavaScript Scramble text script
 // ? link to origin of Scramble text script: https://github.com/luthfibg/sebelaslvl/blob/main/js_scramble_text/scramble.js
 
-const dev_type = [ "Web", "Mobile", "Game" ]
+const dev_type = [ "Full Stack Web", "Mobile", "Game" ]
 const el = document.querySelector("#devType");
 const fx = new TextScramble(el);
 let counter = 0;
