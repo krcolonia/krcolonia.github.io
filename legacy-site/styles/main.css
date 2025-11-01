@@ -1,0 +1,127 @@
+/* 
+  #161A30 -> Dark Gunmetal
+  #31304D -> Jacarta
+  #B6BBC4 -> gray (X11)
+  #F0ECE5 -> Alabaster
+ */
+
+:root {
+  --DarkGunmetal: #161A30;
+  --Jacarta: #31304D;
+  --GrayX11: #B6BBC4;
+  --Alabaster: #F0ECE5;
+	/* JetBrains-Styled Color Palette for text */
+	--JBKeyword:#cc7833;
+	--JBVarName:#ffc66d;
+	--JBInteger:#6897bb;
+	--JBString:#629755;
+	--JBVarAttr:#9876aa;
+}
+
+@font-face {
+  font-family: 'bender';
+  src: url('../fonts/bender.woff2') format('woff2'),
+    url('../fonts/bender.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'jetbrainsmono';
+  src: 
+		url('../fonts/jetbrainsmono.woff') format('woff'),
+		url('../fonts/jetbrainsmono.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'bender', monospace;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+
+  /* background-image: url('https://i.imgur.com/z3rsDTU.png'); */
+	background-color: #252526;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+
+  scrollbar-width: thin;
+  scrollbar-color: transparent transparent;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  overflow: auto;
+
+  color: white;
+}
+
+pre {
+	tab-size: 2;
+	height: 100%;
+	
+	scrollbar-width: thin;
+  scrollbar-color: transparent transparent;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  overflow: auto;
+}
+
+.codeText {
+	font-family: 'jetbrainsmono';
+}
+
+.codeText * {
+	padding-top: -5px;
+}
+
+.code-keyword {
+	color: #CC7833;
+}
+
+.code-variable {
+	color: #FFC66D ;
+}
+
+.code-integer {
+	color: #6897BB;
+}
+
+.code-string {
+	color: #629755;
+}
+
+.code-attribute {
+	color: #9876AA;
+}
+
+.code-htmlTag {
+	color: #FFC66D;
+}
+
+.comment-exclamation {
+	color: #FF2D00;
+}
+
+.comment-question {
+	color: #3498DB;
+}
+
+.commentText {
+	color: #474747;
+}
+
+.comment-asterisk {
+	color: #98C379;
+}
+
+.comment-todo {
+	color: #FF8C00;
+}

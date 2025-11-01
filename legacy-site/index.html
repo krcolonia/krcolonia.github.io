@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+	<meta property="og:image" content="https://imgur.com/hKTV0bs.png">
+	<meta name="description" content="Welcome to my Portfolio Website!">
+	<meta name="keywords"
+		content="GitHub, krColonia, Developer, Software Developer, Web Developer, Android Developer, Mobile Developer">
+	<meta name="author" content="krColonia">
+
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="icon" href="images/favicon.png">
+	
+	<!-- ? Bootstrap 5.3.3 -->
+	<!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous"> -->
+
+	<!-- ? Bootstrap 5.3.3 JS -->
+	<!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script> -->
+	<!-- <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script> -->
+	
+	<!-- ? My own CSS file -->
+	<link rel="stylesheet" href="styles/style.css" type="text/css" charset="utf-8" />
+
+	<!-- <title>Kurt Colonia | Software Developer</title> -->
+	<title>Kurt Colonia | Software Developer</title>
+</head>
+
+<body onload="setTimeout(printHomeHeader(), 500)">
+
+	<nav id="navbar">
+		<div class="headerDiv px-3">
+			<h1>&lt;krC&gt;</h1>
+			<button class="hamb-ico" onClick="dropDownFunc()"><img src="https://i.imgur.com/zz1orbo.png"
+					alt="Dropdown Button"></button>
+			<span class="headerBtns">
+				<!-- <a href="#" class="homeBtn"><img src="https://i.imgur.com/gurbBj8.png" alt="Home Button" id="buttons"></a>
+				<a href="#section1" class="aboutBtn"><img src="https://i.imgur.com/1UI1pkW.png" alt="About Button"
+						id="buttons"></a> -->
+				<a href="#" class="homeBtn">Home</a>
+				<a href="#about-section" class="aboutBtn">About Me</a>
+				<a href="#project-section" class="projectBtn">Projects</a>
+				<!-- <a href="#resume-section" class="resumeBtn">Résumé</a> -->
+			</span>
+		</div>
+		<div id="headerDropdown">
+			<a href="#">Home</a>
+			<a href="#about-section">About Me</a>
+			<a href="#project-section">Projects</a>
+			<!-- <a href="#resume-section">Résumé</a> -->
+		</div>
+		<script>
+			var menu = document.getElementById("headerDropdown");
+			menu.style.top = "-250px";
+			console.log("dropdown default positioning set!")
+			dropdown_open = false
+		</script>
+		<div id="kurut0Alert">
+			<!-- ? custom made warning for this outdated website of mine. -->
+			<marquee scrollamount="12">! WARNING ! This is an outdated version of my portfolio site, kept for archival purposes. View my new (currently Work-In-Progress) profile by clicking <a href="./index_new.html">here</a> ! WARNING !</marquee>
+		</div>
+	</nav>
+
+	<div class="homeTitle">
+		<h1>
+			<span id="headerContent"></span><span class="blinkCursor">|</span>
+		</h1>
+		<h2 id="dev-header"><span id="devType"></span> Developer</h2>
+		<!-- <h2>Software Developer</h2> -->
+	</div>
+
+	<section class="aboutSection p-5" id="about-section">
+		<h1 class="aboutHeader">About Me</h1>
+		<div class="aboutContent">
+			<img src="images/LinkedIn_PFP.png" alt="Kurt Colonia's ID Picture"></img>
+			<main>
+				<h2>Hello World! I'm Kurt Robin Colonia.</h2><br>
+				<p> I am <span id="currentAge"></span> years old and currently residing in the Philippines. I am a Bachelor of Science in Information Technology graduate from
+					New Era University - Main Campus, Batch 2025.</p><br>
+				<!-- <p> I am a dependable software developer, with proficiency in Java, Kotlin, C#, and Python. I am also skilled in
+          Full Stack
+          Web Development with HTML, CSS, JavaScript, and PHP. I have a keen attention to detail, a fast
+          learner, with analytical and problem solving skills.</p> -->
+				<p> I am a software developer, with proficiency in Java, Kotlin, C#, Relational Database
+					Management with IBM's Cloud SQL Database and MySQL with PHP, Non-Relational Database Management with NoSQL in
+					Firebase API's Realtime Database, Full Stack
+					Web Development with HTML, CSS, JavaScript, PHP and MySQL, and Firebase API, and Game Development using Godot,
+					GDScript, C#, and Firebase.
+					I also have experience working with and integrating APIs to projects I've worked on. I have a keen attention
+					to detail, a fast
+					learner, with analytical and problem solving skills.</p>
+			</main>
+		</div>
+	</section>
+
+	<section id="project-section">
+		<h1 class="section-header">Projects</h1>
+		<div id="project-container">
+			<div class="project-tile">
+				<h3>Code Quest: The PyTome of Knowledge</h3>
+				<p>An Android Game-Based Learning Application designed to provide students with Python Software Development
+					lessons in a video game-based way!</p>
+				<a href="https://github.com/krcolonia/CodeQuest-ThePyTomeOfKnowledge" target="_blank">View Project</a>
+			</div>
+
+			<div class="project-tile">
+				<h3>Website with Login and Registration with Email Verification</h3>
+				<p>A website with Login, Registration with Email Verification, as well as User info updating. Developed using
+					HTMl, CSS, JavaScript, and the use of Firebase APIs.<br><br>
+					Developed and passed as a requirement for the Integrative Programming course.</p>
+				<a href="https://krcolonia.github.io/IntegrativeProgramming_MidtermProject/" target="_blank">View Project</a>
+			</div>
+
+			<div class="project-tile">
+				<h3>RAVI Modular Website</h3>
+				<p>A website developed for RAVI Modular and a project passed as a requirement for the System Analysis and Design
+					course.<br><br>
+					Developed in collaboration with Rotsen David, Miguel Pilapil, Dominic Ramos, and John Louie Ubias</p>
+				<a href="https://github.com/Dramos02/Ravi_Website" target="_blank">View Project</a>
+			</div>
+
+			<div class="project-tile">
+				<h3>Yummly 2.0</h3>
+				<p>An Android-based recipe app, designed to provide a platform to all cooks looking for the most authentic
+					Filipino cuisine recipes!</p>
+				<a href="https://github.com/krcolonia/Yummly-2.0" target="_blank">View Project</a>
+			</div>
+
+			<div class="project-tile">
+				<h3>JRSK Hotel Booking Website</h3>
+				<p>A website developed and passed as a requirement for the Human-Computer Interaction and IT Elective for Web
+					Development Course.<br><br>
+					Developed in collaboration with Jeremee Cayde, Rotsen David, and Sean Denmar Ysagun</p>
+				<a href="https://github.com/krcolonia/JRSK_WebsiteProject" target="_blank">View Project</a>
+			</div>
+
+			<div class="project-tile">
+				<h3>Restaurant Reservation System w/ Functional GUI</h3>
+				<p>A Restaurant Reservation System with functional GUI developed completely in Java.<br><br>
+					Developed and passed as a requirement for the Object-Oriented Programming Course</p>
+				<a href="https://github.com/krcolonia/OOP_FinalProject" target="_blank">View Project</a>
+			</div>
+
+			<div class="project-tile">
+				<h3>GameSRC Website</h3>
+				<p>A Video Game E-Commerce website. Developed and passed as a requirement for 11th Grade Computer Programming
+					Subject</p>
+				<a href="https://github.com/krcolonia/GameSRC-Website" target="_blank">View Project</a>
+			</div>
+		</div>
+	</section>
+
+	<!-- TODO - make improvements with the Resume display section -->
+	<!-- <section class="resumeSection" id="resume-section">
+		<h1 class="resumeHeader">Résumé</h1>
+		<div class="resumeContent">
+			<main>
+				<iframe id="resume-embed" title="Embedded Résumé"
+					src="https://drive.google.com/file/d/1nc6_Sts3eRmDZ3pIucQICVjCvU0dwjOP/preview" frameborder="0" scrolling="no" seamless=""></iframe>
+			</main>
+		</div>
+	</section> -->
+
+	<footer>
+		<div class="footerDiv">
+			<div class="footerContent">
+				<div class="profileLinks">
+					<a href="https://github.com/krcolonia" target="_blank">
+						<img src="https://i.imgur.com/YPeacUb.png" alt="Github Icon">
+					</a>
+					<a href="https://www.linkedin.com/in/krcolonia/" target="_blank">
+						<img src="https://i.imgur.com/AUaixxY.png" alt="LinkedIn Icon">
+					</a>
+					<a href="mailto:krcolonia@gmail.com">
+						<img src="https://i.imgur.com/XZkfDdk.png" alt="Contact via Email">
+					</a>
+				</div>
+				<p>&copy; COLONIA, Kurt Robin <span id="footerYear"></span></p>
+			</div>
+		</div>
+	</footer>
+
+	<script src="js/scramble.js"></script>
+	<script src="js/script.js"></script>
+
+	<script>
+		next();
+	</script>
+
+
+</body>
+
+</html>
