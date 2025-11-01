@@ -176,7 +176,10 @@ function handleIconClick(iconElement, actionCallback) {
 
 const guideContent = `
 <h3 class="fw-bold" align="center">Welcome to Kurt Colonia's Portfolio!</h3>
-<p class="m-0 p-0 h-100 w-100" style="text-indent: 25px; text-align: justify; text-justify: inter-word;">This is the current iteration/redesign of my web portfolio! I wanted to make my portfolio look like a desktop environment to make my portfolio a bit more unique compared to other people's portfolio.</p>
+<p class="m-0 p-0 h-100 w-100" style="text-indent: 25px; text-align: justify; text-justify: inter-word;">
+	This is the current iteration/redesign of my web portfolio! I wanted to make my portfolio look like a desktop environment to make my portfolio a bit more unique compared to other people's portfolio.<br><br>
+	If you'd like to view a more traditional style of web portfolio, <a href="./legacy-site">Click here!</a>
+</p>
 `;
 const guideWidth = '70';
 const guideHeight = '65';
