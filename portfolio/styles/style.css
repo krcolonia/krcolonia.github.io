@@ -10,6 +10,10 @@ html {
   scroll-behavior: smooth;
 }
 
+body::-webkit-scrollbar {
+	display: none;
+}
+
 body {
   margin: 0;
   padding: 0;
@@ -24,8 +28,6 @@ body {
   background-repeat: no-repeat;
   background-attachment: fixed;
 
-  scrollbar-width: thin;
-  scrollbar-color: transparent transparent;
   -ms-overflow-style: none;
   scrollbar-width: none;
   overflow: -moz-scrollbars-none;
@@ -215,7 +217,7 @@ section div {
 }
 
 .aboutContent img {
-  max-width: 30vw;
+  max-width: 25%;
   margin: 2%;
   border-radius: 50%;
   border: 10px solid #0D0D0D
