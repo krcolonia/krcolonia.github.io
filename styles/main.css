@@ -35,6 +35,16 @@
   font-style: normal;
 }
 
+@font-face {
+  font-family: 'moderndos';
+  src: 
+		url('../fonts/moderndos.woff') format('woff'),
+		url('../fonts/moderndos.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}
+
+
 html {
 	scroll-behavior: smooth;
 }
