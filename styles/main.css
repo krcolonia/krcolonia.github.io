@@ -44,6 +44,15 @@
   font-style: normal;
 }
 
+@font-face {
+  font-family: 'unageo';
+  src: 
+		url('../fonts/unageo.woff') format('woff'),
+		url('../fonts/unageo.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}
+
 
 html {
 	scroll-behavior: smooth;

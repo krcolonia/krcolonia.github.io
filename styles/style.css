@@ -123,7 +123,9 @@
 	scrollbar-width: thin;
 	scrollbar-color: rgb(35, 39, 43) white;
 
-	transition: opacity ease-in-out 50ms;
+	transition: opacity ease-in-out 80ms;
+
+	font-family: 'unageo'
 }
 
 .desktop-window-header {
@@ -141,6 +143,8 @@
 	cursor:grab;
 	cursor:-moz-grab;
 	cursor:-webkit-grab;
+
+	font-weight: bold;
 }
 
 .desktop-window-header:active {
@@ -161,8 +165,8 @@
 
 .desktop-window-content {
 	background-color: #f1f1f1;
-	font-family: 'bender';
-	font-size: 1.2rem;
+	font-family: "unageo";
+	font-size: 1.1rem;
 }
 
 .close-window {
@@ -231,8 +235,17 @@
 	background-position: center;
 	background-repeat: no-repeat;
 
-	border-radius: 6px;
+	border-radius: 8px 8px 0px 0px;
 }
+
+#about-content {
+	background: #dee2e6;
+	border-radius: 0px 0px 8px 8px;
+	
+	height: 30rem;
+}
+
+/* Github Project Style One:  */
 
 .github-card {
 	background-color: #393E46;
@@ -250,5 +263,11 @@
 	text-decoration: none;
 	color: white;
 }
+
+#github-date {
+	font-size: 0.8rem;
+}
+
+/* Github Project Style Two: Electric Boogaloo */
 
 /* Responsive Web stuff goes below this comment */
