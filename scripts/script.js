@@ -55,6 +55,7 @@ class DraggableWindow {
 		windowElement.className = 'desktop-window'
 		windowElement.style.width = width + 'vw';
 		windowElement.style.height = height + 'vh';
+		windowElement.style.opacity = 0;
 		windowElement.style.zIndex = ++DraggableWindow.highestZ;
 		windowElement.innerHTML = `
 			<div class="desktop-window-header p-0">
@@ -86,6 +87,12 @@ class DraggableWindow {
 
 		windowElement.style.left = (viewportWidth - windowWidth) / 2 + "px"
 		windowElement.style.top = (viewportHeight - windowHeight) / 2 + "px"
+
+		void windowElement.offsetHeight
+
+		setTimeout(() => {
+			windowElement.style.opacity = 100;
+		}, 50)
 
 		return windowElement
 	}
@@ -173,14 +180,6 @@ const guideContent = `
 `;
 const guideWidth = '70';
 const guideHeight = '65';
-
-new DraggableWindow(
-	'guide',
-	'User Guide',
-	guideContent,
-	guideWidth,
-	guideHeight
-);
 
 document.getElementById('guide-icon').addEventListener('click', function() {
 	if(!activeWindows.includes('User Guide')) {
@@ -299,7 +298,7 @@ fetch('https://api.github.com/users/krcolonia/repos')
 	.then(response => response.json())
 	.then(data => 
 		data.forEach(item => {
-			const repos = ["JRSK-Booking", "CodeBreakers", "Yummly"]
+			const repos = ["JRSK-Booking", "CodeBreakers", "Yummly", "GameSRC"]
 			if(repos.some(repo => item.name.includes(repo))) {
 				console.log(item);
 				projectContent += `
@@ -419,6 +418,14 @@ async function loadingScreen() {
 	loadingElement.classList.remove('d-flex');
 	loadingElement.classList.add('d-none');
 	canClick = true;
+
+	new DraggableWindow(
+	'guide',
+	'User Guide',
+	guideContent,
+	guideWidth,
+	guideHeight
+	);
 }
 
 loadingScreen()
