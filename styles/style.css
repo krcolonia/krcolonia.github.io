@@ -235,3 +235,22 @@
 
 	border-radius: 5px;
 }
+
+.github-card {
+	background-color: #393E46;
+	border: 3px solid #222831;
+
+	color: white;
+	border-radius: 6px;
+}
+
+.github-card-button {
+	background-color: #5C8374;
+	border: 1px solid #9EC8B9;
+	border-radius: 4px;
+
+	text-decoration: none;
+	color: white;
+}
+
+/* Responsive Web stuff goes below this comment */

@@ -299,13 +299,28 @@ fetch('https://api.github.com/users/krcolonia/repos')
 	.then(data => 
 		data.forEach(item => {
 			const repos = ["JRSK-Booking", "CodeBreakers", "Yummly", "GameSRC"]
+
 			if(repos.some(repo => item.name.includes(repo))) {
-				console.log(item);
+				let homepage = ``;
+
+				// ? I don't like nesting if statements, but my caveman brain can't currently think of a better solution
+				if(item.homepage != null) {
+					if (item.homepage.length != 0) {
+						console.log(item.homepage)
+						homepage = `
+						<a href="${item.homepage}" target="_blank" class="github-card-button p-1">View Deployed Page</a>
+						`;
+					}
+				}
+
 				projectContent += `
-					<div class="p-2 m-0" style="background-color: black; color: white; border-radius: 5px;">
-						<p>Repo Name: ${item.name}</p>
-						<p>Repo Desc: ${item.description}</p>
-						<a href="${item.html_url}" target="_blank">Click here to visit repository</a>
+					<div class="p-3 m-0 github-card">
+						<p class="text-xl fw-bold">${item.name}</p>
+						<p style="text-indent: 25px; text-align: justify;">${item.description}</p>
+						<div class="d-flex flex-row justify-content-between">
+							<a href="${item.html_url}" target="_blank" class="github-card-button p-1">Visit Repository</a>
+							${homepage}
+						</div>
 					</div>
 				`;
 
