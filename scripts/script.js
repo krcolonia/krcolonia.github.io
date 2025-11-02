@@ -199,7 +199,7 @@ fetch('https://api.github.com/users/krcolonia/repos')
 	.then(response => response.json())
 	.then(data => 
 		data.forEach(item => {
-			const repos = ["JRSK-Booking", "CodeBreakers", "Yummly", "GameSRC"]
+			const repos = ["JRSK-Booking", "CodeBreakers", "Yummly", "GameSRC", "Java_"]
 
 			if(repos.some(repo => item.name.includes(repo))) {
 				let homepage = ``;
@@ -209,6 +209,12 @@ fetch('https://api.github.com/users/krcolonia/repos')
 					day: 'numeric',
 					year: 'numeric'
 				})
+
+				let language = item.language
+
+				if (language === "Blade") {
+					language = 'Laravel';
+				}
 
 				// ? I don't like nesting if statements, but my caveman brain can't currently think of a better solution
 				if(item.homepage != null) {
@@ -221,7 +227,10 @@ fetch('https://api.github.com/users/krcolonia/repos')
 
 				projectContent += `
 					<div class="p-3 m-0 github-card" id="${item.name}">
-						<p class="text-xl fw-bold">${item.name} <span id="github-date" class="fw-normal fst-italic">Uploaded ${uploadDate}</span></p>
+						<div class="d-flex flex-column mb-3 p-0">
+							<p class="text-xl fw-bold m-0 p-0">${item.name}</p>
+							<span id="github-date" class="fw-normal fst-italic p-0 m-0">Uploaded ${uploadDate}, Developed using ${language}</span>
+						</div>
 						<p style="text-indent: 25px; text-align: justify;">${item.description}</p>
 						<div class="d-flex flex-row justify-content-between">
 							<a href="${item.html_url}" target="_blank" class="github-card-button p-1">Visit Repository</a>
