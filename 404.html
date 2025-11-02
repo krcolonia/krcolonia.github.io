@@ -20,8 +20,8 @@
 	<div id="screen" class="m-0 p-2" style="background: black; width:60vw; height:80vh;">
 		<p class="h4">
 			<span class="cmdBlue">┌──(</span><span class="cmdGreen">krcolonia</span>@<span class="cmdGreen">PortfolioSite</span><span class="cmdBlue">) [</span><span class="cmdGreen">~</span><span class="cmdBlue">]</span><br>
-			<span class="cmdBlue">└─</span> $ cd ~/try-something-secret<br>
-			-bash: cd: home/krcolonia/try-something-secret: <span class="cmdRed">404 Page Not Found!</span><br><br>
+			<span class="cmdBlue">└─</span> $ cd ~/<span id="pageName1"></span><br>
+			-bash: cd: home/krcolonia/<span id="pageName2"></span>: <span class="cmdRed">Error 404: Page Not Found!</span><br><br>
 
 			<span class="cmdBlue">┌──(</span><span class="cmdGreen">krcolonia</span>@<span class="cmdGreen">PortfolioSite</span><span class="cmdBlue">) [</span><span class="cmdGreen">~</span><span class="cmdBlue">]</span><br>
 			<span class="cmdBlue">└─</span> echo 'Better get back to the home page!'<span class="blinkCursor w-1">.</span>
@@ -29,7 +29,14 @@
 	</div>
 
 	<script>
-		console.error("nice try chucklenuts, there ain't no secrets round these parts");
+		const current = window.location.href.substring(window.location.href.lastIndexOf('/') + 1)
+		const page1 = document.getElementById('pageName1')
+		const page2 = document.getElementById('pageName2')
+
+		page1.innerHTML = current
+		page2.innerHTML = current
+
+		console.error("nice try chucklenuts, there ain't no secrets round these parts")
 	</script>
 </body>
 </html>
