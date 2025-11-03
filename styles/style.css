@@ -37,12 +37,12 @@ body::before {
 	left: 0;
 	width: 100%;
 	height: 100%;
-	background-image: url('../images/desktop-background_v3.jpg');
+	background-image: url('../images/desktop_bg.jpg');
 	background-size: cover;
 	background-position: center;
 	background-repeat: no-repeat;
 	background-attachment: fixed;
-	filter: blur(2px) contrast(115%);
+	filter: blur(6px) contrast(115%);
 	z-index: -1;
 }
 
