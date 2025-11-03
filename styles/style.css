@@ -49,7 +49,7 @@ body::before {
 #loading-screen {
 	position: absolute;
 	font-family: "bender", monospace;
-	background-color: black;
+	background: black;
 	width:100vw;
 	height:100vh;
 	z-index: 9998;
@@ -119,24 +119,24 @@ body::before {
 
 .desktop-app:hover {
 	border: 1px solid var(--hoverBorder);
-	background-color:var(--hoverColor);
+	background:var(--hoverColor);
 }
 
 .desktop-app:active {
 	border: 1px solid var(--activeBorder);
-	background-color:var(--activeColor);
+	background:var(--activeColor);
 }
 
 .desktop-app-selected {
 	border: 1px solid var(--activeBorder);
-	background-color:var(--activeColor);
+	background:var(--activeColor);
 }
 
 .desktop-window {
 	position: absolute;
 	flex-flow: column;
 	z-index: 9;
-	background-color: rgb(35, 39, 43);
+	background: rgb(35, 39, 43);
 	border-radius: var(--desktopWindowRadius);
 	border: 1px solid black;
 	color:black;
@@ -157,7 +157,7 @@ body::before {
 	align-content:center;
 	height:40px;
 	cursor: move;
-	background-color: rgb(35, 39, 43);
+	background: rgb(35, 39, 43);
 	color: white;
 
 	border: 0px 0px 1px 0px black solid;
@@ -186,7 +186,7 @@ body::before {
 }
 
 .desktop-window-content {
-	background-color: #f1f1f1;
+	background: #f1f1f1;
 	font-family: "unageo";
 	font-size: 1.1rem;
 }
@@ -209,7 +209,11 @@ body::before {
 
 .taskbar {
 	height: var(--taskbarHeight);
-	background-color: black;
+	background: black;
+}
+
+#taskbar-apps {
+	transition: ease-in-out 0.2s;
 }
 
 #start-button {
@@ -228,16 +232,16 @@ body::before {
 }
 
 #start-button:hover {
-	background-color: #FFFFFF15;
+	background: #FFFFFF15;
 }
 
 .taskbar-icon {
-	background-color:black;
-	transition: background-color ease-in-out 5ms;
+	background:black;
+	transition: background ease-in-out 5ms;
 }
 
 .taskbar-icon:hover {
-	background-color: #FFFFFF15;
+	background: #FFFFFF15;
 }
 
 .taskbar-icon img {
@@ -263,21 +267,35 @@ body::before {
 	border-radius: 8px 8px 0px 0px;
 }
 
-#taskbar-apps {
-	transition: ease-in-out 0.2s;
+#commit-hist {
+	border-radius: 0;
+	background: #393E46;
+}
+
+#commit-hist img {
+	filter: invert(100%) contrast(150%);
+	width: 100%;
 }
 
 #about-content {
 	background: #dee2e6;
 	border-radius: 0px 0px 8px 8px;
 	
-	height: 30rem;
+	/* height: 30rem; */
+}
+
+#about-content p {
+	text-indent: 1cm;
+	text-align: justify;
+	text-justify: inter-word;
+	padding: 0;
+	margin: 0;
 }
 
 /* Github Project Style One:  */
 
 .github-card {
-	background-color: #393E46;
+	background: #393E46;
 	border: 1px solid #222831;
 
 	color: white;
@@ -285,7 +303,7 @@ body::before {
 }
 
 .github-card-button {
-	background-color: #5C8374;
+	background: #5C8374;
 	border: 1px solid #9EC8B9;
 	border-radius: 4px;
 

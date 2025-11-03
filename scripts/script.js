@@ -260,7 +260,7 @@ if (window.innerWidth < 768) {
 // * User Guide (currently unused because I think it should go unused...? kept in case i change my mind aaaa)
 const guideContent = `
 <h3 class="fw-bold" align="center">Welcome to Kurt Colonia's Portfolio!</h3>
-<p class="m-0 p-0 h-100 w-100" style="text-indent: 25px text-align: justify text-justify: inter-word">
+<p class="m-0 p-0 h-100 w-100" style="text-indent: 25px; text-align: justify; text-justify: inter-word;">
 	This is the current iteration/redesign of my web portfolio! I wanted to make my portfolio look like a desktop environment to make my portfolio a bit more unique compared to other people's portfolio.<br><br>
 	If you'd like to view a more traditional style of web portfolio, <a href="./portfolio">Click here!</a>
 </p>
@@ -271,16 +271,32 @@ const guideHeight = '65'
 // * About Me
 const aboutContent = `
 <div class="d-flex flex-row py-4 justify-content-center align-items-center gap-3" id="about-header">
-	<img src="./images/PFP_suit.png" class="rounded-circle m-0 p-0" style="width: 20%; border: 2px solid black">
+	<img src="./images/PFP_suit.png" class="rounded-circle m-0 p-0" style="width: 20%; border: 2px solid black;">
 	<div class="d-flex flex-column align-items-center" style="text-shadow: 2px 2px 2px black">
-		<h1 class="fw-bold m-0 p-0">&lt;krColonia&gt;</h1>
+		<h1 class="fw-bold m-0 p-0">Kurt Robin Colonia</h1>
 	</div>
 </div>
+<div class="p-4 m-0 d-flex justify-content-center" id="commit-hist">
+	<img src="http://ghchart.rshah.org/861198/krcolonia" alt="krcolonia's Github commit history" align="center"/>
+</div>
 <div id="about-content" class="p-3 m-0">
-	<h3 class="p-0 m-0" align="center">Hello world, I'm Kurt!</h3><br>
-	<p class="p-0 m-0">I like to program and work on stuff, whether it be full-stack web apps, mobile apps, or game development :D</p>
+	<h3 class="p-0 m-0 mb-2" align="center">Hello World, I'm Kurt!</h3>
+	<p>I'm an <b>IT graduate</b> and <b>developer</b> with experience on web and mobile applications.<br class="mb-3">My tech stack includes:</p>
+	<ul>
+		<li>HTML5, CSS3, JavaScript, TypeScript, and PHP</li>
+		<li>Laravel, React.JS + Vite</li>
+		<li>Tailwind CSS, Bootstrap 5</li>
+		<li>Android Studio, Kotlin</li>
+		<li>Git with Github and Gitlab</li>
+	</ul>
 
-	<!--<img src="http://ghchart.rshah.org/krcolonia" alt="krcolonia's Github commit history" />-->
+	<p>Other than programming and developing applications, I've also had the chance to work with:</p>
+	<ul>
+		<li>Database Management</li>
+		<li>REST API design and integration</li>
+		<li>Basic web penetration testing</li>
+		<li>Mobile game development with Godot</li>
+	</ul>
 </div>
 `
 const aboutWidth = '50'
@@ -342,7 +358,7 @@ fetch('https://api.github.com/users/krcolonia/repos')
 
 				projectContent = `
 				<div class="d-flex flex-column gap-3 p-0 m-0">
-				${projectCard}
+					${projectCard}
 				</div>
 				`
 			}
