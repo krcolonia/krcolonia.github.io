@@ -312,7 +312,7 @@ fetch('https://api.github.com/users/krcolonia/repos')
 	.then(response => response.json())
 	.then(data => 
 		data.forEach(item => {
-			const repos = ["JRSK-Booking", "CodeBreakers", "Yummly", "GameSRC", "Java_"]
+			const repos = ["JRSK-Booking", "CodeBreakers", "Yummly", "GameSRC", "Java_", "krcolonia.github.io"]
 
 			if(repos.some(repo => item.name.includes(repo))) {
 				let homepage = ``
