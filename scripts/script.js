@@ -6,10 +6,8 @@
 ? check it here: https://www.sharyap.com/
 */
 
-// TODO -> make the function flexible towards multiple windows in the case that I add in all the other content
-
-//#region
 // ? Mouse Click Sounds
+//#region
 var canClick = false;
 const leftClickSound = new Audio('../sounds/mouseleft.ogg')
 const rightClickSound = new Audio('../sounds/mouseright.ogg')
@@ -29,9 +27,8 @@ document.addEventListener('contextmenu', () => {
 });
 //#endregion
 
+// ? Draggable Window object
 //#region
-// ? Draggable Window code
-
 let activeWindows = [];
 
 class DraggableWindow {
@@ -145,8 +142,78 @@ class DraggableWindow {
 }
 //#endregion
 
+// ? Loading Screen
 //#region
+async function loadingScreen() {
+	const loadingElement = document.getElementById('loading-screen');
+	const loadingIcon = document.getElementById('loading-icon');
+	const loadingText = document.getElementById('loading-text');
+	const loadingPfp = document.getElementById('loading-pfp')
+
+	await new Promise(resolve => setTimeout(resolve, 5500))
+	
+	loadingPfp.classList.remove('opacity-0');
+	loadingPfp.classList.add('opacity-100');
+
+	loadingIcon.classList.remove('opacity-100');
+	loadingIcon.classList.add('opacity-0');
+
+	loadingText.innerText = "Welcome back, Kurt Colonia."
+
+	await new Promise(resolve => setTimeout(resolve, 1500))
+
+	loadingElement.classList.remove('opacity-100');
+	loadingElement.classList.add('opacity-0');
+
+	await new Promise(resolve => setTimeout(resolve, 1000))
+
+	loadingElement.classList.remove('d-flex');
+	loadingElement.classList.add('d-none');
+	canClick = true;
+
+	new DraggableWindow(
+	'guide',
+	'User Guide',
+	guideContent,
+	guideWidth,
+	guideHeight
+	);
+}
+
+loadingScreen()
+//#endregion
+
+// ? Taskbar Date and Time section
+//#region
+function startTime() {
+	const today = new Date();
+	var hours = today.getHours();
+	var minutes = today.getMinutes();
+	var seconds = today.getSeconds();
+	var ampm = hours >= 12 ? 'PM' : 'AM';
+	hours = hours % 12;
+	hours = hours ? hours : 12;
+	minutes = minutes < 10 ? '0'+minutes : minutes;
+	// seconds = seconds < 10 ? '0'+seconds: seconds;
+	// document.getElementById('taskbar-clock').innerHTML = hours + ':' + minutes + ':' + seconds + ' ' + ampm;
+	document.getElementById('taskbar-clock').innerHTML = hours + ':' + minutes + ' ' + ampm;
+	setTimeout(startTime, 1000);
+}
+
+startTime()
+
+document.getElementById('currentYear').textContent = new Date().getFullYear();
+//#endregion
+
+// ? Automatic redirect if on mobile screens
+//#region
+if (window.innerWidth < 768) {
+	window.location.replace('./portfolio');
+}
+//#endregion
+
 // ? Desktop App Content
+//#region
 const guideContent = `
 <h3 class="fw-bold" align="center">Welcome to Kurt Colonia's Portfolio!</h3>
 <p class="m-0 p-0 h-100 w-100" style="text-indent: 25px; text-align: justify; text-justify: inter-word;">
@@ -163,7 +230,7 @@ document.getElementById('guide-icon').addEventListener('click', function() {
 			'User Guide',
 			guideContent,
 			guideWidth,
-			guideHeight
+			guideHeight,
 		);
 	}
 });
@@ -227,10 +294,11 @@ fetch('https://api.github.com/users/krcolonia/repos')
 
 				projectContent += `
 					<div class="p-3 m-0 github-card" id="${item.name}">
-						<div class="d-flex flex-column mb-3 p-0">
+						<div class="d-flex flex-row justify-content-between m-0 p-0">
 							<p class="text-xl fw-bold m-0 p-0">${item.name}</p>
-							<span id="github-date" class="fw-normal fst-italic p-0 m-0">Uploaded ${uploadDate}, Developed using ${language}</span>
+							<span id="github-date" class="fw-normal fst-italic p-0 m-0">Developed using ${language}</span>
 						</div>
+						<hr class="m-2 p-0">
 						<p style="text-indent: 25px; text-align: justify;">${item.description}</p>
 						<div class="d-flex flex-row justify-content-between">
 							<a href="${item.html_url}" target="_blank" class="github-card-button p-1">Visit Repository</a>
@@ -308,71 +376,3 @@ document.getElementById('gmail-icon').addEventListener('click', function() {
 	);
 })
 //#endregion
-
-//#region
-async function loadingScreen() {
-	const loadingElement = document.getElementById('loading-screen');
-	const loadingIcon = document.getElementById('loading-icon');
-	const loadingText = document.getElementById('loading-text');
-	const loadingPfp = document.getElementById('loading-pfp')
-
-	await new Promise(resolve => setTimeout(resolve, 5500))
-	
-	loadingPfp.classList.remove('opacity-0');
-	loadingPfp.classList.add('opacity-100');
-
-	loadingIcon.classList.remove('opacity-100');
-	loadingIcon.classList.add('opacity-0');
-
-	loadingText.innerText = "Welcome back, Kurt Colonia."
-
-	await new Promise(resolve => setTimeout(resolve, 1500))
-
-	loadingElement.classList.remove('opacity-100');
-	loadingElement.classList.add('opacity-0');
-
-	await new Promise(resolve => setTimeout(resolve, 1000))
-
-	loadingElement.classList.remove('d-flex');
-	loadingElement.classList.add('d-none');
-	canClick = true;
-
-	new DraggableWindow(
-	'guide',
-	'User Guide',
-	guideContent,
-	guideWidth,
-	guideHeight
-	);
-}
-
-loadingScreen()
-//#endregion
-
-//#region
-// ? Taskbar Date and Time section
-function startTime() {
-	const today = new Date();
-	var hours = today.getHours();
-	var minutes = today.getMinutes();
-	var seconds = today.getSeconds();
-	var ampm = hours >= 12 ? 'PM' : 'AM';
-	hours = hours % 12;
-	hours = hours ? hours : 12;
-	minutes = minutes < 10 ? '0'+minutes : minutes;
-	// seconds = seconds < 10 ? '0'+seconds: seconds;
-	// document.getElementById('taskbar-clock').innerHTML = hours + ':' + minutes + ':' + seconds + ' ' + ampm;
-	document.getElementById('taskbar-clock').innerHTML = hours + ':' + minutes + ' ' + ampm;
-	setTimeout(startTime, 1000);
-}
-
-startTime()
-//#endregion
-document.getElementById('currentYear').textContent = new Date().getFullYear();
-
-if (window.innerWidth < 768) {
-	console.log("FAH!")
-	window.location.replace('./portfolio');
-}
-
-// TODO -> i might actually steal (borrow) some code from w3schools again lmao. I love programming https://www.w3schools.com/html/html5_draganddrop.asp
