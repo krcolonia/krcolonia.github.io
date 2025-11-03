@@ -1,0 +1,77 @@
+@import url('main.css');
+
+:root {
+	--cmdBlue: #0000ff;
+	--cmdGreen: #00ff00;
+	--cmdRed: #ff0000;
+}
+
+.cmdBlue {
+	color: var(--cmdBlue);
+}
+
+.cmdGreen {
+	color: var(--cmdGreen);
+}
+
+.cmdRed {
+	color: var(--cmdRed);
+}
+
+body {
+	display: flex;
+	flex-flow: column;
+	overflow:hidden;
+	background:rgb(36, 32, 43);
+	font-family: "moderndos";
+
+	line-height: 19px;
+}
+
+#screen {
+	border: 8px solid rgb(53, 48, 62);
+	border-radius:0px 0px 16px 16px;
+
+	background: black;
+	width:60vw; height:80vh;
+}
+
+.blinkCursor {
+	background: white;
+
+	animation: blinkCursor 0.8s linear infinite;
+	animation-play-state: running;
+}
+
+p {
+	user-select: none;
+	-moz-user-select: none;
+}
+
+@keyframes blinkCursor {
+  0% {
+    opacity: 1;
+  }
+
+  49% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0;
+  }
+
+  99% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+@media (max-width: 1365px) {
+	#screen {
+		width:90vw; height:90vh;
+	}
+}

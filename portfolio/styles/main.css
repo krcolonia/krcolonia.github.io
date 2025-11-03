@@ -1,0 +1,76 @@
+/* 
+  #161A30 -> Dark Gunmetal
+  #31304D -> Jacarta
+  #B6BBC4 -> gray (X11)
+  #F0ECE5 -> Alabaster
+ */
+
+:root {
+  --DarkGunmetal: #161A30;
+  --Jacarta: #31304D;
+  --GrayX11: #B6BBC4;
+  --Alabaster: #F0ECE5;
+	/* JetBrains-Styled Color Palette for text */
+	--JBKeyword:#cc7833;
+	--JBVarName:#ffc66d;
+	--JBInteger:#6897bb;
+	--JBString:#629755;
+	--JBVarAttr:#9876aa;
+}
+
+@font-face {
+  font-family: 'bender';
+  src: url('../fonts/bender.woff2') format('woff2'),
+    url('../fonts/bender.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'jetbrainsmono';
+  src: 
+		url('../fonts/jetbrainsmono.woff') format('woff'),
+		url('../fonts/jetbrainsmono.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'moderndos';
+  src: 
+		url('../fonts/moderndos.woff') format('woff'),
+		url('../fonts/moderndos.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'unageo';
+  src: 
+		url('../fonts/unageo.woff') format('woff'),
+		url('../fonts/unageo.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}
+
+
+html {
+	scroll-behavior: smooth;
+}
+
+body {
+	margin: 0;
+	padding: 0;
+	position: relative;
+	/* font-family: 'bender', monospace; */
+	min-height: 100vh;
+
+	background-color: black;
+
+	scrollbar-width: thin;
+	/* scrollbar-color: transparent transparent; */
+	/* -ms-overflow-style: none;
+	overflow: hidden; */
+
+	color: white;
+}
