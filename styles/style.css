@@ -286,7 +286,7 @@ body::before {
 	color: white;
 }
 
-#github-date {
+.github-details {
 	font-size: 0.8rem;
 }
 
