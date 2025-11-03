@@ -19,12 +19,13 @@ document.addEventListener('click', () => {
 	}
 })
 
-document.addEventListener('contextmenu', () => {
+document.addEventListener('contextmenu', (e) => {
 	if(canClick) {
 		rightClickSound.currentTime = 0
 		rightClickSound.play()
 	}
-})
+	e.preventDefault() 
+}, false)
 //#endregion
 
 // ? Draggable Window object
@@ -51,6 +52,7 @@ class DraggableWindow {
 		const windowElement = document.createElement('div')
 		windowElement.id = this.id
 		windowElement.className = 'desktop-window'
+		windowElement.classList.add('d-flex')
 		windowElement.style.width = width + 'vw'
 		windowElement.style.height = height + 'vh'
 		windowElement.style.opacity = 0
@@ -61,28 +63,27 @@ class DraggableWindow {
 						<img src="./images/desktop-icons/${icon}.png" class="desktop-window-icon h-100"/><span>${title}</span>
 				</div>
 				<div class="p-2 d-flex justify-content-end align-items-center">
-					<button class="close-window d-flex border-0 bg-transparent h-100">
+					<button class="window-actions d-flex border-0 bg-transparent h-100" id="minimize-window">
+						<img src="./images/minimize.png" class="h-100">
+					</button>
+					<button class="window-actions d-flex border-0 bg-transparent h-100" id="close-window">
 						<img src="./images/close.png" class="h-100">
 					</button>
 				</div>
 			</div>
 			<div class="desktop-window-content flex-grow-1 p-4 ${scrollStyle}">${content}</div>
 		`
-		// let taskbarButton = `
-		// <button class="taskbar-icon border-0 h-100 p-2" id="taskbar-${icon}">
-		// 	<img src="./images/desktop-icons/${icon}.png" class="h-100">
-		// </button>`
 
 		const taskbarButton = document.createElement('button')
 		taskbarButton.className = 'taskbar-icon border-0 h-100 p-2'
 		taskbarButton.id = `taskbar-${icon}`
-		taskbarButton.innerHTML = `<img src="./images/desktop-icons/${icon}.png" class="h-100">`
+		taskbarButton.innerHTML = `<img src="./images/desktop-icons/${icon}.png" class="h-100" style="padding:2px">`
 		taskbarContainer.appendChild(taskbarButton)
 
 		activeWindows.push(title)
 		document.body.appendChild(windowElement)
 
-		const closeButton = windowElement.querySelector('.close-window')
+		const closeButton = windowElement.querySelector('#close-window')
 		closeButton.addEventListener('click', () => {
 			windowElement.remove()
 			document.getElementById(`taskbar-${icon}`).remove()
@@ -93,10 +94,20 @@ class DraggableWindow {
 			}
 		})
 
+		const minButton = windowElement.querySelector('#minimize-window')
+		minButton.addEventListener('click', () => {
+			windowElement.classList.remove('d-flex')
+			windowElement.classList.add('d-none')
+		})
+
 		const taskbarIcon = document.getElementById(`taskbar-${icon}`)
 
 		taskbarIcon.addEventListener('mousedown', () => {
 			this.bringToFront()
+			if(windowElement.classList.contains('d-none')) {
+				windowElement.classList.remove('d-none')
+				windowElement.classList.add('d-flex')
+			}
 		})
 
 		const windowWidth = windowElement.offsetWidth
@@ -208,7 +219,8 @@ async function loadingScreen() {
 	'About Me',
 	aboutContent,
 	aboutWidth,
-	aboutHeight
+	aboutHeight,
+	true
 	)
 }
 
@@ -258,24 +270,26 @@ const guideHeight = '65'
 
 // * About Me
 const aboutContent = `
-<div class="d-flex flex-row p-2 justify-content-center align-items-center gap-3" id="about-header">
-	<img src="./images/PFP.png" class="rounded-circle m-0 p-0" style="width: 15%; border: 2px solid black">
-	<div class="d-flex flex-column mt-3">
-		<h3 class="fw-bold">Kurt Robin Colonia</h3>
-		<p class="m-0 p-0">Full-Stack Web Developer</p>
+<div class="d-flex flex-row py-4 justify-content-center align-items-center gap-3" id="about-header">
+	<img src="./images/PFP_suit.png" class="rounded-circle m-0 p-0" style="width: 20%; border: 2px solid black">
+	<div class="d-flex flex-column align-items-center" style="text-shadow: 2px 2px 2px black">
+		<h1 class="fw-bold m-0 p-0">&lt;krColonia&gt;</h1>
 	</div>
 </div>
 <div id="about-content" class="p-3 m-0">
-	<p style="text-center">Hello World! I'm Kurt, a Full Stack Web Developer</p>
+	<h3 class="p-0 m-0" align="center">Hello world, I'm Kurt!</h3><br>
+	<p class="p-0 m-0">I like to program and work on stuff, whether it be full-stack web apps, mobile apps, or game development :D</p>
+
+	<!--<img src="http://ghchart.rshah.org/krcolonia" alt="krcolonia's Github commit history" />-->
 </div>
 `
-const aboutWidth = '75'
+const aboutWidth = '50'
 const aboutHeight = '80'
 
 // * My Projects
 let projectCard = ``
 let projectContent = ``
-let projectWidth = '40'
+let projectWidth = '60'
 let projectHeight = '65'
 // ? github rest api for fetching my github repos
 fetch('https://api.github.com/users/krcolonia/repos')
@@ -341,7 +355,7 @@ const contactContent = `
 <p class="m-0 p-0 w-100">content</p>
 `
 const contactWidth = '45'
-const contactHeight = '45'
+const contactHeight = '50'
 
 // * My Resume
 const resumeContent = `
