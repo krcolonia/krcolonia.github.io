@@ -28,9 +28,59 @@ body {
 	line-height: 19px;
 }
 
+.desktop-window-header {
+	display:flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-content:center;
+	height:40px;
+	cursor: move;
+	background-color: rgb(35, 39, 43);
+	color: white;
+
+	border: 2px solid rgb(53, 48, 62);
+	border-radius:8px 8px 0px 0px;
+
+	cursor:default;
+	cursor:-moz-default;
+	cursor:-webkit-default;
+
+	font-weight: bold;
+}
+
+.desktop-window-header span {
+	margin-top:-2px;
+}
+
+.desktop-window-header span, .desktop-window-icon {
+	-moz-user-select: none;
+	user-select: none;
+	pointer-events: none;
+}
+
+.desktop-window-icon {
+	filter: contrast(200%) invert(100%);
+}
+
+.close-window {
+	padding: 2px;
+
+	cursor:pointer;
+	cursor:-moz-pointer;
+	cursor:-webkit-pointer;
+}
+
+.close-window img {
+	filter: invert(100%);
+}
+
+.close-window:hover {
+	filter: brightness(0) saturate(100%) invert(58%) sepia(67%) saturate(4522%) hue-rotate(323deg) brightness(101%) contrast(105%);
+}
+
 #screen {
-	border: 8px solid rgb(53, 48, 62);
-	border-radius:0px 0px 16px 16px;
+	border: 2px solid rgb(53, 48, 62);
+	border-radius:0px 0px 8px 8px;
 
 	background: black;
 	width:60vw; height:80vh;
