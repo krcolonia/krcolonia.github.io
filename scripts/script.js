@@ -36,13 +36,13 @@ const taskbarContainer = document.getElementById('taskbar-apps')
 class DraggableWindow {
 	static highestZ = 1000
 
-	constructor(icon, title, content, width, height, scrollable = false) {
+	constructor(icon, title, content, width, height, scrollable = false, padding = 3) {
 		this.id = `window-${Date.now()}-${Math.random()}`
-		this.element = this.createWindow(icon, title, content, width, height, scrollable)
+		this.element = this.createWindow(icon, title, content, width, height, padding, scrollable)
 		this.makeDraggable()
 	}
 
-	createWindow(icon, title, content, width, height, scrollable = false) {
+	createWindow(icon, title, content, width, height, padding, scrollable) {
 
 		let scrollStyle = ''
 		if (scrollable) {
@@ -71,7 +71,7 @@ class DraggableWindow {
 					</button>
 				</div>
 			</div>
-			<div class="desktop-window-content flex-grow-1 p-4 ${scrollStyle}">${content}</div>
+			<div class="desktop-window-content flex-grow-1 p-${padding} ${scrollStyle}">${content}</div>
 		`
 
 		const taskbarButton = document.createElement('button')
@@ -268,6 +268,9 @@ const guideContent = `
 const guideWidth = '70'
 const guideHeight = '65'
 
+// ? subtracts date of my first prof. exp to the current date so that i wont have to update this stuff manually
+let yearsExp = new Date().getFullYear() - new Date("2024-09-16").getFullYear()
+
 // * About Me
 const aboutContent = `
 <div class="d-flex flex-row py-4 justify-content-center align-items-center gap-3" id="about-header">
@@ -276,27 +279,33 @@ const aboutContent = `
 		<h1 class="fw-bold m-0 p-0">Kurt Robin Colonia</h1>
 	</div>
 </div>
-<div class="p-4 m-0 d-flex justify-content-center" id="commit-hist">
-	<img src="http://ghchart.rshah.org/861198/krcolonia" alt="krcolonia's Github commit history" align="center"/>
+<div class="p-0 m-0 d-flex flex-column justify-content-center align-items-center" id="commit-hist">
+	<p class="p-3 pb-1 m-0">My Github Commit History</p>
+	<img src="http://ghchart.rshah.org/861198/krcolonia" class="px-4 pb-4" alt="krcolonia's Github commit history" align="center"/>
 </div>
 <div id="about-content" class="p-3 m-0">
 	<h3 class="p-0 m-0 mb-2" align="center">Hello World, I'm Kurt!</h3>
-	<p>I'm an <b>IT graduate</b> and <b>developer</b> with experience on web and mobile applications.<br class="mb-3">My tech stack includes:</p>
-	<ul>
-		<li>HTML5, CSS3, JavaScript, TypeScript, and PHP</li>
-		<li>Laravel, React.JS + Vite</li>
-		<li>Tailwind CSS, Bootstrap 5</li>
-		<li>Android Studio, Kotlin</li>
-		<li>Git with Github and Gitlab</li>
-	</ul>
-
-	<p>Other than programming and developing applications, I've also had the chance to work with:</p>
-	<ul>
-		<li>Database Management</li>
-		<li>REST API design and integration</li>
-		<li>Basic web penetration testing</li>
-		<li>Mobile game development with Godot</li>
-	</ul>
+	<p>
+		I'm a ${new Date().getFullYear() - new Date("2002-12-20").getFullYear()}-year-old full stack web developer based in the Philippines, with over ${(yearsExp > 1) ? yearsExp+"+" : "a"} year${(yearsExp > 1) ? "s" : ""} of professional experience in the tech industry and a passion for building user-friendly software and applications.
+	</p><br>
+	<p>
+		I've worked on multiple web application projects utilizing ReactJS with Vite, Tailwind CSS, Bootstrap, jQuery AJAX, and the Laravel Framework, as well as Android development using Android Studio and Kotlin.
+		<br class="mb-3"><!-- My tech stack includes:
+		<ul>
+			<li>HTML5, CSS3, JavaScript, TypeScript, and PHP</li>
+			<li>Laravel, React.JS + Vite</li>
+			<li>Tailwind CSS, Bootstrap 5</li>
+			<li>Android Studio, Kotlin</li>
+			<li>Git with Github and Gitlab</li>
+		</ul> -->
+		Other than programming and developing applications, I've also had the chance to work with:
+		<ul>
+			<li>Database Management</li>
+			<li>REST API design and integration</li>
+			<li>Basic web penetration testing</li>
+			<li>Mobile game development with Godot</li>
+		</ul>
+	</p>
 </div>
 `
 const aboutWidth = '50'
@@ -305,14 +314,14 @@ const aboutHeight = '80'
 // * My Projects
 let projectCard = ``
 let projectContent = ``
-let projectWidth = '60'
+let projectWidth = '45'
 let projectHeight = '65'
 // ? github rest api for fetching my github repos
 fetch('https://api.github.com/users/krcolonia/repos')
 	.then(response => response.json())
 	.then(data => 
 		data.forEach(item => {
-			const repos = ["JRSK-Booking", "CodeBreakers", "Yummly", "GameSRC", "Java_", "krcolonia.github.io"]
+			const repos = ["JRSK", "CodeBreakers", "Yummly", "GameSRC", "Java_", "krcolonia.github.io"]
 
 			if(repos.some(repo => item.name.includes(repo))) {
 				let homepage = ``
@@ -348,7 +357,7 @@ fetch('https://api.github.com/users/krcolonia/repos')
 								<span class="github-details fw-normal fst-italic p-0 m-0">Developed using ${language}</span>
 							</div>
 						</div>
-						<p style="text-indent: 25px text-align: justify">${item.description}</p>
+						<p style="text-indent: 25px; text-align: justify;">${item.description}</p>
 						<div class="d-flex flex-row justify-content-between">
 							<a href="${item.html_url}" target="_blank" class="github-card-button p-1">Visit Repository</a>
 							${homepage}
@@ -368,17 +377,17 @@ fetch('https://api.github.com/users/krcolonia/repos')
 
 // * Contact Me
 const contactContent = `
-<p class="m-0 p-0 w-100">content</p>
+<p class="m-0 p-0 w-100">content to be added</p>
 `
 const contactWidth = '45'
 const contactHeight = '50'
 
 // * My Resume
 const resumeContent = `
-<embed src="./objects/Colonia_Resume.pdf" class="w-100 h-100" style="border-radius: 8px">
+<embed src="./objects/Colonia_Resume.pdf" class="w-100 h-100 m-0 p-0" style="border-radius: 8px;">
 `
 const resumeWidth = '50'
-const resumeHeight = '85'
+const resumeHeight = '90'
 
 document.getElementById('about-icon').addEventListener('click', function() {
 	if(!activeWindows.includes('About Me')) {

@@ -48,7 +48,7 @@ body::before {
 
 #loading-screen {
 	position: absolute;
-	font-family: "bender", monospace;
+	/* font-family: "bender", monospace; */
 	background: black;
 	width:100vw;
 	height:100vh;
@@ -64,6 +64,7 @@ body::before {
 
 #loading-screen h1 {
 	font-size: 5rem;
+	font-family: 'bender', monospace;
 }
 
 #loading-pfp {
@@ -138,7 +139,7 @@ body::before {
 	z-index: 9;
 	background: rgb(35, 39, 43);
 	border-radius: var(--desktopWindowRadius);
-	border: 1px solid black;
+	border: 2px solid black;
 	color:black;
 	overflow:hidden;
 
@@ -270,6 +271,8 @@ body::before {
 #commit-hist {
 	border-radius: 0;
 	background: #393E46;
+
+	color: white;
 }
 
 #commit-hist img {
@@ -278,7 +281,9 @@ body::before {
 }
 
 #about-content {
-	background: #dee2e6;
+	/* background: #dee2e6; */
+	background: #585f6c;
+	color: #dee2e6;
 	border-radius: 0px 0px 8px 8px;
 	
 	/* height: 30rem; */

@@ -63,6 +63,7 @@ body {
 	padding: 0;
 	position: relative;
 	/* font-family: 'bender', monospace; */
+	font-family: 'unageo', Helvetica;
 	min-height: 100vh;
 
 	background-color: black;
