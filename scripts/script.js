@@ -382,9 +382,10 @@ fetch('https://api.github.com/users/krcolonia/repos')
 // * Contact Me
 const contactContent = `
 <!-- <p class="m-0 p-0 w-100">content to be added</p> -->
-<div class="d-flex flex-column align-items-center py-2">
-	<h1 class="text-center">Have a project in mind or just wanna talk?</h1>
-	<p class="text-center">I seldom check messages on my socials, but I'm quite active in checking my email inbox!</p>
+<div class="d-flex flex-column justify-content-center align-items-center h-100">
+	<h1 class="text-center m-0 pb-2">Have a project in mind or just wanna talk?</h1>
+	<p class="text-center m-0 pb-3" style="font-size: 1.3rem;">Reach out via my email! I seldom check messages on my socials, but I'm quite active in checking my email inbox!</p>
+	<button id="send-email" class="p-0 px-2 m-0 github-card-button" style="font-size: 1.3rem;">Click here send me an email!</button>
 </div>
 `
 const contactWidth = '45'
@@ -436,6 +437,12 @@ document.getElementById('contact-icon').addEventListener('click', function() {
 			contactWidth,
 			contactHeight
 		)
+		document.getElementById('send-email').addEventListener('click', function() {
+			window.open(
+				'mailto:krcolonia@gmail.com', 
+				'_blank'
+			)
+		})
 	}
 })
 
