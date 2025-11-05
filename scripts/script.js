@@ -193,9 +193,9 @@ async function loadingScreen() {
 	loadingIcon.classList.remove('opacity-100')
 	loadingIcon.classList.add('opacity-0')
 
-	loadingText.innerText = "Welcome back, Kurt Colonia."
+	loadingText.innerText = "Welcome to krColonia's Portfolio"
 
-	await new Promise(resolve => setTimeout(resolve, 1500))
+	await new Promise(resolve => setTimeout(resolve, 2500))
 
 	loadingElement.classList.remove('opacity-100')
 	loadingElement.classList.add('opacity-0')
@@ -275,9 +275,9 @@ let yearsExp = new Date().getFullYear() - new Date("2024-09-16").getFullYear()
 const aboutContent = `
 <div class="d-flex flex-row py-4 justify-content-center align-items-center gap-3" id="about-header">
 	<img src="./images/PFP_suit.png" class="rounded-circle m-0 p-0" style="width: 20%; border: 2px solid black;">
-	<div class="d-flex flex-column align-items-center" style="text-shadow: 2px 2px 2px black">
-		<h1 class="fw-bold m-0 p-0">&lt;krColonia&gt;</h1>
-		<p><i class="fa-solid fa-location-dot"></i>Quezon City, Philipppines</p>
+	<div class="d-flex flex-column align-items-center">
+		<h1 class="fw-bold m-0 p-0 mt-3">&lt;krColonia&gt;</h1>
+		<p style="font-family:'unageo';"><i class="fa-solid fa-location-dot"></i> Quezon City, Philipppines</p>
 	</div>
 </div>
 <div class="p-0 m-0 d-flex flex-column justify-content-center align-items-center" id="commit-hist">
@@ -299,12 +299,12 @@ const aboutContent = `
 			<li>Android Studio, Kotlin</li>
 			<li>Git with Github and Gitlab</li>
 		</ul> -->
-		Other than programming and developing applications, I've also had the chance to work with:
+		Other than programming and developing web and mobile applications, I've also had the chance to work on projects with:
 		<ul>
 			<li>Database Management</li>
 			<li>REST API design and integration</li>
 			<li>Basic web penetration testing</li>
-			<li>Mobile game development with Godot</li>
+			<li>Mobile game development (Godot)</li>
 		</ul>
 	</p>
 	<p>
@@ -381,14 +381,22 @@ fetch('https://api.github.com/users/krcolonia/repos')
 
 // * Contact Me
 const contactContent = `
-<p class="m-0 p-0 w-100">content to be added</p>
+<!-- <p class="m-0 p-0 w-100">content to be added</p> -->
+<div class="d-flex flex-column align-items-center py-2">
+	<h1 class="text-center">Have a project in mind or just wanna talk?</h1>
+	<p class="text-center">I seldom check messages on my socials, but I'm quite active in checking my email inbox!</p>
+</div>
 `
 const contactWidth = '45'
 const contactHeight = '50'
 
 // * My Resume
 const resumeContent = `
-<embed src="./objects/Colonia_Resume.pdf" class="w-100 h-100 m-0 p-0" style="border-radius: 8px;">
+<!-- I reused the github card here because im too lazy to make a new style for the same design lol -->
+<div class="d-flex flex-row justify-content-center align-items-center github-card gap-2" id="resume-download-card">
+	<p class="p-0 m-0 my-4">Want a copy of my Résumé?</p>
+	<a class="p-0 px-2 m-0 my-4 github-card-button" href="./objects/Colonia_Resume.pdf" download="Colonia_Resume.pdf">Click here to grab one!</a>
+</div>
 `
 const resumeWidth = '50'
 const resumeHeight = '90'

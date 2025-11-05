@@ -266,10 +266,14 @@ body::before {
 	background-repeat: no-repeat;
 
 	border-radius: 8px 8px 0px 0px;
+	
+	user-select: none;
+	-moz-user-select: none;
 }
 
 #about-header h1 {
 	font-size: 3rem;
+	text-shadow: 2px 2px 2px black;
 }
 
 #commit-hist {
@@ -322,6 +326,10 @@ body::before {
 
 .github-details {
 	font-size: 0.8rem;
+}
+
+#resume-download-card {
+	font-size: 1.5rem;
 }
 
 /* Github Project Style Two: Electric Boogaloo */
