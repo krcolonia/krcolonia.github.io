@@ -268,6 +268,10 @@ body::before {
 	border-radius: 8px 8px 0px 0px;
 }
 
+#about-header h1 {
+	font-size: 3rem;
+}
+
 #commit-hist {
 	border-radius: 0;
 	background: #393E46;

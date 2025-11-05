@@ -276,7 +276,8 @@ const aboutContent = `
 <div class="d-flex flex-row py-4 justify-content-center align-items-center gap-3" id="about-header">
 	<img src="./images/PFP_suit.png" class="rounded-circle m-0 p-0" style="width: 20%; border: 2px solid black;">
 	<div class="d-flex flex-column align-items-center" style="text-shadow: 2px 2px 2px black">
-		<h1 class="fw-bold m-0 p-0">Kurt Robin Colonia</h1>
+		<h1 class="fw-bold m-0 p-0">&lt;krColonia&gt;</h1>
+		<p><i class="fa-solid fa-location-dot"></i>Quezon City, Philipppines</p>
 	</div>
 </div>
 <div class="p-0 m-0 d-flex flex-column justify-content-center align-items-center" id="commit-hist">
@@ -305,6 +306,9 @@ const aboutContent = `
 			<li>Basic web penetration testing</li>
 			<li>Mobile game development with Godot</li>
 		</ul>
+	</p>
+	<p>
+
 	</p>
 </div>
 `
