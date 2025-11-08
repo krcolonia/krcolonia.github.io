@@ -426,8 +426,6 @@ get(query(ref(db, 'emp'), orderByKey(), limitToLast(100))).then(snapshot => {
 			}
 		})
 
-		console.log(exp)
-
 		exp.forEach(item => {
 			resumeCard += `
 					<div class="p-3 m-0 github-card" id="${item.id}">
