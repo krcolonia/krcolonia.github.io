@@ -507,10 +507,10 @@ document.getElementById('resume-icon').addEventListener('click', function() {
 </div>
 `
 
-	if(!activeWindows.includes('My Résumé')) {
+	if(!activeWindows.includes('Work Experience')) {
 		new DraggableWindow(
 			'file', 
-			'My Résumé', 
+			'Work Experience', 
 			resumeContent,
 			resumeWidth,
 			resumeHeight,
