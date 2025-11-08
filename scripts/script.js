@@ -6,6 +6,9 @@
 ? check it here: https://www.sharyap.com/
 */
 
+import { db } from './FirebaseInit.js'
+import { ref, get, query, orderByKey, limitToLast } from 'https://www.gstatic.com/firebasejs/12.5.0/firebase-database.js'
+
 // ? Mouse Click Sounds
 //#region
 var canClick = false
@@ -206,14 +209,6 @@ async function loadingScreen() {
 	loadingElement.classList.add('d-none')
 	canClick = true
 
-	// new DraggableWindow(
-	// 'guide',
-	// 'User Guide',
-	// guideContent,
-	// guideWidth,
-	// guideHeight
-	// )
-
 	new DraggableWindow(
 	'scrapbook',
 	'About Me',
@@ -317,10 +312,11 @@ const aboutHeight = '80'
 
 // * My Projects
 let projectCard = ``
+
 let projectContent = ``
 let projectWidth = '45'
 let projectHeight = '65'
-// ? github rest api for fetching my github repos
+
 fetch('https://api.github.com/users/krcolonia/repos')
 	.then(response => response.json())
 	.then(data => 
@@ -354,7 +350,7 @@ fetch('https://api.github.com/users/krcolonia/repos')
 				projectCard += `
 					<div class="p-3 m-0 github-card" id="${item.name}">
 						<div class="d-flex flex-column m-0 p-0">
-							<p class="text-xl fw-bold m-0 p-0">${item.name}</p>
+							<p class="fw-bold m-0 p-0">${item.name}</p>
 							<hr class="my-2 p-0">
 							<div class="d-flex flex-row justify-content-between mb-3">
 								<span class="github-details fw-normal fst-italic p-0 m-0">Uploaded ${uploadDate}</span>
@@ -367,12 +363,6 @@ fetch('https://api.github.com/users/krcolonia/repos')
 							${homepage}
 						</div>
 					</div>
-				`
-
-				projectContent = `
-				<div class="d-flex flex-column gap-3 p-0 m-0">
-					${projectCard}
-				</div>
 				`
 			}
 		})
@@ -392,15 +382,72 @@ const contactWidth = '45'
 const contactHeight = '50'
 
 // * My Resume
-const resumeContent = `
-<!-- I reused the github card here because im too lazy to make a new style for the same design lol -->
-<div class="d-flex flex-row justify-content-center align-items-center github-card gap-2" id="resume-download-card">
-	<p class="p-0 m-0 my-4">Want a copy of my Résumé?</p>
-	<a class="p-0 px-2 m-0 my-4 github-card-button" href="./objects/Colonia_Resume.pdf" download="Colonia_Resume.pdf">Click here to grab one!</a>
-</div>
-`
+let resumeCard = ``
+let resumeContent = ``
 const resumeWidth = '50'
 const resumeHeight = '90'
+
+const exp = [];
+// ? github rest api for fetching my github repos
+get(query(ref(db, 'emp'), orderByKey(), limitToLast(100))).then(snapshot => {
+	if(snapshot.exists) {
+		snapshot.forEach(item => {
+			if(item.key != 'lastId') {
+				let startDate = item.val().start;
+				let endDate = item.val().end;
+
+				if(startDate) {
+					const [startMonth, startYear] = item.val().start.split('-')
+					startDate = new Date(startYear, startMonth-1).toLocaleDateString('en-US', 
+					{ 
+						year: 'numeric', 
+						month: 'long' 
+					});
+				}
+
+				if(endDate != 'Present' && endDate) {
+					const [endMonth, endYear] = endDate.split('-')
+					endDate = new Date(endYear, endMonth-1).toLocaleDateString('en-US', 
+					{ 
+						year: 'numeric', 
+						month: 'long' 
+					});
+				}
+				
+				exp.unshift({
+					id: item.val().id ? item.val().id : '[no data]',
+					title: item.val().title ? item.val().title : '[no data]',
+					empType: item.val().empType ? item.val().empType : '[no data]',
+					company: item.val().company ? item.val().company : '[no data]',
+					start: startDate ? startDate : '[no data]',
+					end: endDate ? endDate : '[no data]',
+					description: item.val().description ? item.val().description : '[no data]',
+				})
+			}
+		})
+
+		console.log(exp)
+
+		exp.forEach(item => {
+			resumeCard += `
+					<div class="p-3 m-0 github-card" id="${item.id}">
+						<div class="d-flex flex-column m-0 p-0">
+							<div class="d-flex flex-row gap-2 justify-content-start align-items-end">
+								<p class="fw-bold m-0 p-0">${item.title}</p>
+								<p class="m-0 p-0 fst-italic" style="font-size: 0.85rem;">${item.empType}</p>
+							</div>
+							<hr class="my-2 p-0">
+							<div class="d-flex flex-row justify-content-start gap-4 mb-3">
+								<span class="github-details fw-normal fst-italic p-0 m-0">${item.start} - ${item.end}</span>
+								<span class="github-details fw-normal fst-italic p-0 m-0"></span>
+							</div>
+						</div>
+						<p style="text-indent: 25px; text-align: justify;">${item.description}</p>
+					</div>
+				`
+		})
+	}
+})
 
 document.getElementById('about-icon').addEventListener('click', function() {
 	if(!activeWindows.includes('About Me')) {
@@ -416,6 +463,11 @@ document.getElementById('about-icon').addEventListener('click', function() {
 })
 
 document.getElementById('project-icon').addEventListener('click', function() {
+	projectContent = `
+				<div class="d-flex flex-column gap-3 p-0 m-0">
+					${projectCard}
+				</div>
+				`
 	if(!activeWindows.includes('My Projects')) {
 		new DraggableWindow(
 			'projects', 
@@ -447,13 +499,24 @@ document.getElementById('contact-icon').addEventListener('click', function() {
 })
 
 document.getElementById('resume-icon').addEventListener('click', function() {
+	resumeContent = `
+<div class="d-flex flex-column gap-2">
+	${resumeCard}
+	<div class="d-flex flex-row justify-content-center align-items-center github-card gap-2" id="resume-download-card">
+		<p class="p-0 m-0 my-4">Want a copy of my Résumé?</p>
+		<a class="p-0 px-2 m-0 my-4 github-card-button" href="./objects/Colonia_Resume.pdf" download="Colonia_Resume.pdf">Click here to grab one!</a>
+	</div>
+</div>
+`
+
 	if(!activeWindows.includes('My Résumé')) {
 		new DraggableWindow(
 			'file', 
 			'My Résumé', 
 			resumeContent,
 			resumeWidth,
-			resumeHeight
+			resumeHeight,
+			true
 		)
 	}
 })
