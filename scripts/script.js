@@ -432,7 +432,7 @@ get(query(ref(db, 'emp'), orderByKey(), limitToLast(100))).then(snapshot => {
 						<div class="d-flex flex-column m-0 p-0">
 							<div class="d-flex flex-row gap-2 justify-content-start align-items-end">
 								<p class="fw-bold m-0 p-0">${item.title}</p>
-								<p class="m-0 p-0 fst-italic" style="font-size: 0.85rem;">${item.empType}</p>
+								<p class="m-0 p-0 fst-italic" style="font-size: 0.85rem;">${item.company}, ${item.empType}</p>
 							</div>
 							<hr class="my-2 p-0">
 							<div class="d-flex flex-row justify-content-start gap-4 mb-3">
