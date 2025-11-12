@@ -97,8 +97,9 @@ body::before {
 }
 
 .context-menu-item {
-    padding: 8px 16px;
+    padding: 4px 8px;
     cursor: pointer;
+	font-size: 0.9rem;
 }
 
 .context-menu-item:hover {
