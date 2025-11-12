@@ -242,6 +242,36 @@ startTime()
 document.getElementById('currentYear').textContent = new Date().getFullYear()
 //#endregion
 
+// ? Taskbar Menu
+//#region
+let startMenu = document.getElementById('start-menu')
+let startMenuScreen = document.getElementById('start-menuScreen')
+document.getElementById('start-button').addEventListener('mousedown', function() {
+	if(startMenu.classList.contains('d-none')) {
+		startMenu.classList.remove('d-none')
+		startMenu.classList.add('d-flex')
+		startMenuScreen.classList.remove('d-none')
+		startMenuScreen.classList.add('d-flex')
+	}
+	else {
+		startMenu.classList.remove('d-flex')
+		startMenu.classList.add('d-none')
+		startMenuScreen.classList.remove('d-flex')
+		startMenuScreen.classList.add('d-none')
+	}
+})
+
+startMenuScreen.addEventListener('mousedown', function() {
+	if(startMenuScreen.classList.contains('d-flex')) {
+		startMenu.classList.remove('d-flex')
+		startMenu.classList.add('d-none')
+		startMenuScreen.classList.remove('d-flex')
+		startMenuScreen.classList.add('d-none')
+	}
+})
+
+//#endregion
+
 // ? Automatic redirect if on mobile screens
 //#region
 if (window.innerWidth < 768) {
@@ -374,7 +404,7 @@ const contactContent = `
 <!-- <p class="m-0 p-0 w-100">content to be added</p> -->
 <div class="d-flex flex-column justify-content-center align-items-center h-100">
 	<h1 class="text-center m-0 pb-2">Have a project in mind or just wanna talk?</h1>
-	<p class="text-center m-0 pb-3" style="font-size: 1.3rem;">Reach out via my email! I seldom check messages on my socials, but I'm quite active in checking my email inbox!</p>
+	<p class="text-center m-0 pb-3" style="font-size: 1.3rem;">Reach out via my email! I seldomly check direct messages on my socials, but I'm quite active in checking my email inbox!</p>
 	<button id="send-email" class="p-0 px-2 m-0 github-card-button" style="font-size: 1.3rem;">Click here send me an email!</button>
 </div>
 `
@@ -500,9 +530,9 @@ document.getElementById('resume-icon').addEventListener('click', function() {
 	resumeContent = `
 <div class="d-flex flex-column gap-2">
 	${resumeCard}
-	<div class="d-flex flex-row justify-content-center align-items-center github-card gap-2" id="resume-download-card">
+	<div class="d-flex flex-row justify-content-between px-5 align-items-center github-card gap-2" id="resume-download-card">
 		<p class="p-0 m-0 my-4">Want a copy of my Résumé?</p>
-		<a class="p-0 px-2 m-0 my-4 github-card-button" href="./objects/Colonia_Resume.pdf" download="Colonia_Resume.pdf">Click here to grab one!</a>
+		<a class="p-0 m-0 my-4 github-card-button" href="./objects/Colonia_Resume.pdf" download="Colonia_Resume.pdf">Click here to grab one!</a>
 	</div>
 </div>
 `
