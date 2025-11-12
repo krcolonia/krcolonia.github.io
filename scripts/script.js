@@ -9,26 +9,42 @@
 import { db } from './FirebaseInit.js'
 import { ref, get, query, orderByKey, limitToLast } from 'https://www.gstatic.com/firebasejs/12.5.0/firebase-database.js'
 
-// ? Mouse Click Sounds
+// ? Mouse Click Events
 //#region
 var canClick = false
 const leftClickSound = new Audio('../sounds/mouseleft.ogg')
 const rightClickSound = new Audio('../sounds/mouseright.ogg')
+
+const contextMenu = document.getElementById('customContextMenu')
 
 document.addEventListener('click', () => {
 	if(canClick) {
 		leftClickSound.currentTime = 0
 		leftClickSound.play()
 	}
+
+	contextMenu.style.display = 'none';
 })
 
 document.addEventListener('contextmenu', (e) => {
 	if(canClick) {
 		rightClickSound.currentTime = 0
 		rightClickSound.play()
+
+		contextMenu.style.display = 'block';
+        contextMenu.style.left = e.pageX + 'px';
+        contextMenu.style.top = e.pageY + 'px';
 	}
 	e.preventDefault() 
 }, false)
+
+contextMenu.addEventListener('click', (e) => {
+    if(e.target.classList.contains('context-menu-item')) {
+        const action = e.target.dataset.action;
+        // Handle your actions here
+        console.log('Action:', action);
+    }
+});
 //#endregion
 
 // ? Draggable Window object
@@ -207,6 +223,7 @@ async function loadingScreen() {
 
 	loadingElement.classList.remove('d-flex')
 	loadingElement.classList.add('d-none')
+	loadingElement.remove()
 	canClick = true
 
 	new DraggableWindow(
