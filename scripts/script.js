@@ -306,7 +306,7 @@ const aboutContent = `
 	</div>
 </div>
 <div class="p-0 m-0 d-flex flex-column justify-content-center align-items-center" id="commit-hist">
-	<p class="p-3 pb-1 m-0">My Github Commit History</p>
+	<p class="p-3 pb-1 m-0">My Github Contributions</p>
 	<img src="http://ghchart.rshah.org/861198/krcolonia" class="px-4 pb-4" alt="krcolonia's Github commit history" align="center"/>
 </div>
 <div id="about-content" class="p-3 m-0">
@@ -329,7 +329,7 @@ const aboutContent = `
 			<li>Database Management</li>
 			<li>REST API design and integration</li>
 			<li>Basic web penetration testing</li>
-			<li>Mobile game development (Godot)</li>
+			<li>Game development with Godot (Android and PC)</li>
 		</ul>
 	</p>
 	<p>
@@ -531,8 +531,8 @@ document.getElementById('resume-icon').addEventListener('click', function() {
 <div class="d-flex flex-column gap-2">
 	${resumeCard}
 	<div class="d-flex flex-row justify-content-between px-5 align-items-center github-card gap-2" id="resume-download-card">
-		<p class="p-0 m-0 my-4">Want a copy of my Résumé?</p>
-		<a class="p-0 m-0 my-4 github-card-button" href="./objects/Colonia_Resume.pdf" download="Colonia_Resume.pdf">Click here to grab one!</a>
+		<p class="p-0 m-0 my-4 text-center">Want a copy of my Résumé?</p>
+		<a class="p-0 m-0 my-4 github-card-button text-center" href="./objects/Colonia_Resume.pdf" download="Colonia_Resume.pdf">Click here to grab one!</a>
 	</div>
 </div>
 `
