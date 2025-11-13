@@ -11,7 +11,7 @@ import { ref, get, query, orderByKey, limitToLast } from 'https://www.gstatic.co
 
 // ? Mouse Click Events
 //#region
-var canClick = true
+var canClick = false
 var showHidden = false
 const leftClickSound = new Audio('../sounds/mouseleft.ogg')
 const rightClickSound = new Audio('../sounds/mouseright.ogg')
