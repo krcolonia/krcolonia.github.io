@@ -11,11 +11,12 @@ import { ref, get, query, orderByKey, limitToLast } from 'https://www.gstatic.co
 
 // ? Mouse Click Events
 //#region
-var canClick = false
+var canClick = true
+var showHidden = false
 const leftClickSound = new Audio('../sounds/mouseleft.ogg')
 const rightClickSound = new Audio('../sounds/mouseright.ogg')
 
-const contextMenu = document.getElementById('customContextMenu')
+const contextMenu = document.getElementById('contextMenu')
 
 document.addEventListener('click', () => {
 	if(canClick) {
@@ -31,6 +32,17 @@ document.addEventListener('contextmenu', (e) => {
 		rightClickSound.currentTime = 0
 		rightClickSound.play()
 
+		const clickedElement = e.target
+		contextMenu.innerHTML = ''
+
+		if(clickedElement.classList.contains('link-app')) {
+			addContextItem('Link', clickedElement.id)
+		}
+		else {
+			if(!showHidden) { addContextItem('Show Secrets', 'show-secret'); showHidden = true; }
+			else { addContextItem('Hide Secrets', 'hide-secret'); showHidden = false; }
+		}
+
 		contextMenu.style.display = 'block';
         contextMenu.style.left = e.pageX + 'px';
         contextMenu.style.top = e.pageY + 'px';
@@ -41,10 +53,33 @@ document.addEventListener('contextmenu', (e) => {
 contextMenu.addEventListener('click', (e) => {
     if(e.target.classList.contains('context-menu-item')) {
         const action = e.target.dataset.action;
-        // Handle your actions here
         console.log('Action:', action);
+		const hidden = document.getElementsByClassName('hidden-app');
+
+		switch(action) {
+			case 'show-secret':
+				for (const app of hidden) {
+					app.classList.remove('d-none');
+					app.classList.add('d-flex');
+				}
+				break;
+			case 'hide-secret':
+				for (const app of hidden) {
+					app.classList.remove('d-flex');
+					app.classList.add('d-none');
+				}
+				break;
+		}
     }
 });
+
+function addContextItem (text, action) {
+	const item = document.createElement('div')
+	item.className = 'context-menu-item'
+	item.textContent = text
+	item.dataset.action = action
+	contextMenu.appendChild(item)
+}
 //#endregion
 
 // ? Draggable Window object
@@ -329,18 +364,24 @@ const aboutContent = `
 <div id="about-content" class="p-3 m-0">
 	<h3 class="p-0 m-0 mb-2" align="center">Hello World, I'm Kurt!</h3>
 	<p>
-		I'm a ${new Date().getFullYear() - new Date("2002-12-20").getFullYear()}-year-old full stack web developer based in the Philippines, with over ${(yearsExp > 1) ? yearsExp+"+" : "a"} year${(yearsExp > 1) ? "s" : ""} of professional experience in the tech industry and a passion for building user-friendly software and applications.
+		I'm a ${new Date().getFullYear() - new Date("2002-12-20").getFullYear()}-year-old full stack web developer based in the Philippines, with over ${(yearsExp > 1) ? yearsExp+"+" : "a"} year${(yearsExp > 1) ? "s" : ""} of professional experience in the tech industry building user-friendly software and applications.
 	</p><br>
 	<p>
-		I've worked on multiple web application projects utilizing ReactJS with Vite, Tailwind CSS, Bootstrap, jQuery AJAX, and the Laravel Framework, as well as Android development using Android Studio and Kotlin.
-		<br class="mb-3"><!-- My tech stack includes:
+		My love for computers started with experimenting on browser developer tools and modifying the games I play for fun, which eventually lead me to learn programming seriously back in 11th grade and started building on my skills ever since.
+	</p><br>
+	<p>
+		I've worked on multiple web application projects using ReactJS with Vite, Tailwind CSS, Bootstrap, jQuery AJAX, and the Laravel Framework, as well as Android apps built with Android Studio and Kotlin.
+		<!-- My tech stack includes:
 		<ul>
 			<li>HTML5, CSS3, JavaScript, TypeScript, and PHP</li>
 			<li>Laravel, React.JS + Vite</li>
 			<li>Tailwind CSS, Bootstrap 5</li>
 			<li>Android Studio, Kotlin</li>
 			<li>Git with Github and Gitlab</li>
-		</ul> -->
+		</ul>
+		-->
+	</p><br>
+	<p>
 		Other than programming and developing web and mobile applications, I've also had the chance to work on projects with:
 		<ul>
 			<li>Database Management</li>
@@ -348,9 +389,6 @@ const aboutContent = `
 			<li>Basic web penetration testing</li>
 			<li>Game development with Godot (Android and PC)</li>
 		</ul>
-	</p>
-	<p>
-
 	</p>
 </div>
 `

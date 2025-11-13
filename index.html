@@ -38,43 +38,53 @@
 </head>
 
 <body class="d-flex flex-column">
-	<div class="d-flex flex-column justify-content-center align-items-center opacity-100 overflow-hidden" id="loading-screen">
+	<!-- <div class="d-flex flex-column justify-content-center align-items-center opacity-100 overflow-hidden" id="loading-screen">
 		<div class="d-flex justify-content-center">
 			<img src="./images/PFP.png" id="loading-pfp" class="opacity-0 position-fixed rounded-circle m-0 p-0">
 			<h1>&lt;krC&gt;</h1>
 		</div>
 		<div class="loader opacity-100 mb-4" id="loading-icon"></div>
 		<p class="m-0 p-0" id="loading-text" style="font-size: 1.3rem;">Booting up krColonia's Portfolio</p>
-	</div>
+	</div> -->
 
-	<div id="customContextMenu" class="context-menu">
-		<div class="context-menu-item" data-action="copy">Copy</div>
+	<div id="contextMenu" class="context-menu">
+		<!-- <div class="context-menu-item" data-action="copy">Copy</div>
 		<div class="context-menu-item" data-action="paste">Paste</div>
-		<div class="context-menu-item" data-action="delete">Delete</div>
+		<div class="context-menu-item" data-action="delete">Delete</div> -->
 	</div>
 
 	<div class="desktop-main d-flex flex-column" style="height:100vh;">
 		<div class="h-100 w-100 d-grid overflow-hidden" style="grid-auto-flow: column; grid-template-rows: repeat(4, 100px); grid-template-columns: repeat(auto-fill, 80px); align-content:start; justify-content:start;">
-			<button class="d-flex flex-column align-items-center desktop-app" id="about-icon">
+			<div class="d-flex flex-column align-items-center desktop-app">
 				<img src="./images/desktop-icons/scrapbook.png" alt="">
-				<p class="m-0 p-0">About Me</p>
-			</button>
-			<button class="d-flex flex-column align-items-center desktop-app" id="project-icon">
+				<p class="m-0 p-0 px-1">About Me</p>
+				<button class="m-0 p-0 h-100 w-100 position-absolute link-app" id="about-icon"></button>
+			</div>
+			<div class="d-flex flex-column align-items-center desktop-app">
 				<img src="./images/desktop-icons/projects.png" alt="">
-				<p class="m-0 p-0">My Projects</p>
-			</button>
-			<button class="d-flex flex-column align-items-center desktop-app" id="resume-icon">
+				<p class="m-0 p-0 px-1">My Projects</p>
+				<button class="m-0 p-0 h-100 w-100 position-absolute link-app" id="project-icon"></button>
+			</div>
+			<div class="d-flex flex-column align-items-center desktop-app">
 				<img src="./images/desktop-icons/file.png" alt="">
-				<p class="m-0 p-0">Work Experience</p>
-			</button>
-			<button class="d-flex flex-column align-items-center desktop-app" id="contact-icon">
+				<p class="m-0 p-0 px-1">Work Experience</p>
+				<button class="m-0 p-0 h-100 w-100 position-absolute link-app" id="resume-icon"></button>
+			</div>
+			<div class="d-flex flex-column align-items-center desktop-app">
 				<img src="./images/desktop-icons/contact.png" alt="">
-				<p class="m-0 p-0">Contact Me</p>
-			</button>			
-			<button class="d-none flex-column align-items-center desktop-app" id="gaming-icon">
+				<p class="m-0 p-0 px-1">Contact Me</p>
+				<button class="m-0 p-0 h-100 w-100 position-absolute link-app" id="contact-icon"></button>
+			</div>
+			<div class="d-none flex-column align-items-center desktop-app hidden-app">
 				<img src="./images/desktop-icons/controller.png" alt="">
-				<p class="m-0 p-0">Gaming Stuff</p>
-			</button>
+				<p class="m-0 p-0 px-1">Gaming Stuff</p>
+				<button class="m-0 p-0 h-100 w-100 position-absolute link-app" id="gaming-icon"></button>
+			</div>
+			<div class="d-none flex-column align-items-center desktop-app hidden-app">
+				<img src="./images/desktop-icons/terminal.png" alt="">
+				<p class="m-0 p-0 px-1">Bash Terminal</p>
+				<button class="m-0 p-0 h-100 w-100 position-absolute link-app" id="terminal-icon"></button>
+			</div>
 		</div>
 
 		<div class="d-none" id="start-menuScreen"></div>
@@ -86,11 +96,11 @@
 			<div class="d-flex flex-column m-0 p-0 overflow-hidden flex-grow-1" id="start-container">
 				<button class="d-flex flex-row gap-1 align-items-center start-app" id="linkedin-icon">
 					<img src="./images/desktop-icons/linkedin.png" alt="Linked Icon">
-					<p class="m-0 p-0">My LinkedIn</p>
+					<p class="m-0 p-0">My LinkedIn Profile</p>
 				</button>
 				<button class="d-flex flex-row gap-1 align-items-center start-app" id="github-icon">
 					<img src="./images/desktop-icons/github.png" alt="Github Icon">
-					<p class="m-0 p-0">My Github</p>
+					<p class="m-0 p-0">My Github Profile</p>
 				</button>
 				<button class="d-flex flex-row gap-1 align-items-center start-app" id="gmail-icon">
 					<img src="./images/desktop-icons/gmail.png" alt="Gmail Icon">
