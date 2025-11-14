@@ -11,8 +11,8 @@ import { ref, get, query, orderByKey, limitToLast } from 'https://www.gstatic.co
 
 // ? Mouse Click Events
 //#region
-var canClick = false
-var showHidden = false
+let canClick = false
+let showHidden = false
 const leftClickSound = new Audio('../sounds/mouseleft.ogg')
 const rightClickSound = new Audio('../sounds/mouseright.ogg')
 
@@ -39,8 +39,12 @@ document.addEventListener('contextmenu', (e) => {
 			addContextItem('Link', clickedElement.id)
 		}
 		else {
-			if(!showHidden) { addContextItem('Show Secrets', 'show-secret'); showHidden = true; }
-			else { addContextItem('Hide Secrets', 'hide-secret'); showHidden = false; }
+			if(showHidden) { 
+				addContextItem('Hide Secrets', 'hide-secret')
+			}
+			else {
+				addContextItem('Show Secrets', 'show-secret')
+			}
 		}
 
 		contextMenu.style.display = 'block';
@@ -62,12 +66,14 @@ contextMenu.addEventListener('click', (e) => {
 					app.classList.remove('d-none');
 					app.classList.add('d-flex');
 				}
+				showHidden = !showHidden
 				break;
 			case 'hide-secret':
 				for (const app of hidden) {
 					app.classList.remove('d-flex');
 					app.classList.add('d-none');
 				}
+				showHidden = !showHidden
 				break;
 		}
     }
@@ -532,6 +538,50 @@ get(query(ref(db, 'emp'), orderByKey(), limitToLast(100))).then(snapshot => {
 	}
 })
 
+const gamingContent = `
+<div class="d-flex flex-row py-4 justify-content-center align-items-center gap-3" id="gaming-header">
+	<img src="./images/kurut0.jpg" class="rounded-circle m-0 p-0" style="width: 20%; border: 2px solid black;">
+	<div class="d-flex flex-column align-items-center">
+		<h1 class="fw-bold m-0 p-0 mt-3">kurut0</h1>
+		<p>Casual Gamer and Modder</p>
+	</div>
+</div>
+<div class="p-0 m-0 d-flex flex-column justify-content-center align-items-center" id="commit-hist">
+	<p class="p-3 pb-2 m-0">My Socials</p>
+	<div class="px-4 pb-4 d-flex flex-row gap-3">
+		<a href="https://www.youtube.com/@kurut0_teh_real" target="_blank">
+			<img class="m-0 p-0" src="./images/desktop-icons/steam.png" style="filter: invert(0); height: 45px;">
+		</a>
+		<a href="https://steamcommunity.com/id/kurut0" target="_blank">
+			<img class="m-0 p-0" src="./images/desktop-icons/youtube.png" style="filter: invert(0); height: 45px;">
+		</a>
+		<a href="https://gamebanana.com/members/1525163" target="_blank">
+			<img class="m-0 p-n1" src="./images/desktop-icons/gamebanana.png" style="filter: invert(0); height: 45px;">
+		</a>
+		<a href="https://github.com/kurut0-dev" target="_blank">
+			<img class="m-0 p-0" src="./images/desktop-icons/github.png" style="filter: invert(0); height: 45px;">
+		</a>
+	</div>
+	<!-- <img src="http://ghchart.rshah.org/861198/krcolonia" class="px-4 pb-4" alt="krcolonia's Github commit history" align="center"/> -->
+</div>
+<div id="about-content" class="p-3 m-0">
+	<h3 class="p-0 m-0 mb-2" align="center">wassuh dude, I'm kurut0</h3>
+	<p>
+		This is the username I go by whenever I play video games and, as I've mentioned in my "About Me", install and create mods for games I enjoy!
+	</p><br>
+	<p>
+		Gaming has been a huge part of my journey in the IT industry and is actually the catalyst to my curiosity towards computers! As a kid I grew up playing classic games such as Counter-Strike 1.6, Metal Gear Solid, Tekken, and a bunch more. Lately, I've been getting into singleplayer and coop games, but occasionally play competitive shooters such as CS2 and Valorant.
+	</p><br>
+	<p>
+		Modding has also been a major factor into how I learned to be detail-oriented when it comes to modifying files and making things work. My modding journey started with Unreal Software's games, making personal low quality textures of characters for CS2D through Paint.NET and playing modded copies of Stranded II. To this day, I still like playing games, both vanilla and modded, and also started working on my own mods which I upload to the Steam Workshop.
+	</p><br>
+	<p>
+	If you're interested in talking with me about gaming and mod making for People Playground, feel free to drop a message on my Discord account 'kurut0' which I generally use across all gaming-related accounts.
+	</p>
+</div>`
+const gamingWidth = '50'
+const gamingHeight = '80'
+
 document.getElementById('about-icon').addEventListener('click', function() {
 	if(!activeWindows.includes('About Me')) {
 		new DraggableWindow(
@@ -604,6 +654,19 @@ document.getElementById('resume-icon').addEventListener('click', function() {
 	}
 })
 
+document.getElementById('gaming-icon').addEventListener('click', function() {
+	if(!activeWindows.includes("Games and Mods")) {
+		new DraggableWindow(
+			'controller',
+			'Games and Mods',
+			gamingContent,
+			gamingWidth,
+			gamingHeight,
+			true
+		)
+	}
+})
+
 document.getElementById('linkedin-icon').addEventListener('click', function() {
 	window.open(
 		'https://www.linkedin.com/in/krcolonia/', 
@@ -621,6 +684,13 @@ document.getElementById('github-icon').addEventListener('click', function() {
 document.getElementById('gmail-icon').addEventListener('click', function() {
 	window.open(
 		'mailto:krcolonia@gmail.com', 
+		'_blank'
+	)
+})
+
+document.getElementById('terminal-icon').addEventListener('click', function() {
+	window.open(
+		'https://krcolonia.github.io/404', 
 		'_blank'
 	)
 })
