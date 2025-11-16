@@ -667,6 +667,13 @@ document.getElementById('gaming-icon').addEventListener('click', function() {
 	}
 })
 
+document.getElementById('blog-icon').addEventListener('click', function() {
+	// window.open(
+	// 	'https://krcolonia.github.io/blog'
+	// )
+	document.location.href = 'https://krcolonia.github.io/blog'
+})
+
 document.getElementById('linkedin-icon').addEventListener('click', function() {
 	window.open(
 		'https://www.linkedin.com/in/krcolonia/', 
@@ -689,9 +696,9 @@ document.getElementById('gmail-icon').addEventListener('click', function() {
 })
 
 document.getElementById('terminal-icon').addEventListener('click', function() {
-	window.open(
-		'https://krcolonia.github.io/404', 
-		'_blank'
-	)
+	// window.open(
+	// 	'https://krcolonia.github.io/404'
+	// )
+	document.location.href = 'https://krcolonia.github.io/404'
 })
 //#endregion
