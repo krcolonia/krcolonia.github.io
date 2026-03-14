@@ -1,6 +1,16 @@
 
 @import url('main.css');
 
+/* JetBrains Mono Font */
+@font-face {
+	font-family: 'JetBrains Mono';
+	src: url('../fonts/jetbrainsmono.woff2') format('woff2'),
+		 url('../fonts/jetbrainsmono.woff') format('woff');
+	font-weight: normal;
+	font-style: normal;
+	font-display: swap;
+}
+
 /* 
 
 ? Credits:
@@ -391,6 +401,82 @@ body::before {
 #commit-hist img {
 	filter: invert(100%) contrast(150%);
 	width: 100%;
+}
+
+#commit-hist img {
+	filter: invert(100%) contrast(150%);
+	width: 100%;
+}
+
+/* Terminal Window Styles */
+.terminal-window {
+	height: 100%;
+	overflow: hidden;
+}
+
+/* Make terminal icon white in window header and taskbar */
+#taskbar-terminal img,
+.desktop-window:has(.terminal-window) .desktop-window-icon {
+	filter: brightness(0) invert(1);
+}
+
+.terminal-output {
+	height: calc(100% - 40px);
+	overflow-y: auto;
+	white-space: pre-wrap;
+	word-wrap: break-word;
+}
+
+.terminal-output::-webkit-scrollbar {
+	width: 8px;
+}
+
+.terminal-output::-webkit-scrollbar-track {
+	background: #1a1c23;
+}
+
+.terminal-output::-webkit-scrollbar-thumb {
+	background: white;
+	border-radius: 4px;
+}
+
+.terminal-output::-webkit-scrollbar-thumb:hover {
+	background: white;
+}
+
+.terminal-line {
+	margin-bottom: 4px;
+	line-height: 1.4;
+}
+
+.terminal-input-line {
+	display: flex;
+	align-items: center;
+	margin-top: 5px;
+	padding: 5px 10px;
+	background: #1a1c23;
+	border-top: 1px solid #ffffff33;
+}
+
+.terminal-prompt {
+	color: white;
+	margin-right: 8px;
+	white-space: nowrap;
+}
+
+.terminal-input {
+	background: transparent;
+	border: none;
+	color: white;
+	flex-grow: 1;
+	outline: none;
+	font-family: 'Courier New', monospace;
+	font-size: 0.9rem;
+	caret-color: white;
+}
+
+.terminal-input:focus {
+	outline: none;
 }
 
 #about-content {

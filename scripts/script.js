@@ -39,7 +39,7 @@ document.addEventListener('contextmenu', (e) => {
 			addContextItem('Link', clickedElement.id)
 		}
 		else {
-			if(showHidden) { 
+			if(showHidden) {
 				addContextItem('Hide Secrets', 'hide-secret')
 			}
 			else {
@@ -47,11 +47,14 @@ document.addEventListener('contextmenu', (e) => {
 			}
 		}
 
+		// Always show Terminal option
+		addContextItem('Terminal', 'open-terminal')
+
 		contextMenu.style.display = 'block';
         contextMenu.style.left = e.pageX + 'px';
         contextMenu.style.top = e.pageY + 'px';
 	}
-	e.preventDefault() 
+	e.preventDefault()
 }, false)
 
 contextMenu.addEventListener('click', (e) => {
@@ -74,6 +77,9 @@ contextMenu.addEventListener('click', (e) => {
 					app.classList.add('d-none');
 				}
 				showHidden = !showHidden
+				break;
+			case 'open-terminal':
+				openTerminalWindow()
 				break;
 		}
     }
@@ -245,22 +251,22 @@ async function loadingScreen() {
 	const loadingText = document.getElementById('loading-text')
 	const loadingPfp = document.getElementById('loading-pfp')
 
-	await new Promise(resolve => setTimeout(resolve, 5500))
+	// await new Promise(resolve => setTimeout(resolve, 5500))
 	
-	loadingPfp.classList.remove('opacity-0')
-	loadingPfp.classList.add('opacity-100')
+	// loadingPfp.classList.remove('opacity-0')
+	// loadingPfp.classList.add('opacity-100')
 
-	loadingIcon.classList.remove('opacity-100')
-	loadingIcon.classList.add('opacity-0')
+	// loadingIcon.classList.remove('opacity-100')
+	// loadingIcon.classList.add('opacity-0')
 
-	loadingText.innerText = "Welcome to krColonia's Portfolio"
+	// loadingText.innerText = "Welcome to krColonia's Portfolio"
 
-	await new Promise(resolve => setTimeout(resolve, 2500))
+	// await new Promise(resolve => setTimeout(resolve, 2500))
 
-	loadingElement.classList.remove('opacity-100')
-	loadingElement.classList.add('opacity-0')
+	// loadingElement.classList.remove('opacity-100')
+	// loadingElement.classList.add('opacity-0')
 
-	await new Promise(resolve => setTimeout(resolve, 1000))
+	// await new Promise(resolve => setTimeout(resolve, 1000))
 
 	loadingElement.classList.remove('d-flex')
 	loadingElement.classList.add('d-none')
@@ -339,6 +345,151 @@ if (window.innerWidth < 768) {
 
 // ? Desktop App Content
 //#region
+
+// * Terminal Window
+let terminalHistory = []
+let terminalHistoryIndex = -1
+let terminalId = 0
+
+function openTerminalWindow() {
+	const terminalContent = `
+<div class="terminal-window" id="terminal-${terminalId}" style="background: #1a1c23; color: white; font-family: 'JetBrains Mono', monospace; font-size: 0.9rem; height: 100%; padding: 10px;"><div class="terminal-output" id="terminal-output-${terminalId}" style="height: calc(100% - 40px); overflow-y: auto; white-space: pre-wrap;">
+</div>
+<div class="terminal-input-line" style="display: flex; align-items: center; margin-top: 5px;">
+	<span class="terminal-prompt" style="color: white; margin-right: 8px;">krColonia@portfolio:~$</span>
+	<input type="text" id="terminal-input-${terminalId}" class="terminal-input"
+		style="background: transparent; border: none; color: white; flex-grow: 1; outline: none; font-family: 'JetBrains Mono', monospace; font-size: 0.9rem;"
+		autocomplete="off" spellcheck="false">
+</div>
+</div>`
+
+	const terminalWindow = new DraggableWindow(
+		'terminal',
+		'Bash Terminal',
+		terminalContent,
+		60,
+		70,
+		true,
+		0
+	)
+
+	// Style the terminal window to remove default padding
+	const terminalElement = terminalWindow.element
+	terminalElement.querySelector('.desktop-window-content').style.padding = '0'
+	terminalElement.querySelector('.desktop-window-content').style.background = '#1a1c23'
+
+	const inputField = document.getElementById(`terminal-input-${terminalId}`)
+	const outputDiv = document.getElementById(`terminal-output-${terminalId}`)
+
+	// Focus the input field
+	inputField.focus()
+
+	// Bring terminal to front when clicked
+	terminalElement.addEventListener('mousedown', () => {
+		inputField.focus()
+	})
+
+	// Handle command input
+	inputField.addEventListener('keydown', (e) => {
+		if (e.key === 'Enter') {
+			const command = inputField.value.trim()
+			if (command) {
+				terminalHistory.push(command)
+				terminalHistoryIndex = terminalHistory.length
+				
+				// Add command to output
+				outputDiv.innerHTML += `<div class="terminal-line"><span style="color: white;">krColonia@portfolio:~$</span> ${command}</div>`
+				
+				// Process command
+				const response = processTerminalCommand(command)
+				if (response) {
+					outputDiv.innerHTML += `<div class="terminal-line" style="color: #33ff33;">${response}</div>`
+				}
+				
+				outputDiv.innerHTML += `<div class="terminal-line">&nbsp;</div>`
+				outputDiv.scrollTop = outputDiv.scrollHeight
+			}
+			inputField.value = ''
+		} else if (e.key === 'ArrowUp') {
+			e.preventDefault()
+			if (terminalHistoryIndex > 0) {
+				terminalHistoryIndex--
+				inputField.value = terminalHistory[terminalHistoryIndex]
+			}
+		} else if (e.key === 'ArrowDown') {
+			e.preventDefault()
+			if (terminalHistoryIndex < terminalHistory.length - 1) {
+				terminalHistoryIndex++
+				inputField.value = terminalHistory[terminalHistoryIndex]
+			} else {
+				terminalHistoryIndex = terminalHistory.length
+				inputField.value = ''
+			}
+		}
+	})
+
+	terminalId++
+}
+
+function processTerminalCommand(command) {
+	const cmd = command.toLowerCase().trim()
+	const args = cmd.split(' ').slice(1)
+	
+	const commands = {
+		help: () => `Available commands:
+  <span style="color: white;">help</span>     - Show this help message
+  <span style="color: white;">about</span>    - Display information about me
+  <span style="color: white;">projects</span> - List my projects
+  <span style="color: white;">contact</span>  - Show contact information
+  <span style="color: white;">skills</span>   - List my technical skills
+  <span style="color: white;">clear</span>    - Clear terminal output
+  <span style="color: white;">date</span>     - Show current date and time
+  <span style="color: white;">whoami</span>   - Display current user`,
+
+		whoami: () => 'krColonia',
+
+		"whoami --secret": () => 'kurut0',
+		
+		date: () => new Date().toString(),
+		
+		about: () => `Kurt Colonia - Full Stack Web Developer
+Based in Quezon City, Philippines
+Specializing in React, Laravel, and modern web technologies`,
+
+		contact: () => `Email: krcolonia@gmail.com
+LinkedIn: https://www.linkedin.com/in/krcolonia/
+GitHub: https://github.com/krcolonia`,
+
+		skills: () => `Technical Skills:
+  - Frontend: React, TypeScript, JavaScript, HTML5, CSS3
+  - Backend: Laravel, PHP, Node.js
+  - Styling: Tailwind CSS, Bootstrap 5
+  - Mobile: Android Studio, Kotlin
+  - Tools: Git, GitHub, GitLab`,
+
+		projects: () => `My Projects:
+  - JRSK - Job recruitment system
+  - CodeBreakers - Educational platform
+  - Code-Quest - Learning management system
+  - Yummly - Recipe sharing app
+  - GameSRC - Game source marketplace
+
+Type 'projects' to open the projects window.`,
+
+		clear: () => {
+			const activeTerminal = document.querySelector('.terminal-output')
+			if (activeTerminal) {
+				activeTerminal.innerHTML = ''
+			}
+		}
+	}
+
+	if (commands[cmd]) {
+		return commands[cmd]()
+	} else {
+		return `Command not found: ${command}. Type 'help' for available commands.`
+	}
+}
 
 // * User Guide (currently unused because I think it should go unused...? kept in case i change my mind aaaa)
 const guideContent = `
@@ -696,9 +847,6 @@ document.getElementById('gmail-icon').addEventListener('click', function() {
 })
 
 document.getElementById('terminal-icon').addEventListener('click', function() {
-	// window.open(
-	// 	'https://krcolonia.github.io/404'
-	// )
-	document.location.href = 'https://krcolonia.github.io/404'
+	openTerminalWindow()
 })
 //#endregion
