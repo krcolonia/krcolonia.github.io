@@ -251,22 +251,22 @@ async function loadingScreen() {
 	const loadingText = document.getElementById('loading-text')
 	const loadingPfp = document.getElementById('loading-pfp')
 
-	// await new Promise(resolve => setTimeout(resolve, 5500))
+	await new Promise(resolve => setTimeout(resolve, 5500))
 	
-	// loadingPfp.classList.remove('opacity-0')
-	// loadingPfp.classList.add('opacity-100')
+	loadingPfp.classList.remove('opacity-0')
+	loadingPfp.classList.add('opacity-100')
 
-	// loadingIcon.classList.remove('opacity-100')
-	// loadingIcon.classList.add('opacity-0')
+	loadingIcon.classList.remove('opacity-100')
+	loadingIcon.classList.add('opacity-0')
 
-	// loadingText.innerText = "Welcome to krColonia's Portfolio"
+	loadingText.innerText = "Welcome to krColonia's Portfolio"
 
-	// await new Promise(resolve => setTimeout(resolve, 2500))
+	await new Promise(resolve => setTimeout(resolve, 2500))
 
-	// loadingElement.classList.remove('opacity-100')
-	// loadingElement.classList.add('opacity-0')
+	loadingElement.classList.remove('opacity-100')
+	loadingElement.classList.add('opacity-0')
 
-	// await new Promise(resolve => setTimeout(resolve, 1000))
+	await new Promise(resolve => setTimeout(resolve, 1000))
 
 	loadingElement.classList.remove('d-flex')
 	loadingElement.classList.add('d-none')
